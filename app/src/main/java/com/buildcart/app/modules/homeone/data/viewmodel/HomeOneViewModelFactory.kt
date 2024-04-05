@@ -1,0 +1,17 @@
+package com.buildcart.app.modules.homeone.data.viewmodel
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.buildcart.app.modules.homeone.data.CategoriesRepository
+import com.buildcart.app.modules.homeone.data.ProductsRepository
+
+class HomeOneViewModelFactory(private val productsRepository: ProductsRepository,private val categoriesRepository: CategoriesRepository) : ViewModelProvider.Factory {
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(HomeOneViewModel::class.java)) {
+            return HomeOneViewModel(productsRepository,categoriesRepository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}

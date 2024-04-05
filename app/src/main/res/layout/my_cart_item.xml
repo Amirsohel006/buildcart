@@ -1,0 +1,79 @@
+<!-- cart_item_layout.xml -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cartItem"
+            type="com.buildcart.app.modules.mycart.data.model.CartProductItem"/>
+        <variable name="myCartVM" type="com.buildcart.app.modules.mycart.data.viewmodel.MyCartVM"/>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_12pxh"
+        style="@style/groupStylegray_100cornerRadius"
+        android:orientation="vertical">
+
+        <!-- Product Image -->
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="@dimen/_80pxh"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:layout_height="@dimen/_80pxh"
+            app:layout_constraintDimensionRatio="16:9"/>
+
+        <!-- Product Name -->
+        <TextView
+            android:id="@+id/txtProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/txtNunitobold12"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="@{`Product : `+myCartVM.getProductName(cartItem)}" />
+
+        <!-- Product Rating -->
+        <TextView
+            android:id="@+id/txtProductRating"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            style="@style/txtNunitobold12"
+            android:drawableEnd="@drawable/rating_img_icon"
+            android:layout_height="wrap_content"
+            android:text="@{`Ratings : ` + myCartVM.getFormattedRating(cartItem)}"/>
+
+        <!-- Quantity -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/txtQuantity"
+                android:layout_width="wrap_content"
+                style="@style/txtNunitobold12"
+                android:layout_marginTop="6dp"
+                android:layout_height="wrap_content"
+                android:text="@{`Quantity : ` +myCartVM.getQuantity(cartItem)}"  />
+
+        </LinearLayout>
+
+        <!-- Selling Price -->
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/txtNunitobold12"
+            android:layout_marginTop="4dp"
+            android:text="@{`Price : ` +myCartVM.getFormattedPrice(cartItem)}" />
+
+        <!-- Add other necessary fields as per your CartProductItem -->
+
+    </LinearLayout>
+
+</layout>

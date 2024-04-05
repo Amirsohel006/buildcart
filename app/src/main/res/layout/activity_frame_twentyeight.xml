@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="frameTwentyeightVM" type="com.buildcart.app.modules.frametwentyeight.data.viewmodel.FrameTwentyeightVM"/>
+    </data>
+    <LinearLayout android:id="@+id/linearColumnordercancelled"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <TextView android:ellipsize="end" android:gravity="start"
+            android:id="@+id/txtOrderCancelled"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_65pxh"
+            android:layout_marginStart="@dimen/_65pxh"
+            android:layout_marginTop="@dimen/_51pxv"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:text="@{frameTwentyeightVM.frameTwentyeightModel.txtOrderCancelled}"
+            style="@style/txtNunitobold24_1" tools:text="@string/lbl_order_cancelled"/>
+        <ImageView android:id="@+id/imageUntitled1080"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_274pxh"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:layout_marginStart="@dimen/_24pxh"
+            android:layout_marginTop="@dimen/_43pxv"
+            android:layout_width="@dimen/_291pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_untitled1080_274x291}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_untitled1080_274x291"/>
+    </LinearLayout>
+</layout>

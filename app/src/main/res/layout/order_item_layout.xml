@@ -1,0 +1,109 @@
+<!-- res/layout/order_item_layout.xml -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <!-- Define variables for your Order object -->
+        <variable
+            name="order"
+            type="com.buildcart.app.modules.orders.data.model.OrdersData" />
+    </data>
+
+    <!-- Root layout for the order item -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="@style/groupStylegray_100cornerRadius"
+        android:padding="16dp">
+
+        <!-- Product Image (You may use ImageView here) -->
+        <ImageView
+            android:id="@+id/imageProduct"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/build_cart_logo"
+            />
+
+        <!-- Product Name -->
+        <TextView
+            android:id="@+id/textProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`Product : `+order.product.categories[0].name}"
+            android:textSize="18sp"
+            style="@style/txtNunitobold16"
+            android:layout_marginTop="@dimen/_12pxh"/>
+
+        <!-- Product Color -->
+        <TextView
+            android:id="@+id/textProductColor"
+            android:layout_width="wrap_content"
+            style="@style/txtNunitobold12"
+            android:layout_height="wrap_content"
+            android:text="@{`Product Color: `+order.product.categories[0].name}"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Quantity -->
+        <TextView
+            android:id="@+id/textQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/txtNunitobold12"
+            android:text="@{`Quantity : `+String.valueOf(order.quantity)}"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Amount -->
+        <TextView
+            android:id="@+id/textAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/txtNunitobold12"
+            android:text="@{`Product Price : `+order.product.sellingPrice}"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Order Status -->
+        <TextView
+            android:id="@+id/textOrderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/txtNunitobold12"
+            android:text="@{`Product Order Status : `+order.orderStatus}"
+            android:layout_marginTop="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Reorder Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnReorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reorder"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                style="@style/groupStylegreen_1"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:layout_marginTop="8dp"/>
+
+            <!-- View Details Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnViewDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Details"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                style="@style/etRoundedOutline_2"
+                android:padding="8dp"
+                android:textAllCaps="false"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

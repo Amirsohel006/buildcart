@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="signUoEighteenVM" type="com.buildcart.app.modules.signuoeighteen.data.viewmodel.SignUoEighteenVM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearSignUoEightee"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <androidx.appcompat.widget.Toolbar android:gravity="start"
+            android:id="@+id/toolbarToolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowarrowleft"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylegray_800">
+                <ImageView android:id="@+id/imageArrowleft"
+                    android:layout_height="@dimen/_24pxh"
+                    android:layout_marginBottom="@dimen/_14pxv"
+                    android:layout_marginStart="@dimen/_20pxh"
+                    android:layout_marginTop="@dimen/_50pxv"
+                    android:layout_width="@dimen/_14pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtPaymentOptions"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_6pxv"
+                    android:layout_marginEnd="@dimen/_91pxh"
+                    android:layout_marginStart="@dimen/_21pxh"
+                    android:layout_marginTop="@dimen/_45pxv"
+                    android:layout_weight="0.94"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{signUoEighteenVM.signUoEighteenModel.txtPaymentOptions}"
+                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_payment_options"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <FrameLayout android:id="@+id/frameStacklineeleven"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_59pxv"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_24pxv" android:layout_width="@dimen/_279pxh">
+            <LinearLayout android:id="@+id/linearColumnlineten"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_1pxv"
+                android:layout_marginEnd="@dimen/_4pxh"
+                android:layout_width="match_parent" android:orientation="vertical">
+                <LinearLayout android:id="@+id/linearRowlineten"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_1pxh"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <FrameLayout android:id="@+id/frameStacklineten"
+                        android:layout_height="@dimen/_38pxv" android:layout_width="@dimen/_156pxh">
+                        <View android:background="@color/green_800"
+                            android:id="@+id/lineLineTen"
+                            android:layout_gravity="center"
+                            android:layout_height="@dimen/_1pxv"
+                            android:layout_marginBottom="@dimen/_19pxv"
+                            android:layout_marginEnd="@dimen/_38pxh"
+                            android:layout_marginStart="@dimen/_38pxh"
+                            android:layout_marginTop="@dimen/_18pxv" android:layout_width="@dimen/_80pxh"/>
+                        <FrameLayout
+                            android:id="@+id/frameStackgroup347"
+                            android:layout_gravity="start"
+                            android:layout_height="@dimen/_38pxv" android:layout_width="@dimen/_156pxh">
+                            <ImageView android:id="@+id/imageGroup347"
+                                android:layout_gravity="start"
+                                android:layout_height="@dimen/_38pxh"
+                                android:layout_width="@dimen/_156pxh"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/img_group347"
+                                tools:ignore="ContentDescription" tools:src="@drawable/img_group347"/>
+                            <LinearLayout
+                                android:id="@+id/linearRowcheckmark"
+                                android:layout_gravity="top|center"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_11pxv"
+                                android:layout_marginEnd="@dimen/_9pxh"
+                                android:layout_marginStart="@dimen/_10pxh"
+                                android:layout_marginTop="@dimen/_11pxv"
+                                android:layout_width="match_parent" android:orientation="horizontal">
+                                <ImageView
+                                    android:id="@+id/imageCheckmark"
+                                    android:layout_height="@dimen/_13pxh"
+                                    android:layout_width="@dimen/_17pxh"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_checkmark"
+                                    tools:ignore="ContentDescription" tools:src="@drawable/img_checkmark"/>
+                                <ImageView
+                                    android:id="@+id/imageCheckmarkOne"
+                                    android:layout_height="@dimen/_13pxh"
+                                    android:layout_marginStart="@dimen/_100pxh"
+                                    android:layout_width="@dimen/_17pxh"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_checkmark"
+                                    tools:ignore="ContentDescription" tools:src="@drawable/img_checkmark"/>
+                            </LinearLayout>
+                        </FrameLayout>
+                    </FrameLayout>
+                    <View android:background="@color/green_800"
+                        android:id="@+id/lineLineEleven"
+                        android:layout_height="@dimen/_1pxv"
+                        android:layout_marginBottom="@dimen/_19pxv"
+                        android:layout_marginTop="@dimen/_18pxv"
+                        android:layout_weight="0.29" android:layout_width="0dp"/>
+                    <LinearLayout android:gravity="center_horizontal"
+                        android:id="@+id/linearColumnthree"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.14"
+                        android:layout_width="0dp"
+                        android:orientation="vertical" style="@style/groupStylegreen_800cornerRadius">
+                        <TextView android:ellipsize="end"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/txtThree"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/_4pxv"
+                            android:layout_marginEnd="@dimen/_13pxh"
+                            android:layout_marginStart="@dimen/_13pxh"
+                            android:layout_marginTop="@dimen/_3pxv"
+                            android:layout_width="match_parent"
+                            android:singleLine="true"
+                            android:text="@{signUoEighteenVM.signUoEighteenModel.txtThree}"
+                            style="@style/txtPoppinssemibold20_1" tools:text="@string/lbl_3"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="start"
+                    android:id="@+id/linearRowaddress"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginTop="@dimen/_4pxv"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtAddress"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_1pxv"
+                        android:layout_weight="0.34"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{signUoEighteenVM.signUoEighteenModel.txtAddress}"
+                        style="@style/txtPoppinsmedium10" tools:text="@string/lbl_address"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtOrderSummary"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_59pxh"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_weight="0.66"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{signUoEighteenVM.signUoEighteenModel.txtOrderSummary}"
+                        style="@style/txtPoppinsmedium10" tools:text="@string/lbl_order_summary"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtPayment"
+                android:layout_gravity="bottom|end"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{signUoEighteenVM.signUoEighteenModel.txtPayment}"
+                style="@style/txtPoppinssemibold10" tools:text="@string/lbl_payment"/>
+        </FrameLayout>
+        <FrameLayout android:id="@+id/frameStackellipsetwentysix"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_314pxv"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_45pxv" android:layout_width="@dimen/_320pxh">
+            <LinearLayout android:id="@+id/linearRowellipsetwentyeight"
+                android:layout_gravity="start"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_132pxv"
+                android:layout_marginTop="@dimen/_132pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylecornerRadius_3">
+                <LinearLayout
+                    android:id="@+id/linearRowellipsetwentysix"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_8pxv"
+                    android:layout_marginStart="@dimen/_12pxh"
+                    android:layout_marginTop="@dimen/_11pxv"
+                    android:layout_weight="0.88"
+                    android:layout_width="0dp" android:orientation="horizontal">
+                    <ImageView android:id="@+id/imageEllipseTwentySix"
+                        android:layout_height="@dimen/_31pxh"
+                        android:layout_width="@dimen/_31pxh"
+                        android:scaleType="centerCrop"
+                        circular="@{true}"
+                        imageRes="@{@drawable/img_ellipse26}"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse26"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtNetbanking"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_1pxv"
+                        android:layout_marginStart="@dimen/_7pxh"
+                        android:layout_marginTop="@dimen/_5pxv"
+                        android:layout_weight="0.76"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{signUoEighteenVM.signUoEighteenModel.txtNetbanking}"
+                        style="@style/txtPoppinssemibold16" tools:text="@string/lbl_netbanking"/>
+                </LinearLayout>
+                <View
+                    android:background="@drawable/rectangle_border_gray_500_radius_9"
+                    android:id="@+id/viewEllipseTwentyEight"
+                    android:layout_height="@dimen/_18pxh"
+                    android:layout_marginBottom="@dimen/_14pxv"
+                    android:layout_marginEnd="@dimen/_24pxh"
+                    android:layout_marginStart="@dimen/_132pxh"
+                    android:layout_marginTop="@dimen/_18pxv" android:layout_width="@dimen/_18pxh"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearRowellipsetwentyeightOne"
+                android:layout_gravity="bottom|start"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_66pxv"
+                android:layout_marginTop="@dimen/_66pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylecornerRadius_3">
+                <LinearLayout
+                    android:id="@+id/linearRowellipsetwentyseven"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_9pxv"
+                    android:layout_marginStart="@dimen/_12pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_weight="0.78"
+                    android:layout_width="0dp" android:orientation="horizontal">
+                    <ImageView android:id="@+id/imageEllipseTwentySeven"
+                        android:layout_height="@dimen/_31pxh"
+                        android:layout_width="@dimen/_31pxh"
+                        android:scaleType="centerCrop"
+                        circular="@{true}"
+                        imageRes="@{@drawable/img_ellipse27}"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse27"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtUPI"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_2pxv"
+                        android:layout_marginStart="@dimen/_7pxh"
+                        android:layout_marginTop="@dimen/_4pxv"
+                        android:layout_weight="0.46"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{signUoEighteenVM.signUoEighteenModel.txtUPI}"
+                        style="@style/txtPoppinssemibold16" tools:text="@string/lbl_upi"/>
+                </LinearLayout>
+                <View
+                    android:background="@drawable/rectangle_border_gray_500_radius_9"
+                    android:id="@+id/viewEllipseTwentyEightOne"
+                    android:layout_height="@dimen/_18pxh"
+                    android:layout_marginBottom="@dimen/_15pxv"
+                    android:layout_marginEnd="@dimen/_24pxh"
+                    android:layout_marginStart="@dimen/_202pxh"
+                    android:layout_marginTop="@dimen/_17pxv" android:layout_width="@dimen/_18pxh"/>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/linearRowcodcashond"
+                android:layout_gravity="bottom|start"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylecornerRadius_3">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtCODCashonD"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_11pxv"
+                    android:layout_marginStart="@dimen/_12pxh"
+                    android:layout_marginTop="@dimen/_14pxv"
+                    android:layout_weight="0.92"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{signUoEighteenVM.signUoEighteenModel.txtCODCashonD}"
+                    style="@style/txtPoppinssemibold16" tools:text="@string/msg_cod_cash_on_d"/>
+                <View
+                    android:background="@drawable/rectangle_border_gray_500_radius_9"
+                    android:id="@+id/viewEllipseTwentyEightTwo"
+                    android:layout_height="@dimen/_18pxh"
+                    android:layout_marginBottom="@dimen/_15pxv"
+                    android:layout_marginEnd="@dimen/_24pxh"
+                    android:layout_marginStart="@dimen/_71pxh"
+                    android:layout_marginTop="@dimen/_17pxv" android:layout_width="@dimen/_18pxh"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearRowellipsetwentyeightThree"
+                android:layout_gravity="top|start"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_66pxv"
+                android:layout_marginTop="@dimen/_66pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylecornerRadius_3">
+                <LinearLayout android:id="@+id/linearRowpaypaltwo"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_13pxv"
+                    android:layout_marginStart="@dimen/_17pxh"
+                    android:layout_marginTop="@dimen/_12pxv"
+                    android:layout_weight="0.91"
+                    android:layout_width="0dp" android:orientation="horizontal">
+                    <ImageView android:id="@+id/imagePaypalTwo"
+                        android:layout_height="@dimen/_22pxh"
+                        android:layout_marginBottom="@dimen/_1pxv"
+                        android:layout_marginTop="@dimen/_1pxv"
+                        android:layout_width="@dimen/_22pxh"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_paypal2"
+                        tools:ignore="ContentDescription" tools:src="@drawable/img_paypal2"/>
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtCreditDebit"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11pxh"
+                        android:layout_weight="0.87"
+                        android:layout_width="0dp"
+                        android:singleLine="true"
+                        android:text="@{signUoEighteenVM.signUoEighteenModel.txtCreditDebit}"
+                        style="@style/txtPoppinssemibold16" tools:text="@string/msg_credit_debit"/>
+                </LinearLayout>
+                <View
+                    android:background="@drawable/rectangle_border_gray_500_radius_9"
+                    android:id="@+id/viewEllipseTwentyEightThree"
+                    android:layout_height="@dimen/_18pxh"
+                    android:layout_marginBottom="@dimen/_16pxv"
+                    android:layout_marginEnd="@dimen/_24pxh"
+                    android:layout_marginStart="@dimen/_78pxh"
+                    android:layout_marginTop="@dimen/_16pxv" android:layout_width="@dimen/_18pxh"/>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/linearColumnpaypal"
+                android:layout_gravity="top|start"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10pxv"
+                android:layout_width="match_parent" android:orientation="vertical">
+                <FrameLayout android:id="@+id/frameStackpaypal"
+                    android:layout_gravity="start"
+                    android:layout_height="@dimen/_50pxv" android:layout_width="@dimen/_320pxh">
+                    <TextView android:ellipsize="end"
+                        android:id="@+id/txtPaypal"
+                        android:layout_gravity="bottom|start"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10pxv"
+                        android:layout_marginEnd="@dimen/_50pxh"
+                        android:layout_marginStart="@dimen/_50pxh"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_width="wrap_content"
+                        android:singleLine="true"
+                        android:text="@{signUoEighteenVM.signUoEighteenModel.txtPaypal}"
+                        style="@style/txtPoppinssemibold16" tools:text="@string/lbl_paypal"/>
+                    <LinearLayout android:id="@+id/linearRowpaypalone"
+                        android:layout_gravity="start"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal" style="@style/groupStylecornerRadius_3">
+                        <ImageView android:id="@+id/imagePaypalOne"
+                            android:layout_height="@dimen/_22pxh"
+                            android:layout_marginBottom="@dimen/_14pxv"
+                            android:layout_marginStart="@dimen/_17pxh"
+                            android:layout_marginTop="@dimen/_14pxv"
+                            android:layout_width="@dimen/_22pxh"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_paypal1"
+                            tools:ignore="ContentDescription" tools:src="@drawable/img_paypal1"/>
+                        <View
+                            android:background="@drawable/rectangle_border_gray_500_radius_9"
+                            android:id="@+id/viewEllipseTwentyTwo"
+                            android:layout_height="@dimen/_18pxh"
+                            android:layout_marginBottom="@dimen/_15pxv"
+                            android:layout_marginEnd="@dimen/_24pxh"
+                            android:layout_marginStart="@dimen/_239pxh"
+                            android:layout_marginTop="@dimen/_17pxv" android:layout_width="@dimen/_18pxh"/>
+                    </LinearLayout>
+                </FrameLayout>
+                <View
+                    android:background="@drawable/rectangle_bg_green_800_radius_5"
+                    android:id="@+id/viewEllipseTwentyNine"
+                    android:layout_gravity="end"
+                    android:layout_height="@dimen/_10pxh"
+                    android:layout_marginEnd="@dimen/_28pxh"
+                    android:layout_marginStart="@dimen/_28pxh"
+                    android:layout_marginTop="@dimen/_235pxv" android:layout_width="@dimen/_10pxh"/>
+            </LinearLayout>
+        </FrameLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnPlaceOrder"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_147pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_16pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_16pxv" android:singleLine="true"
+            android:text="@string/lbl_place_order"
+            android:textAllCaps="false" style="@style/btnSolidRounded_5" tools:text="@string/lbl_place_order"/>
+    </LinearLayout>
+</layout>

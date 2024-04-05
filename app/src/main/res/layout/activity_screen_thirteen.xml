@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="screenThirteenVM" type="com.buildcart.app.modules.screenthirteen.data.viewmodel.ScreenThirteenVM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnellipsefortysix"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <LinearLayout android:gravity="end"
+            android:id="@+id/linearSCREENThirteen"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylewhite_A700">
+            <FrameLayout android:gravity="start"
+                android:id="@+id/frameStackellipsefortysix"
+                android:layout_height="@dimen/_485pxv" android:layout_width="match_parent">
+                <ImageView android:id="@+id/imageEllipseFortySix"
+                    android:layout_gravity="top|start"
+                    android:layout_height="@dimen/_285pxv"
+                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_ellipse46}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse46"/>
+                <ImageView android:id="@+id/imageImageSeven"
+                    android:layout_gravity="bottom|start"
+                    android:layout_height="@dimen/_313pxv"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_image7_313x359}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_image7_313x359"/>
+            </FrameLayout>
+            <TextView android:gravity="center_horizontal"
+                android:id="@+id/txtEasytoPayHa"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_68pxh"
+                android:layout_marginStart="@dimen/_71pxh"
+                android:layout_marginTop="@dimen/_33pxv"
+                android:layout_width="match_parent"
+                android:text="@{screenThirteenVM.screenThirteenModel.txtEasytoPayHa}"
+                style="@style/txtPoppinssemibold24_1" tools:text="@string/msg_easy_to_pay_ha"/>
+            <ImageView android:id="@+id/imageGroup540"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="@dimen/_9pxh"
+                android:layout_marginEnd="@dimen/_71pxh"
+                android:layout_marginStart="@dimen/_71pxh"
+                android:layout_marginTop="@dimen/_35pxv"
+                android:layout_width="@dimen/_36pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_group540"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_group540"/>
+            <ImageView android:id="@+id/imageEllipseFortySeven"
+                android:layout_height="@dimen/_403pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_38pxv"
+                android:layout_width="@dimen/_288pxh"
+                android:scaleType="fitXY"
+                imageRes="@{@drawable/img_ellipse47_1}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse47_1"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

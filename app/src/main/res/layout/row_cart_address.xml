@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/_8pxv"
+    android:gravity="start"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/groupStylegray_200cornerRadius">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/linearRowrahul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/_13pxh"
+            android:layout_marginEnd="@dimen/_13pxh"
+            android:layout_marginTop="@dimen/_6pxv">
+
+            <TextView
+                android:id="@+id/txtRahul"
+                style="@style/txtPoppinsmedium14_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="@dimen/_5pxv"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text="@string/lbl_rahul"
+                tools:text="@string/lbl_rahul" />
+
+            <LinearLayout
+                android:id="@+id/linearColumnellipsesix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_113pxh"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <RadioButton
+                    android:id="@+id/viewEllipseSix"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:button="@null"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/radio_button_selecter" />
+            </LinearLayout>
+        </LinearLayout>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/txtLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2pxv"
+        android:layout_marginStart="@dimen/_14pxh"
+        android:layout_marginEnd="@dimen/_5pxh"
+        android:text="Locality"
+        style="@style/txtPoppinsregular12_2"
+        tools:text="Locality"/>
+        <TextView
+            android:id="@+id/comma1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2pxv"
+            android:text=","
+            style="@style/txtPoppinsregular12_2" />
+
+        <TextView
+            android:id="@+id/txtLanguage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2pxv"
+            android:layout_marginEnd="@dimen/_5pxh"
+            android:text="FlatNo"
+            style="@style/txtPoppinsregular12_2"
+            tools:text="FlatNo"/>
+
+        <TextView
+            android:id="@+id/comma2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2pxv"
+            android:text=","
+            style="@style/txtPoppinsregular12_2" />
+
+        <TextView
+            android:id="@+id/txtLanguage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2pxv"
+            android:layout_marginEnd="@dimen/_5pxh"
+            android:text="city"
+            style="@style/txtPoppinsregular12_2"
+            tools:text="city"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtLanguage3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14pxh"
+            android:layout_marginTop="@dimen/_2pxv"
+            android:layout_marginEnd="@dimen/_5pxh"
+            android:text="state"
+            style="@style/txtPoppinsregular12_2"
+            tools:text="state"/>
+
+
+        <TextView
+            android:id="@+id/comma4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2pxv"
+            android:text=","
+            style="@style/txtPoppinsregular12_2" />
+
+        <TextView
+            android:id="@+id/txtLanguage4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2pxv"
+            android:text="Pincode"
+            style="@style/txtPoppinsregular12_2"
+            tools:text="Pincode"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txtPhone7585994"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4pxv"
+        android:layout_marginStart="@dimen/_13pxh"
+        android:layout_marginEnd="@dimen/_13pxh"
+        android:layout_marginBottom="@dimen/_15pxv"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="@string/msg_phone_7585994"
+        style="@style/txtPoppinsmedium14_2"
+        tools:text="@string/msg_phone_7585994"/>
+        <TextView
+            android:id="@+id/txtPhone75859941"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4pxv"
+            android:layout_marginEnd="@dimen/_13pxh"
+            android:layout_marginBottom="@dimen/_15pxv"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@string/msg_phone_7585994"
+            style="@style/txtPoppinsmedium14_2"
+            tools:text="@string/msg_phone_7585994"/>
+    </LinearLayout>
+</LinearLayout>

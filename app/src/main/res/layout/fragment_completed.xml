@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".modules.orders.ui.CompletedFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:gravity="center_horizontal"
+        android:id="@+id/recyclerStudioBookong"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_15pxh"
+        android:layout_marginStart="@dimen/_15pxh"
+        android:layout_marginTop="@dimen/_10pxv"
+        android:layout_width="match_parent"
+        android:nestedScrollingEnabled="false"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        itemSpace="@{@dimen/_11pxh}"
+        tools:itemCount="6"
+        tools:listitem="@layout/row_completed_orders"/>
+
+</FrameLayout>

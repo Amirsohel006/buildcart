@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="screenNineVM" type="com.buildcart.app.modules.screennine.data.viewmodel.ScreenNineVM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnellipsefortysix"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <LinearLayout android:gravity="end"
+            android:id="@+id/linearSCREENNine"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylewhite_A700">
+            <FrameLayout android:gravity="start"
+                android:id="@+id/frameStackellipsefortysix"
+                android:layout_height="@dimen/_485pxv" android:layout_width="match_parent">
+                <ImageView android:id="@+id/imageEllipseFortySix"
+                    android:layout_gravity="top|start"
+                    android:layout_height="@dimen/_285pxv"
+                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_ellipse46}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse46"/>
+                <ImageView android:id="@+id/imageImageSeven"
+                    android:layout_gravity="bottom|start"
+                    android:layout_height="@dimen/_313pxv"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_image7_1}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_image7_1"/>
+            </FrameLayout>
+            <TextView android:gravity="center_horizontal"
+                android:id="@+id/txtEasytoPayHa"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_68pxh"
+                android:layout_marginStart="@dimen/_71pxh"
+                android:layout_marginTop="@dimen/_33pxv"
+                android:layout_width="match_parent"
+                android:text="@{screenNineVM.screenNineModel.txtEasytoPayHa}"
+                style="@style/txtPoppinssemibold24_1" tools:text="@string/msg_easy_to_pay_ha"/>
+            <ImageView android:id="@+id/imageGroup540"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="@dimen/_9pxh"
+                android:layout_marginEnd="@dimen/_71pxh"
+                android:layout_marginStart="@dimen/_71pxh"
+                android:layout_marginTop="@dimen/_35pxv"
+                android:layout_width="@dimen/_36pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_group540"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_group540"/>
+            <FrameLayout android:id="@+id/frameStackellipsefortyseven"
+                android:layout_height="@dimen/_403pxv"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_38pxv" android:layout_width="@dimen/_288pxh">
+                <ImageView android:id="@+id/imageEllipseFortySeven"
+                    android:layout_gravity="start"
+                    android:layout_height="@dimen/_403pxh"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_ellipse47_2}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse47_2"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtSkip"
+                    android:layout_gravity="top|end"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_40pxv"
+                    android:layout_marginEnd="@dimen/_48pxh"
+                    android:layout_marginStart="@dimen/_48pxh"
+                    android:layout_marginTop="@dimen/_40pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{screenNineVM.screenNineModel.txtSkip}"
+                    style="@style/txtPoppinsmedium24" tools:text="@string/lbl_skip"/>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

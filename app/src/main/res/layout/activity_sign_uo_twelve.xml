@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="signUoTwelveVM" type="com.buildcart.app.modules.signuotwelve.data.viewmodel.SignUoTwelveVM"/>
+    </data>
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout android:id="@+id/linearSignUoTwelve"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <ImageView android:id="@+id/imageBuildCartLogo"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_200pxh"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_73pxv"
+            android:layout_width="@dimen/_184pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_buildcartlogo}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_buildcartlogo"/>
+        <TextView android:ellipsize="end" android:gravity="end"
+            android:id="@+id/txtVerifyMobileN"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_57pxh"
+            android:layout_marginStart="@dimen/_57pxh"
+            android:layout_marginTop="@dimen/_57pxv"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:text="@{signUoTwelveVM.signUoTwelveModel.txtVerifyMobileN}"
+            style="@style/txtPoppinsbold20" tools:text="@string/msg_verify_mobile_n"/>
+        <TextView android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:id="@+id/txtPleaseenterth"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_21pxv"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:text="@{signUoTwelveVM.signUoTwelveModel.txtPleaseenterth}"
+            style="@style/txtPoppinsregular16_1" tools:text="@string/msg_please_enter_th"/>
+        <TextView android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:id="@+id/txtLanguage"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_6pxv"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            style="@style/txtNunitoregular16"/>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:id="@+id/linearRowrectanglefortyfour"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25pxv"
+            android:weightSum="6"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/rectangle_border_black_900_radius_5"
+                android:id="@+id/viewOTP1"
+                android:layout_height="@dimen/_38pxh"
+                android:layout_width="@dimen/_38pxh"/>
+            <EditText
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/rectangle_border_black_900_radius_5"
+                android:id="@+id/viewOTP2"
+                android:layout_height="@dimen/_38pxh"
+                android:layout_marginStart="@dimen/_6pxh" android:layout_width="@dimen/_38pxh"/>
+            <EditText
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/rectangle_border_black_900_radius_5"
+                android:id="@+id/viewOTP3"
+                android:layout_height="@dimen/_38pxh"
+                android:layout_marginStart="@dimen/_6pxh" android:layout_width="@dimen/_38pxh"/>
+            <EditText
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/rectangle_border_black_900_radius_5"
+                android:id="@+id/viewOTP4"
+                android:layout_height="@dimen/_38pxh"
+                android:layout_marginStart="@dimen/_6pxh" android:layout_width="@dimen/_38pxh"/>
+
+
+
+            <EditText
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/rectangle_border_black_900_radius_5"
+                android:id="@+id/viewOTP5"
+                android:layout_height="@dimen/_38pxh"
+                android:layout_marginStart="@dimen/_6pxh" android:layout_width="@dimen/_38pxh"/>
+
+            <EditText
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/rectangle_border_black_900_radius_5"
+                android:id="@+id/viewOTP6"
+                android:layout_height="@dimen/_38pxh"
+                android:layout_marginStart="@dimen/_6pxh" android:layout_width="@dimen/_38pxh"/>
+
+        </LinearLayout>
+
+<!--        <com.mukesh.OtpView android:focusableInTouchMode="true"-->
+<!--            android:id="@+id/otpViewOtpview" android:inputType="number"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="@dimen/_20pxh"-->
+<!--            android:layout_marginStart="@dimen/_20pxh"-->
+<!--            android:layout_marginTop="@dimen/_35pxh"-->
+<!--            android:layout_width="wrap_content" app:OtpItemCount="6"-->
+<!--            app:OtpItemSpacing="@dimen/_14pxh"-->
+<!--            app:OtpItemWidth="@dimen/_34pxh"-->
+<!--            app:OtpLineColor="@color/gray_800" app:OtpViewType="line"/>-->
+        <LinearLayout android:gravity="center_vertical"
+            android:id="@+id/linearRowdidntreceive"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_23pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtDidntreceive"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:layout_weight="0.6" android:layout_width="0dp"
+                android:singleLine="true"
+                android:gravity="center"
+                android:text="@{signUoTwelveVM.signUoTwelveModel.txtDidntreceive}"
+                style="@style/txtNunitoregular16" tools:text="@string/msg_didn_t_receive"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtResendOTP"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_1pxv"
+                android:layout_marginStart="@dimen/_7pxh"
+                android:layout_weight="0.4" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoTwelveVM.signUoTwelveModel.txtResendOTP}"
+                style="@style/txtNunitobold16_1" tools:text="@string/lbl_resend_otp"/>
+        </LinearLayout>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end"
+            android:gravity="center"
+            android:id="@+id/btnVerify"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_40pxh"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_16pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_16pxv" android:singleLine="true"
+            android:text="@string/lbl_verify"
+            android:textAllCaps="false" style="@style/btnSolidRounded_3" tools:text="@string/lbl_verify"/>
+    </LinearLayout>
+    </ScrollView>
+</layout>

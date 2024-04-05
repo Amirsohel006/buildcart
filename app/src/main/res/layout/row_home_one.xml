@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="productResponse"
+            type="com.buildcart.app.data.ProductResponseItem" /> <!-- Change to ProductResponseItem -->
+        <variable
+            name="viewModel"
+            type="com.buildcart.app.modules.homeone.data.viewmodel.HomeOneViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/linearColumnrectangle105"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_260pxh"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/cardviewbackground"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_1">
+
+        <!-- Image and Vector Section -->
+        <LinearLayout
+            android:id="@+id/linearRowrectangle105"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_17pxv"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageRectangle105"
+                android:layout_width="@dimen/_83pxh"
+                android:layout_height="@dimen/_67pxh"
+                android:layout_marginTop="@dimen/_2pxv"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_14pxh"
+                tools:ignore="ContentDescription"
+                app:imageUrl="@{viewModel.getFullImageUrl(productResponse.product_galleries)}" />
+
+            <ImageView
+                android:id="@+id/imageVectorTwo"
+                android:layout_width="@dimen/_20pxh"
+                android:layout_marginTop="4dp"
+                android:layout_height="@dimen/_20pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_vector_gray_800_12x13"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_vector_gray_800_12x13" />
+        </LinearLayout>
+
+        <!-- Design Tiles Text -->
+        <TextView
+            android:id="@+id/txtDesignTiles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6pxv"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@{productResponse.name}"
+            style="@style/txtPoppinssemibold14"
+            tools:text="@string/lbl_design_tiles" />
+
+        <!-- Price Text -->
+        <TextView
+            android:id="@+id/txtPrice"
+            style="@style/txtPoppinsregular12"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20pxh"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/_10pxh"
+            android:layout_marginTop="@dimen/_1pxv"
+            android:layout_marginEnd="@dimen/_10pxh"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{`Price : `+viewModel.getFormattedPrice(productResponse)}"
+            tools:text="@string/lbl_17_per_piece" />
+
+        <TextView
+            android:id="@+id/txtRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.getFormattedRating(productResponse)}"
+            style="@style/txtPoppinsregular12"
+            android:layout_marginStart="@dimen/_10pxh"
+            android:layout_marginTop="@dimen/_1pxv"
+            android:layout_marginEnd="@dimen/_10pxh"
+            android:ellipsize="end"
+            android:singleLine="true"
+            app:drawableEndCompat="@drawable/rating_img_icon" />
+        <!-- Quantity Control Section -->
+        <LinearLayout
+            android:id="@+id/linearRowgroupsixtytwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10pxh"
+            android:layout_marginEnd="@dimen/_5pxh"
+            android:layout_marginTop="@dimen/_2pxv"
+            android:orientation="horizontal"
+            style="@style/groupStylecornerRadius_1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingStart="@dimen/_17pxh"
+                android:paddingTop="@dimen/_1pxv"
+                android:paddingEnd="@dimen/_10pxh"
+                android:paddingBottom="@dimen/_1pxv">
+
+                <ImageView
+                    android:id="@+id/imgMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25pxh"
+                    android:src="@drawable/ic_minus"
+                    android:clickable="true"
+                    android:contentDescription="@string/desc_minus_icon"
+                    android:onClick="@{() -> viewModel.onMinusClick(productResponse)}"
+                    android:focusable="true" />
+
+                <TextView
+                    android:id="@+id/txtQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                       android:textSize="@dimen/_14sp"
+                    android:paddingStart="@dimen/_8pxh"
+                    android:textColor="@color/black"
+                    android:text="@{String.valueOf(productResponse.initialQuantity)}"
+                    android:paddingEnd="@dimen/_6pxh" />
+
+                <ImageView
+                    android:id="@+id/imgPlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25pxh"
+                    android:src="@drawable/ic_plus"
+                    android:clickable="true"
+                    android:contentDescription="@string/desc_plus_icon"
+                    android:onClick="@{() -> viewModel.onPlusClick(productResponse)}"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtQty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:singleLine="true"
+                android:text="Qty"
+                style="@style/txtPoppinsregular12"
+                tools:text="@string/lbl_qty" />
+        </LinearLayout>
+
+        <!-- Add to Cart Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddToCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9pxv"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginBottom="@dimen/_13pxv"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@{viewModel.selectedProduct.isAddedToCart ? @string/lbl_go_to_cart : @string/lbl_add_to_cart}"
+            android:textAllCaps="false"
+            style="@style/btnSolidRounded"
+            android:onClick="@{() -> viewModel.onAddToCartClick(productResponse,productResponse.position)}"
+            />
+    </LinearLayout>
+</layout>

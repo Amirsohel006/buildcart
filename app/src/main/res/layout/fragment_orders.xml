@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="ordersVM"
+            type="com.buildcart.app.modules.orders.data.viewmodel.OrdersVM" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/linearColumn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+        <LinearLayout
+            android:gravity="start"
+            android:id="@+id/linearColumnvector"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarToolbar"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:contentInsetStart="0dp"
+                android:visibility="gone"
+                style="@style/groupStylegray_800">
+
+                <LinearLayout
+                    android:id="@+id/linearRow"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20pxh"
+                    android:layout_marginStart="@dimen/_20pxh"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/linearRowvector"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.73"
+                        android:layout_width="0dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageVector"
+                            android:layout_height="@dimen/_20pxh"
+                            android:layout_width="@dimen/_23pxh"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_vector"
+                            tools:ignore="ContentDescription" tools:src="@drawable/img_vector" />
+
+                        <TextView
+                            android:ellipsize="end"
+                            android:id="@+id/txtMyOrders"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/_28pxh"
+                            android:layout_width="wrap_content"
+                            android:singleLine="true"
+                            android:text="@{ordersVM.ordersModel.txtMyOrders}"
+                            style="@style/txtPoppinssemibold24"
+                            tools:text="@string/lbl_my_orders" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearRownotification"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/_78pxh"
+                        android:layout_weight="0.27"
+                        android:layout_width="0dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageNotification"
+                            android:layout_height="@dimen/_24pxh"
+                            android:layout_width="@dimen/_19pxh"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/img_notification"
+                            tools:ignore="ContentDescription" tools:src="@drawable/img_notification" />
+
+                        <ImageView
+                            android:id="@+id/imageEllipseTwelve"
+                            android:layout_height="@dimen/_24pxh"
+                            android:layout_marginStart="@dimen/_22pxh"
+                            android:layout_width="@dimen/_24pxh"
+                            android:scaleType="centerCrop"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/default_profile_background"
+                            tools:ignore="ContentDescription" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <ScrollView
+                android:clipToPadding="false"
+                android:fillViewport="true"
+                android:gravity="start"
+                android:id="@+id/scrollViewScrollview"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent">
+            <LinearLayout
+                android:gravity="start"
+                android:id="@+id/linearStudioBookong"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:layout_gravity="center"
+                    app:tabGravity="center"
+                    app:tabPaddingStart="10dp"
+                    android:id="@+id/tabLayout"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="5dp"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabIndicatorColor="@android:color/transparent"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabMode="scrollable"
+                    android:textSize="10sp"
+                    app:tabSelectedTextColor="@color/black_900"
+                    app:tabTextColor="@color/black_900"
+                    style="@style/groupStylebluegray_100"
+                    tools:ignore="SmallSp" />
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerViewpager"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"/>
+
+        </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

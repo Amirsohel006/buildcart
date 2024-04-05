@@ -1,0 +1,27 @@
+<!-- res/layout/activity_all_products.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/_24pxh"
+        android:background="@drawable/rectangle_border_gray_401_radius_10"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="@dimen/_22sp"
+        android:text="@string/all_products"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAllProducts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txtTitle"
+        android:padding="16dp"
+        android:clipToPadding="false" />
+
+</RelativeLayout>

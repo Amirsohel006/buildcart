@@ -1,0 +1,14 @@
+<!-- res/drawable/default_profile_placeholder.xml -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Background color for the circular drawable -->
+    <solid android:color="#CCCCCC"/> <!-- You can replace this with your desired color -->
+
+    <!-- Size of the circular drawable -->
+    <size
+        android:width="@dimen/_169pxh"
+    android:height="@dimen/_169pxh" /> <!-- Replace with your desired height -->
+
+</shape>

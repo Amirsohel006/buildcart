@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- activity_splash.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".modules.splash.SplashActivity">
+
+    <ImageView
+        android:layout_width="@dimen/_388pxh"
+        android:layout_height="@dimen/_389pxh"
+        android:layout_marginBottom="@dimen/_520pxh"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/splash_top_drawable"/>
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/build_cart_logo"
+        android:layout_centerInParent="true"
+        android:contentDescription="@null"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerInParent="true"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="@raw/loading_animation"
+        app:lottie_loop="false" />
+    <me.grantland.widget.AutofitTextView
+        android:id="@+id/fadingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:visibility="gone"
+        android:textSize="18sp"
+        android:layout_below="@id/animationView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_105pxh"
+        android:src="@drawable/splash_bottom_drawable"/>
+
+</RelativeLayout>
+

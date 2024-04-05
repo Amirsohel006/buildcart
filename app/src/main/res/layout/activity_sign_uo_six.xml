@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="signUoSixVM" type="com.buildcart.app.modules.signuosix.data.viewmodel.SignUoSixVM"/>
+    </data>
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearSignUoSix"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <ImageView android:id="@+id/imageBuildCartLogo"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_200pxh"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_73pxv"
+            android:layout_width="@dimen/_184pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_buildcartlogo}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_buildcartlogo"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowvector"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_37pxv"
+            android:layout_width="match_parent"
+            android:orientation="horizontal" style="@style/groupStylecornerRadius_2">
+            <ImageView android:id="@+id/imageVector"
+                android:layout_height="@dimen/_32pxh"
+                android:layout_marginBottom="@dimen/_14pxv"
+                android:layout_marginStart="@dimen/_18pxh"
+                android:layout_marginTop="@dimen/_14pxv"
+                android:layout_width="@dimen/_20pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_vector_gray_800_32x20"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_vector_gray_800_32x20"/>
+            <EditText android:ellipsize="end"
+                android:id="@+id/txtEnterMobilenu"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:textColorHint="@color/black"
+                android:layout_gravity="center"
+                android:inputType="number"
+                android:background="@null"
+                android:layout_weight="0.9" android:layout_width="0dp"
+                android:singleLine="true"
+                android:hint="@{signUoSixVM.signUoSixModel.txtEnterMobilenu}"
+                style="@style/txtNunitoregular20"
+                tools:hint="@string/msg_enter_mobile_nu"/>
+        </LinearLayout>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnLogin"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_30pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_16pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_16pxv" android:singleLine="true"
+            android:text="@string/lbl_login" android:textAllCaps="false"
+            style="@style/btnSolidRounded_3" tools:text="@string/lbl_login"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowlineone"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <View android:background="@color/gray_800"
+                android:id="@+id/lineLineOne"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginBottom="@dimen/_11pxv"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_weight="0.45" android:layout_width="0dp"/>
+            <TextView android:ellipsize="end" android:id="@+id/txtOR"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_9pxh"
+                android:layout_weight="0.1" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoSixVM.signUoSixModel.txtOR}"
+                style="@style/txtNunitobold20" tools:text="@string/lbl_or"/>
+            <View android:background="@color/gray_800"
+                android:id="@+id/lineLineTwo"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginBottom="@dimen/_11pxv"
+                android:layout_marginStart="@dimen/_9pxh"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_weight="0.45" android:layout_width="0dp"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical"
+            android:id="@+id/linearRowellipsetwo"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:layout_width="wrap_content" android:orientation="horizontal">
+            <ImageView android:id="@+id/imageEllipseTwo"
+                android:layout_height="@dimen/_40pxh"
+                android:layout_width="@dimen/_40pxh"
+                android:scaleType="centerCrop" circular="@{true}"
+                imageRes="@{@drawable/img_ellipse2}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse2"/>
+            <ImageView android:id="@+id/imageEllipseThree"
+                android:layout_height="@dimen/_40pxh"
+                android:layout_marginStart="@dimen/_27pxh"
+                android:layout_width="@dimen/_40pxh"
+                android:scaleType="centerCrop" circular="@{true}"
+                imageRes="@{@drawable/img_ellipse3}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse3"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical"
+            android:id="@+id/linearRowconfirmation"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtConfirmation"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_1pxv"
+                android:gravity="center"
+                android:layout_weight="0.78" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoSixVM.signUoSixModel.txtConfirmation}"
+                style="@style/txtNunitomedium16" tools:text="@string/msg_already_have_an"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtSignup"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_1pxv"
+                android:layout_marginStart="@dimen/_12pxh"
+                android:layout_weight="0.22" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoSixVM.signUoSixModel.txtSignup}"
+                style="@style/txtNunitobold16" tools:text="@string/lbl_signup"/>
+        </LinearLayout>
+        <TextView android:ellipsize="end"
+            android:id="@+id/txtSkipfornow"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{signUoSixVM.signUoSixModel.txtSkipfornow}"
+            style="@style/txtPoppinsregular16" textUnderline="true" tools:text="@string/lbl_skip_for_now"/>
+    </LinearLayout>
+    </ScrollView>
+</layout>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="signUoFourteenVM" type="com.buildcart.app.modules.signuofourteen.data.viewmodel.SignUoFourteenVM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearSignUoFourtee"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <androidx.appcompat.widget.Toolbar android:gravity="start"
+            android:id="@+id/toolbarToolbar"
+            android:layout_height="?actionBarSize"
+            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowarrowleft"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylegray_800">
+                <ImageView android:id="@+id/imageArrowleft"
+                    android:layout_height="@dimen/_24pxh"
+                    android:layout_marginStart="@dimen/_20pxh"
+                    android:layout_width="@dimen/_14pxh"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+                <TextView                     android:id="@+id/txtReferrals"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_45pxh"
+                    android:layout_marginStart="@dimen/_21pxh"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:text="@{signUoFourteenVM.signUoFourteenModel.txtReferrals}"
+                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_referrals"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <LinearLayout android:gravity="center_horizontal"
+            android:id="@+id/linearColumntotalreferrals"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_25pxh"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylewhite_8">
+            <TextView android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:id="@+id/txtTotalReferrals"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_72pxh"
+                android:layout_marginStart="@dimen/_72pxh"
+                android:layout_marginTop="@dimen/_9pxv"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:text="@{signUoFourteenVM.signUoFourteenModel.txtTotalReferrals}"
+                style="@style/txtPoppinsregular24" tools:text="@string/lbl_total_referrals"/>
+            <TextView android:ellipsize="end" android:id="@+id/txtThree"
+                android:layout_gravity="start"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_16pxv"
+                android:layout_marginEnd="@dimen/_131pxh"
+                android:layout_marginStart="@dimen/_131pxh"
+                android:layout_marginTop="@dimen/_3pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{signUoFourteenVM.signUoFourteenModel.txtThree}"
+                style="@style/txtPoppinssemibold32" tools:text="@string/total_referral_count"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal"
+            android:id="@+id/linearColumnreferralcode"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_16pxh"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylecornerRadius_7">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtReferralcode"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_51pxh"
+                android:layout_marginStart="@dimen/_51pxh"
+                android:layout_marginTop="@dimen/_9pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{signUoFourteenVM.signUoFourteenModel.txtReferralcode}"
+                style="@style/txtPoppinssemibold12_2" tools:text="@string/lbl_referral_code"/>
+            <TextView android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:id="@+id/txtDKFJFK567GDKDK"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_51pxh"
+                android:layout_marginStart="@dimen/_51pxh"
+                android:layout_marginTop="@dimen/_7pxv"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:text="@{signUoFourteenVM.signUoFourteenModel.txtDKFJFK567GDKDK}"
+                style="@style/txtPoppinsmedium24_2" tools:text="@string/lbl_dkfjfk567gdkdk"/>
+            <EditText
+                android:background="@drawable/rectangle_bg_gray_100_radius_5"
+                android:drawablePadding="@dimen/_12pxh"
+                android:drawableStart="@drawable/img_vector_gray_800_20x17"
+                android:ellipsize="end" android:hint="@string/lbl_copy"
+                android:id="@+id/etGroup474" android:inputType="text"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_12pxv"
+                android:layout_marginEnd="@dimen/_51pxh"
+                android:layout_marginStart="@dimen/_51pxh"
+                android:layout_marginTop="@dimen/_9pxv"
+                android:layout_width="match_parent"
+                android:paddingBottom="@dimen/_3pxv"
+                android:paddingEnd="@dimen/_29pxh"
+                android:paddingStart="@dimen/_14pxh"
+                android:paddingTop="@dimen/_4pxv"
+                android:singleLine="true"
+                android:text="@={signUoFourteenVM.signUoFourteenModel.etGroup474Value}"
+                android:textColorHint="@color/gray_800"
+                style="@style/etSolidRounded_1" tools:ignore="Autofill"/>
+        </LinearLayout>
+        <TextView android:ellipsize="end" android:id="@+id/txtSharevia"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{signUoFourteenVM.signUoFourteenModel.txtSharevia}"
+            style="@style/txtPoppinsmedium16_2" tools:text="@string/lbl_share_via"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowwhatsappeleven"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_18pxh"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <ImageView android:id="@+id/imageWhatsappEleven"
+                android:layout_height="@dimen/_36pxh"
+                android:layout_width="@dimen/_36pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_whatsapp11"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_whatsapp11"/>
+
+            <ImageView
+                android:id="@+id/imageGmailOne"
+                android:layout_width="32dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="@dimen/_23pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_gmail1"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_gmail1" />
+            <ImageView android:id="@+id/imageFacebookThirtyOne"
+                android:layout_height="@dimen/_36pxh"
+                android:layout_marginStart="@dimen/_23pxh"
+                android:layout_width="@dimen/_36pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_ellipse3"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse3"/>
+            <ImageView android:id="@+id/imageInstagramEleven"
+                android:layout_height="@dimen/_36pxh"
+                android:layout_marginStart="@dimen/_23pxh"
+                android:layout_width="@dimen/_36pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_instagram11"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_instagram11"/>
+            <ImageView android:id="@+id/imageTwitterThirtyOne"
+                android:layout_height="@dimen/_36pxh"
+                android:layout_marginStart="@dimen/_23pxh"
+                android:layout_width="@dimen/_36pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_twitter31"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_twitter31"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

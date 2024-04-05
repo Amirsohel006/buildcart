@@ -1,0 +1,26 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Add necessary data variables -->
+        <variable name="ordersSectionVM" type="com.buildcart.app.modules.orders.data.viewmodel.OrdersSectionVM" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/linearColumn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+        <!-- ... (existing views) -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/order_item_layout" />
+    </LinearLayout>
+</layout>

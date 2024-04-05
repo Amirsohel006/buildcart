@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/linearColumnhome1"
+        android:icon="@drawable/img_home"
+        android:title="Home"
+        />
+
+
+    <item
+        android:id="@+id/linearColumncategories"
+        android:icon="@drawable/img_vector_gray_800"
+        android:title="Categories"/>
+
+    <item
+        android:id="@+id/linearColumnOrders"
+        android:icon="@drawable/img_vector_gray_800_24x24"
+        android:title="My Orders"/>
+    <item
+        android:id="@+id/linearColumnProfile"
+        android:icon="@drawable/img_cart_gray_800"
+        android:title="My Cart"/>
+</menu>

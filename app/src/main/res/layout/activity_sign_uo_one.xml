@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="signUoOneVM" type="com.buildcart.app.modules.signuoone.data.viewmodel.SignUoOneVM"/>
+    </data>
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearSignUoOne"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <ImageView android:id="@+id/imageBuildCartLogo"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="@dimen/_200pxh"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_68pxv"
+            android:layout_width="@dimen/_184pxh"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_buildcartlogo}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_buildcartlogo"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowvector"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_34pxv"
+            android:layout_width="match_parent"
+            android:orientation="horizontal" style="@style/groupStylecornerRadius_2">
+            <ImageView android:id="@+id/imageVector"
+                android:layout_height="@dimen/_32pxh"
+                android:layout_marginBottom="@dimen/_14pxv"
+                android:layout_marginStart="@dimen/_18pxh"
+                android:layout_marginTop="@dimen/_14pxv"
+                android:layout_width="@dimen/_20pxh"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_vector_gray_800_32x20"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_vector_gray_800_32x20"/>
+            <EditText android:ellipsize="end"
+                android:id="@+id/txtEnterMobilenu"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_73pxh"
+                android:layout_marginStart="@dimen/_20pxh"
+                android:inputType="number"
+                android:background="@null"
+                android:layout_weight="0.9"
+                android:layout_width="0dp"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:hint="@string/msg_enter_mobile_nu"
+                style="@style/txtNunitoregular20"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearColumnenterreferral"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_22pxv"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylecornerRadius">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtEnterreferral"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:text="@{signUoOneVM.signUoOneModel.txtEnterreferral}"
+                style="@style/txtNunitobold12" tools:text="@string/msg_enter_referral"/>
+            <EditText
+                android:background="@drawable/rectangle_border_gray_800_radius_10"
+                android:ellipsize="end"
+                android:hint="@string/msg_enter_referral2"
+                android:textColorHint="@color/black"
+                android:id="@+id/etReferralCode" android:inputType="text"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3pxv"
+                android:layout_width="match_parent"
+                android:paddingBottom="@dimen/_16pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingStart="@dimen/_18pxh"
+                android:paddingTop="@dimen/_15pxv"
+                android:singleLine="true"
+                style="@style/txtNunitoregular20" tools:ignore="Autofill"/>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progresBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnSignup"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_16pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_16pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_16pxv" android:singleLine="true"
+            android:text="@string/lbl_signup"
+            android:textAllCaps="false" style="@style/btnSolidRounded_3" tools:text="@string/lbl_signup"/>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowlineone"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_15pxv"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <View android:background="@color/gray_800"
+                android:id="@+id/lineLineOne"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginBottom="@dimen/_11pxv"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_weight="0.45" android:layout_width="0dp"/>
+            <TextView android:ellipsize="end" android:id="@+id/txtOR"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_9pxh"
+                android:layout_weight="0.1" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoOneVM.signUoOneModel.txtOR}"
+                style="@style/txtNunitobold20_1" tools:text="@string/lbl_or"/>
+            <View android:background="@color/gray_800"
+                android:id="@+id/lineLineTwo"
+                android:layout_height="@dimen/_1pxv"
+                android:layout_marginBottom="@dimen/_11pxv"
+                android:layout_marginStart="@dimen/_9pxh"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_weight="0.45" android:layout_width="0dp"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical"
+            android:id="@+id/linearRowellipsetwo"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_16pxv"
+            android:layout_width="wrap_content" android:orientation="horizontal">
+            <ImageView android:id="@+id/imageEllipseTwo"
+                android:layout_height="@dimen/_40pxh"
+                android:layout_width="@dimen/_40pxh"
+                android:scaleType="centerCrop" circular="@{true}"
+                imageRes="@{@drawable/img_ellipse2}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse2"/>
+            <ImageView android:id="@+id/imageEllipseThree"
+                android:layout_height="@dimen/_40pxh"
+                android:layout_marginStart="@dimen/_27pxh"
+                android:layout_width="@dimen/_40pxh"
+                android:scaleType="centerCrop" circular="@{true}"
+                imageRes="@{@drawable/img_ellipse3}"
+                tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse3"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical"
+            android:id="@+id/linearRowconfirmation"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_20pxh"
+            android:layout_width="match_parent" android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtConfirmation"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{signUoOneVM.signUoOneModel.txtConfirmation}"
+                style="@style/txtNunitomedium16" tools:text="@string/msg_already_have_an"/>
+            <TextView android:ellipsize="end" android:id="@+id/txtLogin"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_width="0dp"
+                android:singleLine="true"
+                android:text="@{signUoOneVM.signUoOneModel.txtLogin}"
+                style="@style/txtNunitobold16" tools:text="@string/lbl_login2"/>
+        </LinearLayout>
+        <TextView android:ellipsize="end"
+            android:id="@+id/txtSkipfornow"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginEnd="@dimen/_20pxh"
+            android:layout_marginStart="@dimen/_20pxh"
+            android:layout_marginTop="@dimen/_29pxv"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{signUoOneVM.signUoOneModel.txtSkipfornow}"
+            style="@style/txtPoppinsregular16" textUnderline="true" tools:text="@string/lbl_skip_for_now"/>
+    </LinearLayout>
+    </ScrollView>
+</layout>

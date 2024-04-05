@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="screenEightVM" type="com.buildcart.app.modules.screeneight.data.viewmodel.ScreenEightVM"/>
+    </data>
+    <LinearLayout android:gravity="center_horizontal"
+        android:id="@+id/linearColumnellipsefortysix"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <LinearLayout android:gravity="end"
+            android:id="@+id/linearSCREENEight"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylewhite_A700">
+            <FrameLayout android:gravity="start"
+                android:id="@+id/frameStackellipsefortysix"
+                android:layout_height="@dimen/_459pxv" android:layout_width="match_parent">
+                <ImageView android:id="@+id/imageEllipseFortySix"
+                    android:layout_gravity="top|start"
+                    android:layout_height="@dimen/_285pxv"
+                    android:layout_marginBottom="@dimen/_10pxv"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_ellipse46}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse46"/>
+                <ImageView android:id="@+id/imageImageSeven"
+                    android:layout_gravity="bottom|start"
+                    android:layout_height="@dimen/_260pxv"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_image7_260x359}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_image7_260x359"/>
+            </FrameLayout>
+            <TextView android:gravity="center_horizontal"
+                android:id="@+id/txtPurchaseHighQ"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_49pxh"
+                android:layout_marginStart="@dimen/_51pxh"
+                android:layout_marginTop="@dimen/_57pxv"
+                android:layout_width="match_parent"
+                android:text="@{screenEightVM.screenEightModel.txtPurchaseHighQ}"
+                style="@style/txtPoppinssemibold24_1" tools:text="@string/msg_purchase_high_q"/>
+
+            <com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
+                android:id="@+id/indicatorGroup540"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_51pxh"
+                android:layout_marginStart="@dimen/_51pxh"
+                android:layout_marginTop="@dimen/_37pxv"
+                android:layout_width="wrap_content"
+                app:drawable_normal="@drawable/indicator_selected_bg_gray_700_radius_8"
+                app:drawable_selected="@drawable/indicator_unselected_bg_gray_500_4c_radius_8"
+                app:indicator_size="@dimen/_9pxh" app:indicator_spacing="@dimen/_4pxh"/>
+            <FrameLayout android:id="@+id/frameStackellipsefortyseven"
+                android:layout_height="@dimen/_403pxv"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_38pxv" android:layout_width="@dimen/_288pxh">
+                <ImageView android:id="@+id/imageEllipseFortySeven"
+                    android:layout_gravity="start"
+                    android:layout_height="@dimen/_403pxh"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    imageRes="@{@drawable/img_ellipse47_4}"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse47_4"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtSkip"
+                    android:layout_gravity="top|end"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_40pxv"
+                    android:layout_marginEnd="@dimen/_48pxh"
+                    android:layout_marginStart="@dimen/_48pxh"
+                    android:layout_marginTop="@dimen/_40pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{screenEightVM.screenEightModel.txtSkip}"
+                    style="@style/txtPoppinsmedium24" tools:text="@string/lbl_skip"/>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

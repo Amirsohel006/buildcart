@@ -1,0 +1,106 @@
+<!-- res/layout/activity_menu_options_drawer.xml -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- My Order -->
+    <TextView
+        android:id="@+id/textMyOrders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_my_orders"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="onSettingsClick"/>
+
+    <!-- About Us -->
+    <TextView
+        android:id="@+id/textMyCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Cart"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="onAboutUsClick"/>
+
+    <!-- Privacy Policy -->
+    <TextView
+        android:id="@+id/textFavourites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favourites"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="onPrivacyPolicyClick"/>
+
+    <TextView
+        android:id="@+id/textAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Address"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="onPrivacyPolicyClick"/>
+
+    <TextView
+        android:id="@+id/textReferrals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Referrals"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="onPrivacyPolicyClick"/>
+    <TextView
+        android:id="@+id/textHelpFaqs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Help and FAQs"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="onPrivacyPolicyClick"/>
+
+    <TextView
+        android:id="@+id/textPrivacyPoilcy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Privacy Policy"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="onPrivacyPolicyClick"/>
+
+    <TextView
+        android:id="@+id/textAboutUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="onPrivacyPolicyClick"/>
+</LinearLayout>

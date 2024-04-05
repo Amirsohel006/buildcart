@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="screenTenVM" type="com.buildcart.app.modules.screenten.data.viewmodel.ScreenTenVM"/>
+    </data>
+    <FrameLayout android:id="@+id/frameSCREENTen"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" style="@style/groupStylewhite_A700">
+        <ImageView android:id="@+id/imageSplashscreenl"
+            android:layout_gravity="start"
+            android:layout_height="@dimen/_411pxv"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:layout_marginTop="@dimen/_20pxv"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_splashscreenl}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_splashscreenl"/>
+        <ImageView android:id="@+id/imageEllipseFortySix"
+            android:layout_gravity="top|start"
+            android:layout_height="@dimen/_285pxv"
+            android:layout_marginBottom="@dimen/_10pxv"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            imageRes="@{@drawable/img_ellipse46}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse46"/>
+    </FrameLayout>
+</layout>

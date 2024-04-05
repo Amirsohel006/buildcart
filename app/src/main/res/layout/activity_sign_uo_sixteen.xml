@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="signUoSixteenVM" type="com.buildcart.app.modules.signuosixteen.data.viewmodel.SignUoSixteenVM"/>
+    </data>
+    <LinearLayout android:gravity="start"
+        android:id="@+id/linearSignUoSixteen"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarToolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            <LinearLayout android:gravity="start"
+                android:id="@+id/linearRowarrowleft"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal" style="@style/groupStylegray_800">
+                <ImageView android:id="@+id/imageArrowleft"
+                    android:layout_height="@dimen/_24pxh"
+                    android:layout_marginBottom="@dimen/_14pxv"
+                    android:layout_marginStart="@dimen/_20pxh"
+                    android:layout_marginTop="@dimen/_50pxv"
+                    android:layout_width="@dimen/_14pxh"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtNotifications"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_9pxv"
+                    android:layout_marginEnd="@dimen/_148pxh"
+                    android:layout_marginStart="@dimen/_21pxh"
+                    android:layout_marginTop="@dimen/_42pxv"
+                    android:layout_weight="0.92"
+                    android:layout_width="0dp" android:singleLine="true"
+                    android:text="@{signUoSixteenVM.signUoSixteenModel.txtNotifications}"
+                    style="@style/txtPoppinssemibold24" tools:text="@string/lbl_notifications"/>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowellipsethirtyfive"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20pxv"
+            android:layout_width="match_parent"
+            android:orientation="horizontal" style="@style/groupStylegray_100cornerRadius">
+            <View
+                android:background="@drawable/rectangle_bg_green_800_radius_5_5"
+                android:id="@+id/viewEllipseThirtyFive"
+                android:layout_height="@dimen/_11pxh"
+                android:layout_marginBottom="@dimen/_42pxv"
+                android:layout_marginStart="@dimen/_23pxh"
+                android:layout_marginTop="@dimen/_21pxv" android:layout_width="@dimen/_11pxh"/>
+            <TextView android:id="@+id/txtOrderID45377"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_11pxv"
+                android:layout_marginEnd="@dimen/_21pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_14pxv"
+                android:layout_weight="0.96" android:layout_width="0dp"
+                android:text="@{signUoSixteenVM.signUoSixteenModel.txtOrderID45377}"
+                style="@style/txtPoppinsregular16_3" tools:text="@string/msg_order_id_45377"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="start"
+            android:id="@+id/linearRowellipsethirtysix"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_538pxv"
+            android:layout_marginTop="@dimen/_6pxv"
+            android:layout_width="match_parent"
+            android:orientation="horizontal" style="@style/groupStylegray_100cornerRadius">
+            <View
+                android:background="@drawable/rectangle_bg_green_800_radius_5_5"
+                android:id="@+id/viewEllipseThirtySix"
+                android:layout_height="@dimen/_11pxh"
+                android:layout_marginBottom="@dimen/_42pxv"
+                android:layout_marginStart="@dimen/_23pxh"
+                android:layout_marginTop="@dimen/_21pxv" android:layout_width="@dimen/_11pxh"/>
+            <TextView android:id="@+id/txtOffer"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_9pxv"
+                android:layout_marginEnd="@dimen/_34pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_15pxv"
+                android:layout_weight="0.96" android:layout_width="0dp"
+                android:text="@{signUoSixteenVM.signUoSixteenModel.txtOffer}"
+                style="@style/txtPoppinsregular16_3" tools:text="@string/msg_apply_coupon_f"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

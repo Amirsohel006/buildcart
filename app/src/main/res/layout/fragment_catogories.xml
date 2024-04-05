@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="catogoriesVM" type="com.buildcart.app.modules.catogories.data.viewmodel.CatogoriesVM"/>
+    </data>
+    <FrameLayout android:id="@+id/frameCatogories"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" style="@style/groupStylewhite_A700">
+        <LinearLayout android:id="@+id/linearColumnvector"
+            android:layout_gravity="top|start"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_10pxv"
+            android:layout_width="match_parent" android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarToolbar"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                app:contentInsetStart="0dp" style="@style/groupStylegray_800">
+                <LinearLayout android:id="@+id/linearRow"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_20pxh"
+                    android:layout_marginStart="@dimen/_20pxh"
+                    android:layout_width="match_parent" android:orientation="horizontal">
+                    <LinearLayout android:id="@+id/linearRowvector"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.74"
+                        android:layout_width="0dp" android:orientation="horizontal">
+                        <ImageView android:id="@+id/imageVector"
+                            android:layout_height="@dimen/_20pxh"
+                            android:layout_marginBottom="@dimen/_9pxv"
+                            android:layout_marginTop="@dimen/_6pxv"
+                            android:layout_width="@dimen/_23pxh"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_vector"
+                            tools:ignore="ContentDescription" tools:src="@drawable/img_vector"/>
+                        <TextView android:ellipsize="end"
+                            android:id="@+id/txtCategories"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_28pxh"
+                            android:layout_weight="0.85"
+                            android:layout_width="0dp"
+                            android:singleLine="true"
+                            android:text="@{catogoriesVM.catogoriesModel.txtCategories}"
+                            style="@style/txtPoppinssemibold24" tools:text="@string/lbl_categories"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linearRownotification"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_7pxv"
+                        android:layout_marginStart="@dimen/_67pxh"
+                        android:layout_marginTop="@dimen/_4pxv"
+                        android:layout_weight="0.26"
+                        android:layout_width="0dp" android:orientation="horizontal">
+                        <ImageView android:id="@+id/imageNotification"
+                            android:layout_height="@dimen/_24pxh"
+                            android:layout_width="@dimen/_19pxh"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_notification"
+                            tools:ignore="ContentDescription" tools:src="@drawable/img_notification"/>
+                        <ImageView android:id="@+id/imageEllipseTwelve"
+                            android:layout_height="@dimen/_24pxh"
+                            android:layout_marginStart="@dimen/_22pxh"
+                            android:layout_width="@dimen/_24pxh"
+                            android:scaleType="centerCrop"
+                            circular="@{true}"
+                            imageRes="@{@drawable/img_ellipse12}"
+                            tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse12"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <Spinner
+                android:background="@color/white_A700"
+                android:id="@+id/spinnerGroup122"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                tools:listitem="@layout/spinner_item"/>
+
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/txtCategoriesOne"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20pxh"
+                android:layout_marginStart="@dimen/_20pxh"
+                android:layout_marginTop="@dimen/_16pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{catogoriesVM.catogoriesModel.txtCategoriesOne}"
+                style="@style/txtPoppinssemibold16"
+                tools:text="@string/lbl_categories"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:gravity="center_horizontal"
+                android:id="@+id/recyclerCatogories"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginStart="@dimen/_10pxh"
+                android:layout_marginTop="@dimen/_14pxv"
+                android:layout_width="match_parent"
+                android:clipToPadding="false"
+               />
+        </LinearLayout>
+    </FrameLayout>
+</layout>
