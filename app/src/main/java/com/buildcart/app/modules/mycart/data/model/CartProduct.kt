@@ -17,8 +17,8 @@ data class CartProductItem(
     @SerializedName("product_rating" ) var productRating : String?                  = null,
     @SerializedName("product_images" ) var productImages : ArrayList<ProductImages> = arrayListOf(),
     @SerializedName("quantity"       ) var quantity      : Int?                     = null,
-    @SerializedName("selling_price"  ) var sellingPrice  : Int?                     = null,
-    @SerializedName("total_price"    ) var totalPrice    : Int?                     = null
+    @SerializedName("selling_price"  ) var sellingPrice  : Double?                     = null,
+    @SerializedName("total_price"    ) var totalPrice    : Double?                     = null
 )
 
 data class ProductImages(

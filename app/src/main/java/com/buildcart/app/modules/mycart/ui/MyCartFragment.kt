@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseFragment
 import com.buildcart.app.data.SessionManager
+import com.buildcart.app.data.response.BuyAllProductsRequest
 import com.buildcart.app.databinding.FragmentMyCartBinding
 import com.buildcart.app.modules.frame311.ui.Frame311Activity
 import com.buildcart.app.modules.homeonecontainer.ui.HomeOneContainerActivity
@@ -19,6 +21,7 @@ import com.buildcart.app.modules.mycart.data.model.CartProductItem
 import com.buildcart.app.modules.mycart.data.model.CartRepository
 import com.buildcart.app.modules.mycart.data.viewmodel.CartViewModelFactory
 import com.buildcart.app.modules.mycart.`data`.viewmodel.MyCartVM
+import com.buildcart.app.modules.responses.CompltedOrderResponse
 import com.buildcart.app.service.APIManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -51,6 +54,10 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
 
     getMyStudioRequests()
 
+
+    binding.btnProceedToPay.setOnClickListener {
+      buyproducts()
+    }
   }
 
 
@@ -108,6 +115,42 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
     }
   }
 
+
+  private fun buyproducts(){
+
+    val serviceGenerator= APIManager.apiInterface
+    val accessToken=sessionManager.fetchAuthToken()
+    val authorization="Bearer $accessToken"
+    val id="1"
+    val mode="cod"
+    val code=""
+
+    val request = BuyAllProductsRequest(
+      shipping_address_id = id,
+      mode_of_payment = mode
+    )
+    val call=serviceGenerator.buyallproducts(authorization,request)
+
+    call.enqueue(object : retrofit2.Callback<CompltedOrderResponse>{
+      @SuppressLint("SetTextI18n")
+      override fun onResponse(
+        call: Call<CompltedOrderResponse>,
+        response: Response<CompltedOrderResponse>
+      ) {
+        val customerResponse=response.body()
+
+        if(customerResponse!=null){
+          Toast.makeText(requireActivity(),"Product Buy Successful",Toast.LENGTH_SHORT).show()
+        }
+
+
+      }
+      override fun onFailure(call: Call<CompltedOrderResponse>, t: Throwable) {
+        t.printStackTrace()
+        Log.e("error", t.message.toString())
+      }
+    })
+  }
   companion object {
     const val TAG: String = "MY_CART_FRAGMENT"
 
