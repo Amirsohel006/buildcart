@@ -1,10 +1,5 @@
 package com.buildcart.app.service
-
-import android.util.Log
-import com.google.gson.Gson
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object APIManager {
 
-    val BASE_URL = "https://0gdszwwr-8002.inc1.devtunnels.ms/"
+    val BASE_URL = "https://v3h2dw9k-8000.inc1.devtunnels.ms"
 
 
     // API response interceptor
@@ -36,4 +31,6 @@ object APIManager {
     fun getImageUrl(imagePath: String): String {
         return BASE_URL + imagePath
     }
+
+
 }

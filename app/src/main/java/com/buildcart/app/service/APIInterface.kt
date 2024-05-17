@@ -2,6 +2,7 @@ package com.buildcart.app.service
 
 import com.buildcart.app.data.ProductDataResponse
 import com.buildcart.app.data.ProfileDataResponse
+import com.buildcart.app.data.response.BuyAllProductsRequest
 import com.buildcart.app.data.response.LoginResponseData
 import com.buildcart.app.data.response.ProductCategoriesResponseData
 import com.buildcart.app.data.response.RequestSignUpResponse
@@ -231,4 +232,13 @@ interface APIInterface {
     fun getFaqs(
         @Header("Authorization")token: String
     ):Call<FaqResponses>
+
+
+
+
+    @POST("/order/order-from-cart/")
+    fun buyallproducts(
+        @Header("Authorization")token: String,
+        @Body request: BuyAllProductsRequest
+    ): Call<CompltedOrderResponse>
 }

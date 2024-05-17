@@ -92,9 +92,27 @@ class CartNewAdapter (private val cartItems: List<CartProductItem>,
 //                .fit()
 //                .into(imageView)
 
-            val file=APIManager.getImageUrl(cartItem.productImages[0].img1!!)
 
-            Picasso.get().load(file).into(imageView)
+            if (cartItem.productImages.isNotEmpty()) {
+                val firstImage = cartItem.productImages[0]
+                val imageUrl = firstImage.img1 ?: firstImage.img2 // Try to get img1, fallback to img2 if img1 is null
+
+                if (imageUrl != null) {
+                    val file = APIManager.getImageUrl(imageUrl)
+                    Picasso.get().load(file).into(imageView)
+                } else {
+                    // Set a placeholder image if both img1 and img2 are null
+                    imageView.setImageResource(R.drawable.placeholder_solid_color)
+                }
+            } else {
+                // Set a placeholder image if the productImages list is empty
+                imageView.setImageResource(R.drawable.placeholder_solid_color)
+            }
+
+
+//            val file=APIManager.getImageUrl(cartItem.productImages[0].img1!!)
+//
+//            Picasso.get().load(file).into(imageView)
         }
 
 
