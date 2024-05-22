@@ -77,9 +77,7 @@ class CatogoriesFragment : BaseFragment<FragmentCatogoriesBinding>(R.layout.frag
         // Update the adapter with the category list
         binding.recyclerCatogories.apply {
           layoutManager = GridLayoutManager(
-            requireContext(),3,
-            GridLayoutManager.HORIZONTAL,
-            false
+            requireActivity(),3
           )
           adapter = CategoryAdapter(categoryList,viewModelHome,this@CatogoriesFragment)
         }

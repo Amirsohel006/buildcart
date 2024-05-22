@@ -122,7 +122,6 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_marginBottom="5dp"
-                    app:tabBackground="@drawable/tab_selector"
                     app:tabIndicatorColor="@android:color/transparent"
                     app:tabIndicatorHeight="0dp"
                     app:tabMode="scrollable"
@@ -130,6 +129,7 @@
                     app:tabSelectedTextColor="@color/black_900"
                     app:tabTextColor="@color/black_900"
                     style="@style/groupStylebluegray_100"
+                    android:background="@drawable/rectangle_for_orders"
                     tools:ignore="SmallSp" />
 
 

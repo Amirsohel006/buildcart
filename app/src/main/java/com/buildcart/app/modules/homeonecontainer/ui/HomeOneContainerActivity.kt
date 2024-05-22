@@ -44,10 +44,6 @@ class HomeOneContainerActivity :
     Picasso.get().load(sessionManager.fetchProfileImage()).transform(ProfileActivity.CircleCrop()).placeholder(R.drawable.default_profile_background).into(binding.imageEllipseProfile)
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
-
-
-
-
   }
 
   override fun setUpClicks(): Unit {

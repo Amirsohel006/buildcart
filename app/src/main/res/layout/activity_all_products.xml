@@ -2,8 +2,90 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentInsetStart="0dp"
+        style="@style/groupStylegray_800">
+
+        <RelativeLayout
+            android:id="@+id/linearRowvector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10pxh"
+            android:layout_marginStart="@dimen/_18pxh">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/MenuLayout"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageVector"
+                    android:layout_width="@dimen/_23pxh"
+                    android:layout_height="@dimen/_20pxh"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center"
+                    android:src="@drawable/img_arrowleft"
+                    tools:ignore="ContentDescription" />
+                <TextView
+                    android:id="@+id/txtHiRahul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_12pxh"
+                    android:text="Products"
+                    style="@style/txtPoppinssemibold24" />
+            </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_alignParentEnd="true">-->
+
+
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageSearch"-->
+<!--                    android:layout_width="@dimen/_24pxh"-->
+<!--                    android:layout_height="@dimen/_24pxh"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    android:src="@drawable/img_search"-->
+<!--                    tools:ignore="ContentDescription"-->
+<!--                    tools:src="@drawable/img_search" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageNotification"-->
+<!--                    android:layout_width="@dimen/_19pxh"-->
+<!--                    android:layout_height="@dimen/_24pxh"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    android:src="@drawable/img_notification"-->
+<!--                    tools:ignore="ContentDescription"-->
+<!--                    tools:src="@drawable/img_notification" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageEllipseProfile"-->
+<!--                    android:layout_width="@dimen/_24pxh"-->
+<!--                    android:layout_height="@dimen/_24pxh"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    android:src="@drawable/default_profile_background"-->
+<!--                    tools:ignore="ContentDescription" />-->
+<!--            </LinearLayout>-->
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
     <TextView
+        android:layout_below="@+id/toolbarToolbar"
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"

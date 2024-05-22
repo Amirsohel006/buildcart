@@ -57,7 +57,7 @@ class CategoryAdapter(
             // Load image using Picasso with the full image URL
             Picasso.get()
                 .load(viewModel.getCategoriesImageUrl(categoryItem))
-                .placeholder(R.drawable.circular_background).transform(CircleTransformation())
+                .placeholder(R.drawable.circular_background)
                 .into(binding.imageCategory)
 
 

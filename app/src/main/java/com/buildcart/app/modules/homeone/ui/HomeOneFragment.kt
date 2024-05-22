@@ -1,4 +1,5 @@
 package com.buildcart.app.modules.homeone.ui
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -39,7 +40,7 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    sessionManager = SessionManager(requireContext())
+    sessionManager = SessionManager(requireActivity())
     // Set the session manager
     viewModelHome.setSessionManager(SessionManager(requireContext()))
     setUpClicks()
@@ -55,13 +56,14 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
   }
 
   override fun onInitialized() {
+    sessionManager = SessionManager(requireActivity())
     binding.homeOneVM = viewModel
     binding.homeOneViewModel = viewModelHome
 
 
 
 
-    homeOneAdapter = HomeOneAdapter(mutableListOf(), viewModelHome)
+    homeOneAdapter = HomeOneAdapter(mutableListOf(), viewModelHome,sessionManager,requireActivity().getSharedPreferences("favourites", Context.MODE_PRIVATE),requireActivity())
     binding.recyclerHomeOne.apply {
       layoutManager = GridLayoutManager(requireContext(), 2)
       adapter = homeOneAdapter

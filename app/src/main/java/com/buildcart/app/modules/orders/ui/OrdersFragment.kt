@@ -2,12 +2,19 @@ package com.buildcart.app.modules.orders.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseFragment
 import com.buildcart.app.databinding.FragmentOrdersBinding
 import com.buildcart.app.modules.frame311.ui.Frame311Activity
 import com.buildcart.app.modules.orders.`data`.viewmodel.OrdersVM
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.String
 import kotlin.Unit
@@ -25,10 +32,62 @@ class OrdersFragment : BaseFragment<FragmentOrdersBinding>(R.layout.fragment_ord
 
     // Attach TabLayout to ViewPager2
     TabLayoutMediator(binding.tabLayout, binding.viewPagerViewpager) { tab, position ->
-      tab.text = OrdersFragmentPagerAdapter.title[position]
+      tab.customView = createTabView(OrdersFragmentPagerAdapter.title[position])
     }.attach()
+
+    // Add dividers between each tab
+    //addDividersToTabs(binding.tabLayout)
+
+    binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+      override fun onTabSelected(tab: TabLayout.Tab?) {
+        updateTabText(tab, true)
+      }
+
+      override fun onTabUnselected(tab: TabLayout.Tab?) {
+        updateTabText(tab, false)
+      }
+
+      override fun onTabReselected(tab: TabLayout.Tab?) {
+        // Handle reselection if needed
+      }
+    })
+
+    // Set initial selected tab text color
+    val initialTab = binding.tabLayout.getTabAt(binding.tabLayout.selectedTabPosition)
+    updateTabText(initialTab, true)
+
   }
 
+
+  private fun createTabView(tabText: String): View {
+    val tabView = LayoutInflater.from(context).inflate(R.layout.custom_tab, null)
+    val tabTitle = tabView.findViewById<TextView>(R.id.tabTitle)
+    tabTitle.text = tabText
+    return tabView
+  }
+  private fun updateTabText(tab: TabLayout.Tab?, isSelected: Boolean) {
+    val tabView = tab?.customView
+    val tabTitle = tabView?.findViewById<TextView>(R.id.tabTitle)
+    if (isSelected) {
+      tabTitle?.setTextColor(ContextCompat.getColor(requireContext(), R.color.yellow_A400))
+    } else {
+      tabTitle?.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+    }
+  }
+
+
+  private fun addDividersToTabs(tabLayout: TabLayout) {
+    for (i in 0 until tabLayout.tabCount - 1) {
+      val tab = (tabLayout.getChildAt(0) as LinearLayout).getChildAt(i)
+      val divider = View(context).apply {
+        layoutParams = LinearLayout.LayoutParams(1, 1).apply {
+          setMargins(0, 16, 0, 16) // Optional: Adjust margins as needed
+        }
+        setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.gray_703))
+      }
+      (tab as LinearLayout).addView(divider)
+    }
+  }
   override fun setUpClicks(): Unit {
     // Handle clicks if needed
 

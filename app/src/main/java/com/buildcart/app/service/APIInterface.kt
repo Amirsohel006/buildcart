@@ -8,6 +8,7 @@ import com.buildcart.app.data.response.ProductCategoriesResponseData
 import com.buildcart.app.data.response.RequestSignUpResponse
 import com.buildcart.app.data.response.SignUpResponse
 import com.buildcart.app.data.response.SignUpUpdateResponse
+import com.buildcart.app.modules.AddToFavriote
 import com.buildcart.app.modules.catogories.data.model.CategoryIdRequest
 import com.buildcart.app.modules.homeone.data.AddToCartRequestBody
 import com.buildcart.app.modules.homeone.data.model.ProductDetailsDataResponse
@@ -241,4 +242,17 @@ interface APIInterface {
         @Header("Authorization")token: String,
         @Body request: BuyAllProductsRequest
     ): Call<CompltedOrderResponse>
+
+
+    @POST("/product/product-add-to-favourite/")
+    fun addToFavourite(
+        @Header("Authorization")token: String,
+        @Body request:AddToFavriote
+    ):Call<List<String>>
+
+    @POST("/product/product-remove-from-favourite/")
+    fun removeFromFavourute(
+        @Header("Authorization")token: String,
+        @Body request:AddToFavriote
+    ):Call<List<String>>
 }

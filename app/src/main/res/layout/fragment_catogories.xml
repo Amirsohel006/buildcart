@@ -4,25 +4,36 @@
     <data>
         <variable name="catogoriesVM" type="com.buildcart.app.modules.catogories.data.viewmodel.CatogoriesVM"/>
     </data>
-    <FrameLayout android:id="@+id/frameCatogories"
+    <FrameLayout
+        android:id="@+id/frameCatogories"
         android:layout_height="match_parent"
-        android:layout_width="match_parent" style="@style/groupStylewhite_A700">
-        <LinearLayout android:id="@+id/linearColumnvector"
+        android:layout_width="match_parent"
+        style="@style/groupStylewhite_A700">
+
+        <LinearLayout
+            android:id="@+id/linearColumnvector"
             android:layout_gravity="top|start"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_10pxv"
-            android:layout_width="match_parent" android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarToolbar"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                app:contentInsetStart="0dp" style="@style/groupStylegray_800">
-                <LinearLayout android:id="@+id/linearRow"
+                app:contentInsetStart="0dp"
+                style="@style/groupStylegray_800">
+
+                <LinearLayout
+                    android:id="@+id/linearRow"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_20pxh"
                     android:layout_marginStart="@dimen/_20pxh"
-                    android:layout_width="match_parent" android:orientation="horizontal">
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+
                     <LinearLayout android:id="@+id/linearRowvector"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.74"
@@ -95,7 +106,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:gravity="center_horizontal"
                 android:id="@+id/recyclerCatogories"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/_10pxh"
                 android:layout_marginStart="@dimen/_10pxh"
                 android:layout_marginTop="@dimen/_14pxv"
