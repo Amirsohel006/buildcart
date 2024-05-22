@@ -2,7 +2,9 @@ package com.buildcart.app.modules.homeone.ui
 
 
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -54,7 +56,7 @@ class AllProductsActivity : AppCompatActivity() {
         viewModelHome.fetchProductByCategoryId(categoryId.toString())
 
         recyclerView = findViewById(R.id.recyclerViewAllProducts)
-        homeOneAdapter = HomeOneAdapter(mutableListOf(), viewModelHome)
+        homeOneAdapter = HomeOneAdapter(mutableListOf(), viewModelHome,sessionManager,getSharedPreferences("favourites", Context.MODE_PRIVATE),this)
 
         recyclerView.layoutManager = GridLayoutManager(this,2)
         recyclerView.adapter = homeOneAdapter
@@ -72,6 +74,10 @@ class AllProductsActivity : AppCompatActivity() {
         }
 
 
+        val backImage:ImageView=findViewById(R.id.imageVector)
+        backImage.setOnClickListener {
+            this.finish()
+        }
         window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
     }
 

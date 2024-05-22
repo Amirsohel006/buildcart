@@ -1,7 +1,9 @@
 package com.buildcart.app.modules.homeone.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -11,17 +13,27 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.buildcart.app.R
 import com.buildcart.app.data.ProductGalleryItem
 import com.buildcart.app.data.ProductResponseItem
+import com.buildcart.app.data.SessionManager
 import com.buildcart.app.databinding.RowHomeOneBinding
+import com.buildcart.app.modules.AddToFavriote
 import com.buildcart.app.modules.homeone.data.viewmodel.HomeOneViewModel
 import com.buildcart.app.modules.homeone.ui.ProductDetailsActivity
 import com.buildcart.app.modules.product.ui.ProductActivity
+import com.buildcart.app.service.APIManager
 import com.bumptech.glide.Glide
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeOneAdapter(
     private val dataList: MutableList<ProductResponseItem>,
-    private val viewModel: HomeOneViewModel
+    private val viewModel: HomeOneViewModel,
+    private val sessionManager: SessionManager,
+    private val sharedPreferences: SharedPreferences,
+    private val context: Context
 ) : RecyclerView.Adapter<HomeOneAdapter.HomeOneViewHolder>() {
 
     private var itemClickListener: OnItemClickListener? = null
@@ -47,6 +59,21 @@ class HomeOneAdapter(
             "Add to Cart"
         }
         holder.binding.btnAddToCart.text = buttonText
+
+        holder.binding.imageVectorTwo.setOnClickListener {
+            addEventToFavorites(holder.binding.imageVectorTwo,holder.itemView.context,dataList[position].product_id.toString())
+        }
+
+        holder.binding.imageVectorTwo.setImageResource(if (isFavorite) R.drawable.image_favriote_red else R.drawable.img_clock)
+        holder.binding.imageVectorTwo.setOnClickListener {
+            isFavorite = !isFavorite
+            updateFavoriteIcon(holder.binding.imageVectorTwo)
+            if (isFavorite) {
+                addEventToFavorites(holder.binding.imageVectorTwo,holder.itemView.context,dataList[position].product_id.toString())
+            } else {
+                removeEventFromFavorites(holder.binding.imageVectorTwo,holder.itemView.context,dataList[position].product_id.toString())
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -55,6 +82,8 @@ class HomeOneAdapter(
 
     inner class HomeOneViewHolder(val binding: RowHomeOneBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+
 
         init {
             binding.imgPlus.setOnClickListener {
@@ -166,6 +195,12 @@ class HomeOneAdapter(
 //        }
     }
 
+    var eventId :String=""
+
+
+    private var isFavorite: Boolean
+        get() = sharedPreferences.getBoolean(eventId.toString(), false)
+        set(value) = sharedPreferences.edit().putBoolean(eventId.toString(), value).apply()
     interface OnItemClickListener {
         fun onIncreaseClick(view: View, position: Int, item: ProductResponseItem)
         fun onDecreaseClick(view: View, position: Int, item: ProductResponseItem)
@@ -175,6 +210,81 @@ class HomeOneAdapter(
     }
 
 
+    private fun addEventToFavorites(favoriteIcon: ImageView,context: Context, eventId: String) {
+        val token1 = sessionManager.fetchAuthToken()
+        val accessToken = "Token $token1"
+        val eventIdString = eventId.toString()
+
+        val requestBody = AddToFavriote(product_id = eventIdString)
+        val service = APIManager.apiInterface
+        val call = service.addToFavourite(accessToken, requestBody)
+        call.enqueue(object : Callback<List<String>> {
+            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
+                if (response.isSuccessful) {
+                    // HTTP 200 OK
+                    val messages = response.body()
+                    if (messages != null && messages.isNotEmpty()) {
+                        Toast.makeText(context, messages[0], Toast.LENGTH_SHORT).show()
+                        isFavorite = true // Update the favorite state
+                        updateFavoriteIcon(favoriteIcon)
+                    } else {
+                        Toast.makeText(context, "Unexpected response format", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    // Handle other status codes
+                    Toast.makeText(context, "Failed: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    isFavorite = false // Revert back to original state
+                    updateFavoriteIcon(favoriteIcon)
+                }
+            }
+
+            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+                Toast.makeText(context, "Failed to add to Favorites", Toast.LENGTH_SHORT).show()
+                isFavorite = false // Revert back to original state
+                updateFavoriteIcon(favoriteIcon)
+            }
+        })
+    }
+
+    private fun removeEventFromFavorites(favoriteIcon: ImageView,context: Context, eventId: String) {
+        val token1 = sessionManager.fetchAuthToken()
+        val accessToken = "Token $token1"
+        val eventIdString = eventId.toString()
+
+        val requestBody = AddToFavriote(product_id = eventIdString)
+        val service = APIManager.apiInterface
+        val call = service.removeFromFavourute(accessToken, requestBody)
+        call.enqueue(object : Callback<List<String>> {
+            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
+                if (response.isSuccessful) {
+                    // HTTP 200 OK
+                    val messages = response.body()
+                    if (messages != null && messages.isNotEmpty()) {
+                        Toast.makeText(context, messages[0], Toast.LENGTH_SHORT).show()
+                        isFavorite = true // Update the favorite state
+                        updateFavoriteIcon(favoriteIcon)
+                    } else {
+                        Toast.makeText(context, "Unexpected response format", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    // Handle other status codes
+                    Toast.makeText(context, "Failed: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    isFavorite = false // Revert back to original state
+                    updateFavoriteIcon(favoriteIcon)
+                }
+            }
+
+            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+                Toast.makeText(context, "Failed to add to Favorites", Toast.LENGTH_SHORT).show()
+                isFavorite = false // Revert back to original state
+                updateFavoriteIcon(favoriteIcon)
+            }
+        })
+    }
+
+    private fun updateFavoriteIcon(favoriteIcon: ImageView) {
+        favoriteIcon.setImageResource(if (isFavorite) R.drawable.image_favriote_red else R.drawable.img_clock)
+    }
 
     // Update the function to use the correct data type
     fun updateData(newData: List<ProductResponseItem>) {

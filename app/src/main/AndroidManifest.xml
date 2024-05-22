@@ -215,7 +215,7 @@
         <activity
             android:name=".modules.homeone.ui.AllProductsActivity"
             android:configChanges="uiMode"
-            android:theme="@style/AppTheme" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".modules.homeone.ui.ProductDetailsActivity"
             android:configChanges="uiMode"
