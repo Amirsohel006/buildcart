@@ -3,6 +3,7 @@ package com.buildcart.app.service
 import com.buildcart.app.data.ProductDataResponse
 import com.buildcart.app.data.ProfileDataResponse
 import com.buildcart.app.data.response.BuyAllProductsRequest
+import com.buildcart.app.data.response.FavrioteResponse
 import com.buildcart.app.data.response.LoginResponseData
 import com.buildcart.app.data.response.ProductCategoriesResponseData
 import com.buildcart.app.data.response.RequestSignUpResponse
@@ -244,15 +245,15 @@ interface APIInterface {
     ): Call<CompltedOrderResponse>
 
 
-    @POST("/product/product-add-to-favourite/")
+    @POST("/product/wishlist/")
     fun addToFavourite(
         @Header("Authorization")token: String,
         @Body request:AddToFavriote
-    ):Call<List<String>>
+    ):Call<FavrioteResponse>
 
-    @POST("/product/product-remove-from-favourite/")
+    @POST("/product/wishlist/")
     fun removeFromFavourute(
         @Header("Authorization")token: String,
         @Body request:AddToFavriote
-    ):Call<List<String>>
+    ):Call<FavrioteResponse>
 }
