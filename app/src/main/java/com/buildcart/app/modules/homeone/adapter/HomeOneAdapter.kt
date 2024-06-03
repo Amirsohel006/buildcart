@@ -17,6 +17,7 @@ import com.buildcart.app.R
 import com.buildcart.app.data.ProductGalleryItem
 import com.buildcart.app.data.ProductResponseItem
 import com.buildcart.app.data.SessionManager
+import com.buildcart.app.data.response.FavrioteResponse
 import com.buildcart.app.databinding.RowHomeOneBinding
 import com.buildcart.app.modules.AddToFavriote
 import com.buildcart.app.modules.homeone.data.viewmodel.HomeOneViewModel
@@ -212,33 +213,30 @@ class HomeOneAdapter(
 
     private fun addEventToFavorites(favoriteIcon: ImageView,context: Context, eventId: String) {
         val token1 = sessionManager.fetchAuthToken()
-        val accessToken = "Token $token1"
+        val accessToken = "Bearer $token1"
         val eventIdString = eventId.toString()
 
         val requestBody = AddToFavriote(product_id = eventIdString)
         val service = APIManager.apiInterface
         val call = service.addToFavourite(accessToken, requestBody)
-        call.enqueue(object : Callback<List<String>> {
-            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
-                if (response.isSuccessful) {
-                    // HTTP 200 OK
-                    val messages = response.body()
-                    if (messages != null && messages.isNotEmpty()) {
-                        Toast.makeText(context, messages[0], Toast.LENGTH_SHORT).show()
-                        isFavorite = true // Update the favorite state
-                        updateFavoriteIcon(favoriteIcon)
-                    } else {
-                        Toast.makeText(context, "Unexpected response format", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    // Handle other status codes
-                    Toast.makeText(context, "Failed: ${response.code()}", Toast.LENGTH_SHORT).show()
+        call.enqueue(object : Callback<FavrioteResponse> {
+            override fun onResponse(call: Call<FavrioteResponse>, response: Response<FavrioteResponse>) {
+
+
+                val response=response.body()
+
+                if(response!!.success=="true"){
+                    isFavorite = true // Update the favorite state
+                    updateFavoriteIcon(favoriteIcon)
+                }else {
                     isFavorite = false // Revert back to original state
                     updateFavoriteIcon(favoriteIcon)
                 }
+
+
             }
 
-            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+            override fun onFailure(call: Call<FavrioteResponse>, t: Throwable) {
                 Toast.makeText(context, "Failed to add to Favorites", Toast.LENGTH_SHORT).show()
                 isFavorite = false // Revert back to original state
                 updateFavoriteIcon(favoriteIcon)
@@ -248,35 +246,30 @@ class HomeOneAdapter(
 
     private fun removeEventFromFavorites(favoriteIcon: ImageView,context: Context, eventId: String) {
         val token1 = sessionManager.fetchAuthToken()
-        val accessToken = "Token $token1"
+        val accessToken = "Bearer $token1"
         val eventIdString = eventId.toString()
 
         val requestBody = AddToFavriote(product_id = eventIdString)
         val service = APIManager.apiInterface
         val call = service.removeFromFavourute(accessToken, requestBody)
-        call.enqueue(object : Callback<List<String>> {
-            override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
-                if (response.isSuccessful) {
-                    // HTTP 200 OK
-                    val messages = response.body()
-                    if (messages != null && messages.isNotEmpty()) {
-                        Toast.makeText(context, messages[0], Toast.LENGTH_SHORT).show()
-                        isFavorite = true // Update the favorite state
-                        updateFavoriteIcon(favoriteIcon)
-                    } else {
-                        Toast.makeText(context, "Unexpected response format", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    // Handle other status codes
-                    Toast.makeText(context, "Failed: ${response.code()}", Toast.LENGTH_SHORT).show()
-                    isFavorite = false // Revert back to original state
+        call.enqueue(object : Callback<FavrioteResponse> {
+            override fun onResponse(call: Call<FavrioteResponse>, response: Response<FavrioteResponse>) {
+
+
+                val response=response.body()
+
+                if(response!!.success=="true"){
+                    isFavorite = false // Update the favorite state
+                    updateFavoriteIcon(favoriteIcon)
+                }else {
+                    isFavorite = true // Revert back to original state
                     updateFavoriteIcon(favoriteIcon)
                 }
             }
 
-            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+            override fun onFailure(call: Call<FavrioteResponse>, t: Throwable) {
                 Toast.makeText(context, "Failed to add to Favorites", Toast.LENGTH_SHORT).show()
-                isFavorite = false // Revert back to original state
+                isFavorite = true // Revert back to original state
                 updateFavoriteIcon(favoriteIcon)
             }
         })

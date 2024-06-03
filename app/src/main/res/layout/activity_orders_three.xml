@@ -210,7 +210,7 @@
                     <EditText
                         android:background="@drawable/rectangle_bg_white_a700_radius_5"
                         android:ellipsize="end"
-                        android:hint="@string/msg_locality_area"
+                        android:hint="Houser Number"
                         android:id="@+id/etGroupNinetyOne"
                         android:inputType="text"
                         android:layout_height="wrap_content"
@@ -327,6 +327,69 @@
                         android:textColorHint="@color/black_900"
                         style="@style/etSolidRounded"
                         tools:ignore="Autofill"/>
+
+
+                    <EditText
+                        android:background="@drawable/rectangle_bg_white_a700_radius_5"
+                        android:ellipsize="end"
+                        android:hint="House Name"
+                        android:layout_marginTop="@dimen/_14pxh"
+                        android:id="@+id/etGroupNinetyOne1121"
+                        android:inputType="text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_15pxh"
+                        android:layout_marginStart="@dimen/_15pxh"
+                        android:layout_width="match_parent"
+                        android:paddingBottom="@dimen/_15pxv"
+                        android:paddingEnd="@dimen/_30pxh"
+                        android:paddingStart="@dimen/_16pxh"
+                        android:paddingTop="@dimen/_14pxv"
+                        android:singleLine="true"
+                        android:textColorHint="@color/black_900"
+                        style="@style/etSolidRounded"
+                        tools:ignore="Autofill"/>
+
+
+                    <EditText
+                        android:background="@drawable/rectangle_bg_white_a700_radius_5"
+                        android:ellipsize="end"
+                        android:hint="Area"
+                        android:layout_marginTop="@dimen/_14pxh"
+                        android:id="@+id/etGroupNinetyOne112111"
+                        android:inputType="text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_15pxh"
+                        android:layout_marginStart="@dimen/_15pxh"
+                        android:layout_width="match_parent"
+                        android:paddingBottom="@dimen/_15pxv"
+                        android:paddingEnd="@dimen/_30pxh"
+                        android:paddingStart="@dimen/_16pxh"
+                        android:paddingTop="@dimen/_14pxv"
+                        android:singleLine="true"
+                        android:textColorHint="@color/black_900"
+                        style="@style/etSolidRounded"
+                        tools:ignore="Autofill"/>
+
+
+                    <EditText
+                        android:background="@drawable/rectangle_bg_white_a700_radius_5"
+                        android:ellipsize="end"
+                        android:hint="Street"
+                        android:layout_marginTop="@dimen/_14pxh"
+                        android:id="@+id/etGroupNinetyOne11211"
+                        android:inputType="text"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_15pxh"
+                        android:layout_marginStart="@dimen/_15pxh"
+                        android:layout_width="match_parent"
+                        android:paddingBottom="@dimen/_15pxv"
+                        android:paddingEnd="@dimen/_30pxh"
+                        android:paddingStart="@dimen/_16pxh"
+                        android:paddingTop="@dimen/_14pxv"
+                        android:singleLine="true"
+                        android:textColorHint="@color/black_900"
+                        style="@style/etSolidRounded"
+                        tools:ignore="Autofill"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -361,7 +424,7 @@
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             android:paddingBottom="@dimen/_1pxv"
-                            android:text="@string/lbl_home"
+                            android:text="HOME"
                             android:layout_weight="1"
                             android:layout_marginStart="@dimen/_12pxh"
                             android:textColor="@color/black_900"
@@ -377,7 +440,7 @@
                             android:paddingBottom="@dimen/_1pxv"
                             android:layout_weight="1"
                             android:singleLine="true"
-                            android:text="@string/lbl_office"
+                            android:text="OFFICE"
                             android:textColor="@color/black_900"
                             android:textFontWeight="500"
                             android:textSize="@dimen/_16pxh"
@@ -392,7 +455,7 @@
                             android:paddingBottom="@dimen/_1pxv"
                             android:layout_weight="1"
                             android:singleLine="true"
-                            android:text="@string/lbl_other"
+                            android:text="OTHER"
                             android:textColor="@color/black_900"
                             android:textFontWeight="500"
                             android:textSize="@dimen/_16pxh"

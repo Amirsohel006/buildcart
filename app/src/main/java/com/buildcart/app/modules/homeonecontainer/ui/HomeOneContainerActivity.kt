@@ -98,23 +98,12 @@ class HomeOneContainerActivity :
   }
 
 
-
-
-  @Deprecated("Deprecated in Java")
   override fun onBackPressed() {
-    val fragmentManager=supportFragmentManager
-    val fragments = supportFragmentManager.backStackEntryCount
-    if (fragments == 1) {
-      AlertDialog.Builder(this)
-        .setMessage("Are you sure you want to exit?")
-        .setCancelable(false)
-        .setPositiveButton("Yes",
-          DialogInterface.OnClickListener { dialog, id -> finish() })
-        .setNegativeButton("No", null)
-        .show()
-    }
-    else {
+    val fragmentManager = supportFragmentManager
 
+    if (fragmentManager.backStackEntryCount == 1) {
+      showExitDialog()
+    } else {
       if (fragmentManager.backStackEntryCount > 1) {
         fragmentManager.popBackStackImmediate(
           fragmentManager.getBackStackEntryAt(1).id,
@@ -130,30 +119,30 @@ class HomeOneContainerActivity :
           }
         }
 
-
-
-        if(selectedFragment is HomeOneFragment){
-          binding.frameBottombar.selectedItemId = R.id.linearColumnhome1
-        }
-        if (selectedFragment is CatogoriesFragment) {
-          binding.frameBottombar.selectedItemId = R.id.linearColumncategories
-        }
-        if (selectedFragment is OrdersFragment) {
-          binding.frameBottombar.selectedItemId=R.id.linearColumnOrders
-        }
-        if (selectedFragment is MyCartFragment)
-        {
-          binding.frameBottombar.selectedItemId= R.id.linearColumnProfile
-        } else {
-          super.onBackPressed()
-        }
-      }
-      else {
+        selectedFragment?.let {
+          when (it) {
+            is HomeOneFragment -> binding.frameBottombar.selectedItemId = R.id.linearColumnhome1
+            is CatogoriesFragment -> binding.frameBottombar.selectedItemId = R.id.linearColumncategories
+            is OrdersFragment ->binding.frameBottombar.selectedItemId = R.id.linearColumnOrders
+            is MyCartFragment -> binding.frameBottombar.selectedItemId=R.id.linearColumnProfile
+          }
+        } ?: super.onBackPressed()
+      } else {
         super.onBackPressed()
       }
     }
-    // }
   }
+
+
+  private fun showExitDialog() {
+    AlertDialog.Builder(this)
+      .setMessage("Are you sure you want to exit?")
+      .setCancelable(false)
+      .setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ -> finish() })
+      .setNegativeButton("No", null)
+      .show()
+  }
+
   companion object {
     const val TAG: String = "HOME_ONE_CONTAINER_ACTIVITY"
 

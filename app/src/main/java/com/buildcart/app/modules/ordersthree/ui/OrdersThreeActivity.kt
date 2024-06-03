@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
+import android.widget.RadioButton
 import androidx.activity.viewModels
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
@@ -32,10 +33,41 @@ class OrdersThreeActivity : BaseActivity<ActivityOrdersThreeBinding>(R.layout.ac
 
       private lateinit var sessionManager: SessionManager
 
+private lateinit var placeForAddredd:String
+
+private lateinit var checkBoxValue:String
+
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
 
     sessionManager=SessionManager(this)
+
+
+    val radioGroup = binding.rgRadiogrouphome
+   val radioButton1 = binding.rbHome
+    val radioButton2 = binding.rbHomeOne
+   val  radioButton3 = binding.rbHomeTwo
+
+
+    radioGroup.setOnCheckedChangeListener { group, checkedId ->
+      val selectedRadioButton = findViewById<RadioButton>(checkedId)
+      val selectedText = selectedRadioButton.text.toString()
+      placeForAddredd=selectedText
+    }
+
+    binding.checkBoxSetasDefault.setOnCheckedChangeListener { _, isChecked ->
+      val checkedState: Boolean = isChecked
+
+
+      if (isChecked) {
+        // Checkbox is checked
+        checkBoxValue="True"
+      } else {
+        // Checkbox is unchecked
+        checkBoxValue="False"
+      }
+    }
+
 
 
     binding.btnAdd.setOnClickListener {
@@ -44,16 +76,27 @@ class OrdersThreeActivity : BaseActivity<ActivityOrdersThreeBinding>(R.layout.ac
       val state=binding.etGroupNinetyOne11.text.toString()
       val city=binding.etGroupNinetyOne1.text.toString()
       val pincode=binding.etGroupNinetyOne112.text.toString()
-      val flat=binding.etGroupNinetyTwo.text.toString()
-      val locality=binding.etGroupNinetyOne.text.toString()
-      val place=binding.etGroupNinetyThree.text.toString()
-      postAddress(name,mobilenumber,state,city,pincode,place,flat,locality,"","Shrinagar","2234","False")
+      val flat=binding.etGroupNinetyTwo.text.toString()   //landmark
+      val house_no=binding.etGroupNinetyOne.text.toString()
+      val place=placeForAddredd
+      val housename=binding.etGroupNinetyOne1121.text.toString()
+      val area=binding.etGroupNinetyOne112111.text.toString()
+
+      val setAsDefault=checkBoxValue
+
+      val street=binding.etGroupNinetyOne11211.text.toString()
+      postAddress(name,mobilenumber,place,house_no,city,state,pincode,flat,housename,area,street,setAsDefault)
 
     }
     binding.ordersThreeVM = viewModel
     window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
   }
 
+
+    private  fun handleCheckboxState(isChecked: Boolean) {
+        // Handle the checkbox state here
+
+      }
   override fun setUpClicks(): Unit {
     binding.btnAdd.setOnClickListener {
       val destIntent = SignUoFiveActivity.getIntent(this, null)

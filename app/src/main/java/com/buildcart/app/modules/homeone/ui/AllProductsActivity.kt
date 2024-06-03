@@ -62,10 +62,10 @@ class AllProductsActivity : AppCompatActivity() {
         recyclerView.adapter = homeOneAdapter
 
 
-        viewModelHome.getProductList().observe(this){
-            productList->
-            homeOneAdapter.updateData(productList)
-        }
+//        viewModelHome.getProductList().observe(this){
+//            productList->
+//            homeOneAdapter.updateData(productList)
+//        }
 
         // Observe changes in the LiveData (productList)
         viewModelHome.getProductByCategories().observe(this) { productList ->
