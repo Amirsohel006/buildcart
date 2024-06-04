@@ -63,7 +63,16 @@ class ActiveOrderAdapter (
         fun bindView(postModel: Response) {
 
 
-            val file=APIManager.getImageUrl(postModel.product!!.productGalleries[0].image!!)
+            val imageUrl = if (postModel.product?.productGalleries?.isNotEmpty() == true && !postModel.product!!.productGalleries[0].image.isNullOrEmpty()) {
+                APIManager.getImageUrl(postModel.product!!.productGalleries[0].image!!)
+            } else {
+                // URL or resource ID of the placeholder or empty image
+                "URL_OF_EMPTY_IMAGE" // Replace with actual URL or resource ID
+            }
+
+// Load the image using Glide
+
+
 
 
             productname.text=postModel.product!!.name
@@ -71,7 +80,7 @@ class ActiveOrderAdapter (
             price.text=postModel.quantity.toString()
 
                 Glide.with(itemView)
-                    .load(file) // Replace with your image URL or resource ID
+                    .load(imageUrl) // Replace with your image URL or resource ID
                     .apply(requestOptions)
                     .into(image)
 

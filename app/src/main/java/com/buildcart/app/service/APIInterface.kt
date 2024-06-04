@@ -10,6 +10,7 @@ import com.buildcart.app.data.response.RequestSignUpResponse
 import com.buildcart.app.data.response.SignUpResponse
 import com.buildcart.app.data.response.SignUpUpdateResponse
 import com.buildcart.app.modules.AddToFavriote
+import com.buildcart.app.modules.AddressRequest
 import com.buildcart.app.modules.catogories.data.model.CategoryIdRequest
 import com.buildcart.app.modules.homeone.data.AddToCartRequestBody
 import com.buildcart.app.modules.homeone.data.model.ProductDetailsDataResponse
@@ -194,21 +195,10 @@ interface APIInterface {
     ):Call<List<AddressResponse>>
 
 
-    @FormUrlEncoded
     @POST("/order/add_delivery_address/")
     fun postAddress(@Header("Authorization")token: String,
-                    @Field("full_name")name:String,
-                    @Field("mobile_number")number:String,
-                    @Field("place")locality:String,
-                    @Field("house_no")flat_no:String,
-                    @Field("city")city:String,
-                    @Field("state")state:String,
-                    @Field("pincode")postal_code:String,
-                    @Field("landmark")type_of_address:String,
-                    @Field("house_name")house_name:String,
-                    @Field("area")area:String,
-                    @Field("street")street:String,
-                    @Field("set_as_default")default:String):Call<AddressResponse>
+                    @Body addressRequest: AddressRequest
+    ):Call<AddressResponse>
 
 
     @DELETE("/cart/remove-increase-product-cart/{id}/")

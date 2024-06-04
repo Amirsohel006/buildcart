@@ -121,7 +121,7 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
     val serviceGenerator= APIManager.apiInterface
     val accessToken=sessionManager.fetchAuthToken()
     val authorization="Bearer $accessToken"
-    val id="1"
+    val id="2"
     val mode="cod"
     val code=""
 
