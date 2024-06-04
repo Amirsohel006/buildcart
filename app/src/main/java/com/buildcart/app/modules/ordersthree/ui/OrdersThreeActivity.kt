@@ -1,5 +1,4 @@
 package com.buildcart.app.modules.ordersthree.ui
-
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -17,12 +16,14 @@ import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseActivity
 import com.buildcart.app.data.SessionManager
 import com.buildcart.app.databinding.ActivityOrdersThreeBinding
+import com.buildcart.app.modules.AddressRequest
 import com.buildcart.app.modules.ordersthree.`data`.viewmodel.OrdersThreeVM
 import com.buildcart.app.modules.responses.AddressResponse
 import com.buildcart.app.modules.signuofive.ui.SignUoFiveActivity
 import com.buildcart.app.service.APIManager
 import com.bumptech.glide.Glide
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import kotlin.String
 import kotlin.Unit
@@ -59,7 +60,7 @@ private lateinit var checkBoxValue:String
       val checkedState: Boolean = isChecked
 
 
-      if (isChecked) {
+      if (checkedState) {
         // Checkbox is checked
         checkBoxValue="True"
       } else {
@@ -85,7 +86,7 @@ private lateinit var checkBoxValue:String
       val setAsDefault=checkBoxValue
 
       val street=binding.etGroupNinetyOne11211.text.toString()
-      postAddress(name,mobilenumber,place,house_no,city,state,pincode,flat,housename,area,street,setAsDefault)
+      postAddress(name,mobilenumber,city,state,pincode,area,house_no,street,housename,place,flat,setAsDefault)
 
     }
     binding.ordersThreeVM = viewModel
@@ -125,7 +126,24 @@ private lateinit var checkBoxValue:String
         val serviceGenerator = APIManager.apiInterface
         val accestoken = sessionManager.fetchAuthToken()
         val authorization = "Bearer $accestoken"
-        val call = serviceGenerator.postAddress(authorization,name,mobile_number,area,house_no, city, state, postal_code,street,house_name, place,landmark,setasdefault)
+
+        val addressRequest = AddressRequest(
+          full_name = name,
+          mobile_number = mobile_number,
+          place = place,
+          house_no = house_no,
+          city = city,
+          state = state,
+          pincode = postal_code,
+          landmark = landmark,
+          house_name = house_name,
+          area = area,
+          street = street,
+          set_as_default = setasdefault
+        )
+
+
+        val call = serviceGenerator.postAddress(authorization,addressRequest)
 
         call.enqueue(object : retrofit2.Callback<AddressResponse>{
           override fun onResponse(

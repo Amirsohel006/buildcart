@@ -226,10 +226,10 @@ class HomeOneAdapter(
                 val response=response.body()
 
                 if(response!!.success=="true"){
-                    isFavorite = true // Update the favorite state
+                    isFavorite = false // Update the favorite state
                     updateFavoriteIcon(favoriteIcon)
                 }else {
-                    isFavorite = false // Revert back to original state
+                    isFavorite = true // Revert back to original state
                     updateFavoriteIcon(favoriteIcon)
                 }
 
@@ -238,7 +238,7 @@ class HomeOneAdapter(
 
             override fun onFailure(call: Call<FavrioteResponse>, t: Throwable) {
                 Toast.makeText(context, "Failed to add to Favorites", Toast.LENGTH_SHORT).show()
-                isFavorite = false // Revert back to original state
+                isFavorite = true // Revert back to original state
                 updateFavoriteIcon(favoriteIcon)
             }
         })
@@ -259,17 +259,17 @@ class HomeOneAdapter(
                 val response=response.body()
 
                 if(response!!.success=="true"){
-                    isFavorite = false // Update the favorite state
+                    isFavorite = true // Update the favorite state
                     updateFavoriteIcon(favoriteIcon)
                 }else {
-                    isFavorite = true // Revert back to original state
+                    isFavorite = false // Revert back to original state
                     updateFavoriteIcon(favoriteIcon)
                 }
             }
 
             override fun onFailure(call: Call<FavrioteResponse>, t: Throwable) {
                 Toast.makeText(context, "Failed to add to Favorites", Toast.LENGTH_SHORT).show()
-                isFavorite = true // Revert back to original state
+                isFavorite = false // Revert back to original state
                 updateFavoriteIcon(favoriteIcon)
             }
         })
