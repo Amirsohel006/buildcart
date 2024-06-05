@@ -57,6 +57,7 @@ class HomeOneContainerActivity :
     binding.frameBottombar.setOnItemSelectedListener {
 
       when(it.itemId ){
+
         R.id.linearColumnhome1 -> {
           replaceFragment(HomeOneFragment())
         }
@@ -70,6 +71,7 @@ class HomeOneContainerActivity :
 
         else -> {
         }
+
       }
       true
 

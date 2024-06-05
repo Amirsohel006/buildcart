@@ -155,7 +155,7 @@ private lateinit var checkBoxValue:String
 
 
               val dialogBinding =
-                LayoutInflater.from(this@OrdersThreeActivity).inflate(R.layout.row_to_cart, null)
+                LayoutInflater.from(this@OrdersThreeActivity).inflate(R.layout.row_add_address, null)
               val myDialoge = Dialog(this@OrdersThreeActivity)
               myDialoge.setContentView(dialogBinding)
 

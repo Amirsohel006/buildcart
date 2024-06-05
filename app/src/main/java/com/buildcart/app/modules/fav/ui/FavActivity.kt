@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseActivity
 import com.buildcart.app.databinding.ActivityFavBinding
@@ -20,19 +21,21 @@ class FavActivity : BaseActivity<ActivityFavBinding>(R.layout.activity_fav) {
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
-    val favAdapter = FavAdapter(viewModel.favList.value?:mutableListOf())
-    binding.recyclerFav.adapter = favAdapter
-    favAdapter.setOnItemClickListener(
-    object : FavAdapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : FavRowModel) {
-        onClickRecyclerFav(view, position, item)
-      }
-    }
-    )
-    viewModel.favList.observe(this) {
-      favAdapter.updateData(it)
-    }
+//    val favAdapter = FavAdapter(viewModel.favList.value?:mutableListOf())
+//    binding.recyclerFav.adapter = favAdapter
+//    favAdapter.setOnItemClickListener(
+//    object : FavAdapter.OnItemClickListener {
+//      override fun onItemClick(view:View, position:Int, item : FavRowModel) {
+//        onClickRecyclerFav(view, position, item)
+//      }
+//    }
+//    )
+//    viewModel.favList.observe(this) {
+//      favAdapter.updateData(it)
+//    }
     binding.favVM = viewModel
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
   }
 
   override fun setUpClicks(): Unit {

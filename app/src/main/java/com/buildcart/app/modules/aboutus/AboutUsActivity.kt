@@ -3,6 +3,7 @@ package com.buildcart.app.modules.aboutus
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,12 @@ class AboutUsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_about_us)
 
         sessionManager= SessionManager(this)
+
+        val backImage:ImageView=findViewById(R.id.imageArrowleft)
+        backImage.setOnClickListener {
+            this.finish()
+        }
+
        recyclerView=findViewById(R.id.recyclerview)
         val serviceGenerator = APIManager.apiInterface
         val accessToken=sessionManager.fetchAuthToken()

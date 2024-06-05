@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -50,6 +51,7 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
   var file:String=""
 
+  var productId:String=""
  // private val imageUri: Uri = Uri.parse("android.resource://com.buildcart.app/drawable/img_image5")
 
 
@@ -129,11 +131,12 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
     }
 
 
-    val productId = intent.getStringExtra("productId")
+     productId = intent.getStringExtra("productId")!!
 
 
-    getMyStudioRequests(productId!!)
+    getMyStudioRequests(productId)
 
+    binding.progressBar.visibility=View.VISIBLE
     binding.productVM = viewModel
 
 
@@ -154,6 +157,7 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
         call: Call<ProductdescriptionResponse>,
         response: Response<ProductdescriptionResponse>
       ) {
+        binding.progressBar.visibility=View.GONE
         val customerResponse=response.body()
 
         if((customerResponse!=null)&&(customerResponse.success=="true")){
@@ -166,18 +170,19 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
           binding.txtPrice.text=details[0].sellingPrice.toString()
 
-           file=APIManager.getImageUrl(details[0].productGalleries[1].image!!)
+          val imageUrl = details[0].productGalleries[0].image
+            ?: throw NullPointerException("Image URL is null")
+           file = APIManager.getImageUrl(imageUrl!!)
+
+
+         // file=APIManager.getImageUrl(details[0].productGalleries[0].image!!)
 
          // image=file
 
 
 
-          val productId=details[0].productId
+         // productIdtoPass= details[0].productId.toString()
 
-          binding.linearRowaddtocart.setOnClickListener {
-            val quatity=binding.txtGroup452.text.toString()
-            addtocart(productId!!,quatity)
-          }
 
 
 
@@ -189,6 +194,7 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
       override fun onFailure(call: Call<ProductdescriptionResponse>, t: Throwable) {
         t.printStackTrace()
         Log.e("error", t.message.toString())
+        binding.progressBar.visibility=View.GONE
       }
     })
   }
@@ -207,6 +213,7 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
     call.enqueue(object : retrofit2.Callback<ProductDescriptionResponses> {
       @SuppressLint("MissingInflatedId")
       override fun onResponse(call: Call<ProductDescriptionResponses>, response: Response<ProductDescriptionResponses>) {
+        binding.progressBar.visibility=View.GONE
         if (response.isSuccessful) {
           val customerResponse=response.body()
           //Toast.makeText(, "Add to cart Successfull", Toast.LENGTH_SHORT).show()
@@ -238,12 +245,13 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
         } else {
 
+          binding.progressBar.visibility=View.GONE
         }
       }
 
       override fun onFailure(call: Call<ProductDescriptionResponses>, t: Throwable) {
         t.printStackTrace()
-
+        binding.progressBar.visibility=View.GONE
       }
     })
 
@@ -265,9 +273,32 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
       finish()
     }
 
+
+    binding.linearRowaddtocart.setOnClickListener {
+      val quantity = binding.txtGroup452.text.toString().toIntOrNull() ?: 0 // Convert to Int, default to 0 if conversion fails
+
+      if (quantity < 1) {
+        Toast.makeText(this, "Please select at least 1 quantity", Toast.LENGTH_SHORT).show()
+      } else {
+        addtocart(productId, quantity.toString())
+        binding.progressBar.visibility = View.VISIBLE
+      }
+    }
+
+
+
     binding.linearRowlanguage.setOnClickListener {
-      val destIntent = SignUoFiveActivity.getIntent(this, null)
-      startActivity(destIntent)
+
+      val quantity = binding.txtGroup452.text.toString().toIntOrNull() ?: 0
+
+      if (quantity < 1) {
+        Toast.makeText(this, "Please select at least 1 quantity", Toast.LENGTH_SHORT).show()
+      } else {
+        val destIntent = SignUoFiveActivity.getIntent(this, null)
+        startActivity(destIntent)
+      }
+
+
     }
 
   }

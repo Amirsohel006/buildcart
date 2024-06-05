@@ -61,19 +61,14 @@ class HomeOneAdapter(
         }
         holder.binding.btnAddToCart.text = buttonText
 
-        holder.binding.imageVectorTwo.setOnClickListener {
-            addEventToFavorites(holder.binding.imageVectorTwo,holder.itemView.context,dataList[position].product_id.toString())
-        }
+//        holder.binding.imageVectorTwo.setOnClickListener {
+//            addEventToFavorites(holder.binding.imageVectorTwo,holder.itemView.context,dataList[position].product_id.toString())
+//        }
 
+        val isFavorite = sharedPreferences.getBoolean(dataList[position].product_id.toString(), false)
         holder.binding.imageVectorTwo.setImageResource(if (isFavorite) R.drawable.image_favriote_red else R.drawable.img_clock)
         holder.binding.imageVectorTwo.setOnClickListener {
-            isFavorite = !isFavorite
-            updateFavoriteIcon(holder.binding.imageVectorTwo)
-            if (isFavorite) {
-                addEventToFavorites(holder.binding.imageVectorTwo,holder.itemView.context,dataList[position].product_id.toString())
-            } else {
-                removeEventFromFavorites(holder.binding.imageVectorTwo,holder.itemView.context,dataList[position].product_id.toString())
-            }
+            toggleFavorite(holder.binding.imageVectorTwo, holder.itemView.context, dataList[position].product_id.toString(), isFavorite)
         }
     }
 
@@ -211,71 +206,42 @@ class HomeOneAdapter(
     }
 
 
-    private fun addEventToFavorites(favoriteIcon: ImageView,context: Context, eventId: String) {
-        val token1 = sessionManager.fetchAuthToken()
-        val accessToken = "Bearer $token1"
-        val eventIdString = eventId.toString()
 
-        val requestBody = AddToFavriote(product_id = eventIdString)
+    private fun toggleFavorite(favoriteIcon: ImageView, context: Context, eventId: String, isFavorite: Boolean) {
+        val token = sessionManager.fetchAuthToken()
+        val accessToken = "Bearer $token"
+        val requestBody = AddToFavriote(product_id = eventId)
         val service = APIManager.apiInterface
-        val call = service.addToFavourite(accessToken, requestBody)
+
+        val call: Call<FavrioteResponse> = if (isFavorite) {
+            service.addToFavourite(accessToken, requestBody)
+        } else {
+            service.removeFromFavourute(accessToken, requestBody)
+        }
+
         call.enqueue(object : Callback<FavrioteResponse> {
             override fun onResponse(call: Call<FavrioteResponse>, response: Response<FavrioteResponse>) {
-
-
-                val response=response.body()
-
-                if(response!!.success=="true"){
-                    isFavorite = false // Update the favorite state
-                    updateFavoriteIcon(favoriteIcon)
-                }else {
-                    isFavorite = true // Revert back to original state
-                    updateFavoriteIcon(favoriteIcon)
-                }
-
-
-            }
-
-            override fun onFailure(call: Call<FavrioteResponse>, t: Throwable) {
-                Toast.makeText(context, "Failed to add to Favorites", Toast.LENGTH_SHORT).show()
-                isFavorite = true // Revert back to original state
-                updateFavoriteIcon(favoriteIcon)
-            }
-        })
-    }
-
-    private fun removeEventFromFavorites(favoriteIcon: ImageView,context: Context, eventId: String) {
-        val token1 = sessionManager.fetchAuthToken()
-        val accessToken = "Bearer $token1"
-        val eventIdString = eventId.toString()
-
-        val requestBody = AddToFavriote(product_id = eventIdString)
-        val service = APIManager.apiInterface
-        val call = service.removeFromFavourute(accessToken, requestBody)
-        call.enqueue(object : Callback<FavrioteResponse> {
-            override fun onResponse(call: Call<FavrioteResponse>, response: Response<FavrioteResponse>) {
-
-
-                val response=response.body()
-
-                if(response!!.success=="true"){
-                    isFavorite = true // Update the favorite state
-                    updateFavoriteIcon(favoriteIcon)
-                }else {
-                    isFavorite = false // Revert back to original state
-                    updateFavoriteIcon(favoriteIcon)
+                if (response.isSuccessful) {
+                    val favResponse = response.body()
+                    if (favResponse?.success == "true") {
+                        val newFavoriteState = !isFavorite
+                        sharedPreferences.edit().putBoolean(eventId, newFavoriteState).apply()
+                        updateFavoriteIcon(favoriteIcon, newFavoriteState)
+                    } else {
+                        Toast.makeText(context, "Failed to update favorites", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(context, "Failed to update favorites", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<FavrioteResponse>, t: Throwable) {
-                Toast.makeText(context, "Failed to add to Favorites", Toast.LENGTH_SHORT).show()
-                isFavorite = false // Revert back to original state
-                updateFavoriteIcon(favoriteIcon)
+                Toast.makeText(context, "Failed to update favorites", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private fun updateFavoriteIcon(favoriteIcon: ImageView) {
+    private fun updateFavoriteIcon(favoriteIcon: ImageView, isFavorite: Boolean) {
         favoriteIcon.setImageResource(if (isFavorite) R.drawable.image_favriote_red else R.drawable.img_clock)
     }
 
