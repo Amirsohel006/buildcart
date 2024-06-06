@@ -342,19 +342,21 @@
                             android:layout_marginEnd="@dimen/_24pxh"
                             android:text="@string/view_all"/>
                     </LinearLayout>
+
                     <androidx.recyclerview.widget.RecyclerView
-                        android:gravity="center_horizontal"
                         android:id="@+id/recyclerHome"
+                        itemSpace="@{@dimen/_22pxh}"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_9pxh"
                         android:layout_marginStart="@dimen/_7pxh"
                         android:layout_marginTop="@dimen/_12pxv"
-                        android:layout_width="match_parent"
+                        android:layout_marginEnd="@dimen/_9pxh"
+                        android:gravity="center_horizontal"
                         android:nestedScrollingEnabled="false"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="2" itemSpace="@{@dimen/_42pxh}"
-                        tools:itemCount="12"
-                        tools:listitem="@layout/row_home"/>
+                        app:spanCount="2"
+                        tools:itemCount="6"
+                        tools:listitem="@layout/row_home" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

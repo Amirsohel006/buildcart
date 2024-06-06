@@ -41,17 +41,17 @@ class HomeOneContainerActivity :
 
     replaceFragment(HomeOneFragment())
 
-    Picasso.get().load(sessionManager.fetchProfileImage()).transform(ProfileActivity.CircleCrop()).placeholder(R.drawable.default_profile_background).into(binding.imageEllipseProfile)
+   // Picasso.get().load(sessionManager.fetchProfileImage()).transform(ProfileActivity.CircleCrop()).placeholder(R.drawable.default_profile_background).into(binding.imageEllipseProfile)
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
   }
 
   override fun setUpClicks(): Unit {
 
-    binding.imageEllipseProfile.setOnClickListener {
-      val intentProfile = Intent(this, ProfileActivity::class.java)
-      startActivity(intentProfile)
-    }
+//    binding.imageEllipseProfile.setOnClickListener {
+//      val intentProfile = Intent(this, ProfileActivity::class.java)
+//      startActivity(intentProfile)
+//    }
 
 
     binding.frameBottombar.setOnItemSelectedListener {

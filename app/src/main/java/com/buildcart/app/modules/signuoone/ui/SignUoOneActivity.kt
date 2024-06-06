@@ -19,6 +19,8 @@ import com.buildcart.app.modules.signuosix.ui.SignUoSixActivity
 import com.buildcart.app.modules.signuotwo.ui.SignUoTwoActivity
 import com.buildcart.app.service.APIInterface
 import com.buildcart.app.service.APIManager
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,20 +65,11 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
 //      startActivity(destIntent)
     }
     binding.txtLogin.setOnClickListener {
-      if (mobileNumber.isBlank())
-      Toast.makeText(this@SignUoOneActivity, "Please Enter the Mobile Number", Toast.LENGTH_SHORT).show()
-      else{
-      val destIntent = SignUoSixActivity.getIntent(this, null)
-        destIntent.putExtra("mobile_number",mobileNumber)
-      startActivity(destIntent)
-
+      val  i=Intent(this,SignUoSixActivity::class.java)
+      startActivity(i)
       }
+
     }
-    binding.txtSkipfornow.setOnClickListener {
-      val destIntent = HomeActivity.getIntent(this, null)
-      startActivity(destIntent)
-    }
-  }
 
 
   fun requestOTP(){
@@ -85,28 +78,43 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
 
 
   fun makeSignUpRequestOTP(mobileNumber: String?, referralCode: String?) {
-    val call=apiInterface.signUpRequestOTP(mobileNumber,referralCode)
+    val call = apiInterface.signUpRequestOTP(mobileNumber, referralCode)
     call.enqueue(object : Callback<RequestSignUpResponse> {
       override fun onResponse(call: Call<RequestSignUpResponse>, response: Response<RequestSignUpResponse>) {
+        binding.progresBar.visibility = View.GONE
         if (response.isSuccessful) {
-          binding.progresBar.visibility=View.GONE
           val loginResponse = response.body()
           if (loginResponse != null) {
-            Toast.makeText(this@SignUoOneActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
-            otp=loginResponse.otp.toString()
+            Toast.makeText(this@SignUoOneActivity, "OTP Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            otp = loginResponse.otp.toString()
             navigateToOTPActivity()
           } else {
             Toast.makeText(this@SignUoOneActivity, "OTP Sending failed", Toast.LENGTH_SHORT).show()
-            binding.progresBar.visibility=View.GONE
           }
         } else {
-          Toast.makeText(this@SignUoOneActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
-          binding.progresBar.visibility=View.GONE
+          // Handle the case when the response is not successful
+          if (response.code() == 400) {
+            val errorBody = response.errorBody()?.string()
+            if (errorBody != null) {
+              try {
+                val jsonObject = JSONObject(errorBody)
+                val errorMsg = jsonObject.optString("error_msg", "Invalid Referral Code ")
+                Toast.makeText(this@SignUoOneActivity, errorMsg, Toast.LENGTH_SHORT).show()
+              } catch (e: JSONException) {
+                Toast.makeText(this@SignUoOneActivity, "Error parsing error message", Toast.LENGTH_SHORT).show()
+              }
+            } else {
+              Toast.makeText(this@SignUoOneActivity, "Unknown error occurred", Toast.LENGTH_SHORT).show()
+            }
+          } else {
+            Toast.makeText(this@SignUoOneActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
+          }
         }
       }
+
       override fun onFailure(call: Call<RequestSignUpResponse>, t: Throwable) {
+        binding.progresBar.visibility = View.GONE
         Toast.makeText(this@SignUoOneActivity, "OTP Sending Failed: ${t.message}", Toast.LENGTH_SHORT).show()
-        binding.progresBar.visibility=View.GONE
       }
     })
   }
@@ -116,6 +124,7 @@ class SignUoOneActivity : BaseActivity<ActivitySignUoOneBinding>(R.layout.activi
     val destIntent = SignUoTwoActivity.getIntent(this, null)
     destIntent.putExtra("otp",otp)
     destIntent.putExtra("mobile_number",mobileNumber)
+    destIntent.putExtra("referral_code",referralCode)
     startActivity(destIntent)
     finish()
   }

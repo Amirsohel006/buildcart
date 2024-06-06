@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseFragment
+import com.buildcart.app.data.ProfileDataResponse
 import com.buildcart.app.data.SessionManager
 import com.buildcart.app.data.response.CategoriesResponse
 import com.buildcart.app.databinding.FragmentCatogoriesBinding
@@ -22,8 +24,14 @@ import com.buildcart.app.modules.homeone.data.ProductsRepository
 import com.buildcart.app.modules.homeone.data.viewmodel.HomeOneViewModel
 import com.buildcart.app.modules.homeone.data.viewmodel.HomeOneViewModelFactory
 import com.buildcart.app.modules.homeone.ui.AllProductsActivity
+import com.buildcart.app.modules.signuofifteen.ui.ProfileActivity
 import com.buildcart.app.modules.tile.ui.TileActivity
+import com.buildcart.app.service.APIInterface
 import com.buildcart.app.service.APIManager
+import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
@@ -35,12 +43,15 @@ class CatogoriesFragment : BaseFragment<FragmentCatogoriesBinding>(R.layout.frag
   private val categoriesRepository= CategoriesRepository(APIManager.apiInterface)
   private val viewModelHome: HomeOneViewModel by viewModels { HomeOneViewModelFactory(productsRepository,categoriesRepository) }
 
+  private lateinit var apiInterface: APIInterface
 
   private lateinit var sessionManager: SessionManager
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     sessionManager = SessionManager(requireContext())
+    apiInterface = APIManager.apiInterface
     setUpClicks()
+    getProfiledata()
     viewModelHome.fetchCategoryList()
   }
   override fun onInitialized(): Unit {
@@ -69,6 +80,11 @@ class CatogoriesFragment : BaseFragment<FragmentCatogoriesBinding>(R.layout.frag
 //      catogoriesAdapter.updateData(it)
 //    }
 
+
+    binding.imageEllipseTwelve.setOnClickListener {
+      val i=Intent(requireActivity(),ProfileActivity::class.java)
+      startActivity(i)
+    }
 
     // Observe changes in the category list LiveData and update the adapter
     viewModelHome.getCategoriesList().observe(viewLifecycleOwner) { categoryList ->
@@ -104,6 +120,45 @@ class CatogoriesFragment : BaseFragment<FragmentCatogoriesBinding>(R.layout.frag
     }
   }
 
+
+  fun getProfiledata(){
+
+    val accessToken=sessionManager.fetchAuthToken()
+
+    val authorization="Bearer $accessToken"
+    val call=apiInterface.getProfileDetails(authorization)
+    call.enqueue(object : Callback<ProfileDataResponse> {
+      override fun onResponse(call: Call<ProfileDataResponse>, response: Response<ProfileDataResponse>) {
+        if (response.isSuccessful) {
+
+          val loginResponse = response.body()
+          if (loginResponse != null) {
+            //Toast.makeText(this@ProfileActivity, "Profile Data Successfully Fetched", Toast.LENGTH_LONG).show()
+
+
+
+
+            val file=APIManager.getImageUrl(loginResponse.response!!.photo.toString())
+
+
+
+
+            Picasso.get().load(file).transform(ProfileActivity.CircleCrop()).placeholder(R.drawable.default_profile_background).into(binding.imageEllipseTwelve)
+
+
+            //navigateToHomeActivity()
+          } else {
+            Toast.makeText(requireActivity(), "Profile Data fetching failed", Toast.LENGTH_SHORT).show()
+          }
+        } else {
+          Toast.makeText(requireActivity(), "Profile Data fetching Failed", Toast.LENGTH_SHORT).show()
+        }
+      }
+      override fun onFailure(call: Call<ProfileDataResponse>, t: Throwable) {
+        Toast.makeText(requireActivity(), "Profile Data fetching: ${t.message}", Toast.LENGTH_SHORT).show()
+      }
+    })
+  }
   fun onClickRecyclerCatogories(
     view: View,
     position: Int,

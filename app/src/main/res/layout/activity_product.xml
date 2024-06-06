@@ -49,7 +49,7 @@
             <LinearLayout android:id="@+id/linearColumnrectangle105"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" android:orientation="vertical">
-                <com.asksira.loopingviewpager.LoopingViewPager
+                <ImageView
                     android:gravity="end"
                     android:id="@+id/imageSliderSliderrectangle105"
                     android:layout_height="@dimen/_200pxv"

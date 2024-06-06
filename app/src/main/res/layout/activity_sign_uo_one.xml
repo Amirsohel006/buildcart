@@ -155,7 +155,9 @@
                 imageRes="@{@drawable/img_ellipse3}"
                 tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse3"/>
         </LinearLayout>
-        <LinearLayout android:gravity="center_vertical"
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             android:id="@+id/linearRowconfirmation"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_20pxh"
@@ -165,16 +167,21 @@
             <TextView
                 android:id="@+id/txtConfirmation"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_width="wrap_content"
+                android:layout_width="wrap_content"
                 android:singleLine="true"
+                android:layout_gravity="center_horizontal"
                 android:text="@{signUoOneVM.signUoOneModel.txtConfirmation}"
-                style="@style/txtNunitomedium16" tools:text="@string/msg_already_have_an"/>
-            <TextView android:ellipsize="end" android:id="@+id/txtLogin"
+                style="@style/txtNunitomedium16"
+                tools:text="@string/msg_already_have_an"/>
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/txtLogin"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:singleLine="true"
                 android:text="@{signUoOneVM.signUoOneModel.txtLogin}"
-                style="@style/txtNunitobold16" tools:text="@string/lbl_login2"/>
+                style="@style/txtNunitobold16"
+                tools:text="@string/lbl_login2"/>
         </LinearLayout>
         <TextView android:ellipsize="end"
             android:id="@+id/txtSkipfornow"

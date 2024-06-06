@@ -88,20 +88,20 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
     image=file
 
-    Log.e("System Image",image.toString())
-    binding.indicatorGroup117.updateIndicatorCounts(binding.imageSliderSliderrectangle105.indicatorCount)
-    val listrectangle105OneAdapter =
-    Listrectangle105OneAdapter(viewModel.listrectangle105OneList.value?:mutableListOf())
+//    Log.e("System Image",image.toString())
+//    binding.indicatorGroup117.updateIndicatorCounts(binding.imageSliderSliderrectangle105.indicatorCount)
+//    val listrectangle105OneAdapter =
+//    Listrectangle105OneAdapter(viewModel.listrectangle105OneList.value?:mutableListOf())
 
 
 
-    val sliderrectanglefiftysixAdapter =
-      Sliderrectangle105Adapter(imageSliderSliderrectangle105Items,true)
-    binding.imageSliderSliderrectangle105.adapter = sliderrectanglefiftysixAdapter
-    binding.imageSliderSliderrectangle105.onIndicatorProgress = { selectingPosition,
-                                                                       progress ->
-      binding.indicatorGroup117.onPageScrolled(selectingPosition, progress)
-    }
+//    val sliderrectanglefiftysixAdapter =
+//      Sliderrectangle105Adapter(imageSliderSliderrectangle105Items,true)
+//    binding.imageSliderSliderrectangle105.adapter = sliderrectanglefiftysixAdapter
+//    binding.imageSliderSliderrectangle105.onIndicatorProgress = { selectingPosition,
+//                                                                       progress ->
+//      binding.indicatorGroup117.onPageScrolled(selectingPosition, progress)
+//    }
 //    binding.recyclerListrectangle105One.adapter = listrectangle105OneAdapter
 //    listrectangle105OneAdapter.setOnItemClickListener(
 //    object : Listrectangle105OneAdapter.OnItemClickListener {
@@ -110,10 +110,10 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 //      }
 //    }
 //    )
-
-    viewModel.listrectangle105OneList.observe(this) {
-      listrectangle105OneAdapter.updateData(it)
-    }
+//
+//    viewModel.listrectangle105OneList.observe(this) {
+//      listrectangle105OneAdapter.updateData(it)
+//    }
 
     val listrectangle105FourAdapter =
     Listrectangle105FourAdapter(viewModel.listrectangle105FourList.value?:mutableListOf())
@@ -170,20 +170,21 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
           binding.txtPrice.text=details[0].sellingPrice.toString()
 
-          val imageUrl = details[0].productGalleries[0].image
-            ?: throw NullPointerException("Image URL is null")
-           file = APIManager.getImageUrl(imageUrl!!)
-
-
-         // file=APIManager.getImageUrl(details[0].productGalleries[0].image!!)
-
-         // image=file
-
-
-
-         // productIdtoPass= details[0].productId.toString()
-
-
+//          val imageUrl = details[0].productGalleries[0].image
+//
+//// Check if the image URL is empty and set a default image if it is
+//          val file = if (imageUrl.isNullOrEmpty()) {
+//            // Replace with your default image resource
+//            R.drawable.default_image
+//          } else {
+//            APIManager.getImageUrl(imageUrl)
+//          }
+//
+//          Glide.with(this@ProductActivity)
+//            .load(file)
+//            .placeholder(R.drawable.default_image) // Replace with your placeholder image resource
+//            .error(R.drawable.default_image) // Replace with your error image resource
+//            .into(binding.imageSliderSliderrectangle105)
 
 
         }
@@ -257,15 +258,15 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
   }
 
-  override fun onPause(): Unit {
-    binding.imageSliderSliderrectangle105.pauseAutoScroll()
-    super.onPause()
-  }
-
-  override fun onResume(): Unit {
-    super.onResume()
-    binding.imageSliderSliderrectangle105.resumeAutoScroll()
-  }
+//  override fun onPause(): Unit {
+//    binding.imageSliderSliderrectangle105.pauseAutoScroll()
+//    super.onPause()
+//  }
+//
+//  override fun onResume(): Unit {
+//    super.onResume()
+//    binding.imageSliderSliderrectangle105.resumeAutoScroll()
+//  }
 
   override fun setUpClicks(): Unit {
 

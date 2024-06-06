@@ -90,7 +90,9 @@
             android:paddingStart="@dimen/_26pxh"
             android:paddingTop="@dimen/_5pxv" android:singleLine="true"
             android:text="@string/lbl_add_to_cart"
-            android:textAllCaps="false" style="@style/btnSolidRounded" tools:text="@string/lbl_add_to_cart"/>
+            android:textAllCaps="false"
+            style="@style/btnSolidRounded1"
+            tools:text="@string/lbl_add_to_cart"/>
     </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseActivity
 import com.buildcart.app.databinding.ActivityHomeBinding
@@ -45,6 +48,16 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     viewModel.homeList.observe(this) {
       homeAdapter.updateData(it)
     }
+
+
+    val recyclerView: RecyclerView = binding.recyclerView1
+    recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+    recyclerView.adapter = CategoryAdapterForDummy()
+
+
+    // Attach LinearSnapHelper
+    val snapHelper = LinearSnapHelper()
+    snapHelper.attachToRecyclerView(recyclerView)
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
 

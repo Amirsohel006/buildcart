@@ -26,6 +26,8 @@ import com.buildcart.app.modules.signuotwelve.`data`.viewmodel.SignUoTwelveVM
 import com.buildcart.app.service.APIInterface
 import com.buildcart.app.service.APIManager
 import com.google.android.gms.auth.api.phone.SmsRetriever
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -151,6 +153,59 @@ class SignUoTwelveActivity :
     })
   }
 
+
+
+  fun resendOtp(mobileNumber: String?) {
+    val call = apiInterface.verifyLoginOTP(mobileNumber)
+    call.enqueue(object : Callback<RequestSignUpResponse> {
+      override fun onResponse(call: Call<RequestSignUpResponse>, response: Response<RequestSignUpResponse>) {
+        binding.progressBar.visibility = View.GONE
+        if (response.isSuccessful) {
+          val loginResponse = response.body()
+          if (loginResponse != null && loginResponse.success == "true") {
+            Toast.makeText(this@SignUoTwelveActivity, "OTP Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            otp = loginResponse.otp.toString()
+          } else {
+            val errorMsg = loginResponse?.error_msg ?: "Unknown error"
+            Toast.makeText(this@SignUoTwelveActivity, errorMsg, Toast.LENGTH_SHORT).show()
+          }
+        } else {
+          // Handle the case when the response is not successful
+          if (response.code() == 400) {
+            Toast.makeText(this@SignUoTwelveActivity, "User does not exist", Toast.LENGTH_SHORT).show()
+          } else {
+            val errorBody = response.errorBody()?.string()
+            if (errorBody != null) {
+              try {
+                val jsonObject = JSONObject(errorBody)
+                val success = jsonObject.optString("success")
+                val errorMsg = jsonObject.optString("error_msg")
+                val response = jsonObject.optJSONObject("response")
+
+                if (success == "false") {
+                  val mobileNumberErrors = response?.optJSONArray("mobile_number")
+                  val errorMessages = mobileNumberErrors?.join(", ") ?: errorMsg
+
+                  Toast.makeText(this@SignUoTwelveActivity, errorMessages, Toast.LENGTH_SHORT).show()
+                } else {
+                  Toast.makeText(this@SignUoTwelveActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
+                }
+              } catch (e: JSONException) {
+                Toast.makeText(this@SignUoTwelveActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
+              }
+            } else {
+              Toast.makeText(this@SignUoTwelveActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
+            }
+          }
+        }
+      }
+
+      override fun onFailure(call: Call<RequestSignUpResponse>, t: Throwable) {
+        binding.progressBar.visibility = View.GONE
+        Toast.makeText(this@SignUoTwelveActivity, "OTP Sending Failed: ${t.message}", Toast.LENGTH_SHORT).show()
+      }
+    })
+  }
     override fun onStop(): Unit {
       super.onStop()
       unregisterReceiver(otpViewOtpviewBroadcastReceiver)
@@ -184,6 +239,12 @@ class SignUoTwelveActivity :
 
         binding.progressBar.visibility=View.VISIBLE
       }
+
+      binding.txtResendOTP.setOnClickListener {
+        resendOtp(mobileNumber)
+        binding.progressBar.visibility =View.VISIBLE
+      }
+
     }
 
 
