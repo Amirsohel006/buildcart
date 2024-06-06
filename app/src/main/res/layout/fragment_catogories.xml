@@ -21,7 +21,6 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarToolbar"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 app:contentInsetStart="0dp"
                 style="@style/groupStylegray_800">
@@ -77,7 +76,7 @@
                             android:scaleType="centerCrop"
                             circular="@{true}"
                             imageRes="@{@drawable/img_ellipse12}"
-                            tools:ignore="ContentDescription" tools:src="@drawable/img_ellipse12"/>
+                            tools:ignore="ContentDescription" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>

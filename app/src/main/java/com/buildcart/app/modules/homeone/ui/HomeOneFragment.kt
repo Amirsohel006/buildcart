@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseFragment
 import com.buildcart.app.data.ProductResponseItem
+import com.buildcart.app.data.ProfileDataResponse
 import com.buildcart.app.data.SessionManager
 import com.buildcart.app.data.response.CategoriesResponse
 import com.buildcart.app.databinding.FragmentHomeOneBinding
@@ -24,7 +26,12 @@ import com.buildcart.app.modules.homeone.data.viewmodel.HomeOneViewModel
 import com.buildcart.app.modules.homeone.data.viewmodel.HomeOneViewModelFactory
 import com.buildcart.app.modules.mycart.ui.MyCartFragment
 import com.buildcart.app.modules.signuofifteen.ui.ProfileActivity
+import com.buildcart.app.service.APIInterface
 import com.buildcart.app.service.APIManager
+import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_home_one) {
 
@@ -37,13 +44,18 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
   private lateinit var sessionManager: SessionManager
 
 
+  private lateinit var apiInterface: APIInterface
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     sessionManager = SessionManager(requireActivity())
+    apiInterface = APIManager.apiInterface
     // Set the session manager
+
     viewModelHome.setSessionManager(SessionManager(requireContext()))
     setUpClicks()
+
+    getProfiledata()
     viewModelHome.fetchProductList()
     viewModelHome.fetchCategoryList()
     // Find and set click listener for txtViewAll
@@ -51,6 +63,11 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
     txtViewAll.setOnClickListener {
       val intentAllProducts = Intent(requireActivity(), AllProductsActivity::class.java)
       startActivity(intentAllProducts)
+    }
+
+    binding.imageEllipseProfile.setOnClickListener {
+      val i=Intent(requireActivity(),ProfileActivity::class.java)
+      startActivity(i)
     }
 
   }
@@ -177,6 +194,46 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
       }
     })
   }
+
+  fun getProfiledata(){
+
+    val accessToken=sessionManager.fetchAuthToken()
+
+    val authorization="Bearer $accessToken"
+    val call=apiInterface.getProfileDetails(authorization)
+    call.enqueue(object : Callback<ProfileDataResponse> {
+      override fun onResponse(call: Call<ProfileDataResponse>, response: Response<ProfileDataResponse>) {
+        if (response.isSuccessful) {
+
+          val loginResponse = response.body()
+          if (loginResponse != null) {
+            //Toast.makeText(this@ProfileActivity, "Profile Data Successfully Fetched", Toast.LENGTH_LONG).show()
+
+
+            binding.txtHiRahul.text=response.body()!!.response!!.fullName
+
+            val file=APIManager.getImageUrl(loginResponse.response!!.photo.toString())
+
+
+
+
+            Picasso.get().load(file).transform(ProfileActivity.CircleCrop()).placeholder(R.drawable.default_profile_background).into(binding.imageEllipseProfile)
+
+
+            //navigateToHomeActivity()
+          } else {
+            Toast.makeText(requireActivity(), "Profile Data fetching failed", Toast.LENGTH_SHORT).show()
+          }
+        } else {
+          Toast.makeText(requireActivity(), "Profile Data fetching Failed", Toast.LENGTH_SHORT).show()
+        }
+      }
+      override fun onFailure(call: Call<ProfileDataResponse>, t: Throwable) {
+        Toast.makeText(requireActivity(), "Profile Data fetching: ${t.message}", Toast.LENGTH_SHORT).show()
+      }
+    })
+  }
+
 
   companion object {
     const val TAG: String = "HOME_ONE_FRAGMENT"

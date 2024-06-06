@@ -28,7 +28,6 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 app:contentInsetStart="0dp"
-                android:visibility="gone"
                 style="@style/groupStylegray_800">
 
                 <LinearLayout

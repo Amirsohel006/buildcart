@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseActivity
 import com.buildcart.app.databinding.ActivitySignUoFourteenBinding
@@ -18,6 +19,8 @@ class SignUoFourteenActivity :
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.signUoFourteenVM = viewModel
+
+    window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
   }
 
   override fun setUpClicks(): Unit {

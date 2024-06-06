@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseFragment
+import com.buildcart.app.data.ProfileDataResponse
 import com.buildcart.app.data.SessionManager
 import com.buildcart.app.data.response.BuyAllProductsRequest
 import com.buildcart.app.databinding.FragmentMyCartBinding
@@ -22,11 +23,15 @@ import com.buildcart.app.modules.mycart.data.model.CartRepository
 import com.buildcart.app.modules.mycart.data.viewmodel.CartViewModelFactory
 import com.buildcart.app.modules.mycart.`data`.viewmodel.MyCartVM
 import com.buildcart.app.modules.responses.CompltedOrderResponse
+import com.buildcart.app.modules.signuofifteen.ui.ProfileActivity
+import com.buildcart.app.service.APIInterface
 import com.buildcart.app.service.APIManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.squareup.picasso.Picasso
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import kotlin.String
 import kotlin.Unit
@@ -38,11 +43,15 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
 
 
 
+  private lateinit var apiInterface: APIInterface
+
+
   private lateinit var sessionManager: SessionManager
   override fun onInitialized(): Unit {
     viewModelCart.navArguments = arguments
 
     sessionManager= SessionManager(requireActivity())
+    apiInterface = APIManager.apiInterface
     binding.myCartVM = viewModelCart
    // viewModelCart.setSessionManager(SessionManager(requireContext()))
   // viewModelCart.getCartProducts()
@@ -51,12 +60,18 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
 //    Log.e("Total Amount",totalPrices.toString())
 
 
+    getProfiledata()
 
     getMyStudioRequests()
 
 
     binding.btnProceedToPay.setOnClickListener {
       buyproducts()
+    }
+
+    binding.imageEllipseTwelve.setOnClickListener {
+      val i=Intent(requireActivity(),ProfileActivity::class.java)
+      startActivity(i)
     }
   }
 
@@ -101,6 +116,45 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
     })
   }
 
+
+  fun getProfiledata(){
+
+    val accessToken=sessionManager.fetchAuthToken()
+
+    val authorization="Bearer $accessToken"
+    val call=apiInterface.getProfileDetails(authorization)
+    call.enqueue(object : Callback<ProfileDataResponse> {
+      override fun onResponse(call: Call<ProfileDataResponse>, response: Response<ProfileDataResponse>) {
+        if (response.isSuccessful) {
+
+          val loginResponse = response.body()
+          if (loginResponse != null) {
+            //Toast.makeText(this@ProfileActivity, "Profile Data Successfully Fetched", Toast.LENGTH_LONG).show()
+
+
+
+
+            val file=APIManager.getImageUrl(loginResponse.response!!.photo.toString())
+
+
+
+
+            Picasso.get().load(file).transform(ProfileActivity.CircleCrop()).placeholder(R.drawable.default_profile_background).into(binding.imageEllipseTwelve)
+
+
+            //navigateToHomeActivity()
+          } else {
+            Toast.makeText(requireActivity(), "Profile Data fetching failed", Toast.LENGTH_SHORT).show()
+          }
+        } else {
+          Toast.makeText(requireActivity(), "Profile Data fetching Failed", Toast.LENGTH_SHORT).show()
+        }
+      }
+      override fun onFailure(call: Call<ProfileDataResponse>, t: Throwable) {
+        Toast.makeText(requireActivity(), "Profile Data fetching: ${t.message}", Toast.LENGTH_SHORT).show()
+      }
+    })
+  }
   override fun setUpClicks(): Unit {
     binding.linearRowplus.setOnClickListener {
       val destIntent = HomeOneContainerActivity.getIntent(requireActivity(), null)
@@ -121,7 +175,7 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
     val serviceGenerator= APIManager.apiInterface
     val accessToken=sessionManager.fetchAuthToken()
     val authorization="Bearer $accessToken"
-    val id="2"
+    val id="6"
     val mode="cod"
     val code=""
 

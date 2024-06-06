@@ -46,34 +46,34 @@ import kotlin.Unit
 class SignUoElevenActivity :
     BaseActivity<ActivitySignUoElevenBinding>(R.layout.activity_sign_uo_eleven) {
   private val viewModel: SignUoElevenVM by viewModels<SignUoElevenVM>()
-  lateinit var profileImageView:ImageView
-  lateinit var profileAddIcon:ImageView
-  lateinit var fullNameEt:EditText
-  lateinit var termsAndConditionsEt:CheckBox
-  lateinit var emailET:EditText
-  lateinit var etMobileNumber:TextView
-  lateinit var cityEt:EditText
-  lateinit var pincodeEt:EditText
-  lateinit var addProfile:ImageView
+  lateinit var profileImageView: ImageView
+  lateinit var profileAddIcon: ImageView
+  lateinit var fullNameEt: EditText
+  lateinit var termsAndConditionsEt: CheckBox
+  lateinit var emailET: EditText
+  lateinit var etMobileNumber: TextView
+  lateinit var cityEt: EditText
+  lateinit var pincodeEt: EditText
+  lateinit var addProfile: ImageView
 
-  private lateinit var file:File
+  private lateinit var file: File
 
 
   private val pickImage = 100
-  private lateinit var imageUri: Uri
+  private var imageUri: Uri? = null
 
   private lateinit var apiInterface: APIInterface
 
   var multipartImage: MultipartBody.Part? = null
 
 
-  var fullName:String=""
-  var email:String=""
-  var city:String=""
-  var pincode:String=""
-  var mobileNumber:String=""
-  var termsAndConditions:Boolean=false
-  var profileImage:File?=null
+  var fullName: String = ""
+  var email: String = ""
+  var city: String = ""
+  var pincode: String = ""
+  var mobileNumber: String = ""
+  var termsAndConditions: Boolean = false
+  var profileImage: File? = null
 
   private lateinit var sessionManager: SessionManager
 
@@ -81,42 +81,61 @@ class SignUoElevenActivity :
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.signUoElevenVM = viewModel
 
-    sessionManager= SessionManager(this)
+    sessionManager = SessionManager(this)
 
-    mobileNumber=intent.getStringExtra("mobile_number").toString()
-    apiInterface=APIManager.apiInterface
-    profileImageView=binding.imageViewEllipseOne
-    profileAddIcon=binding.imageVector
-    fullNameEt=binding.etFullName
-    termsAndConditionsEt=binding.checkboxTermsAndConditions
-    emailET=binding.etEmailId
-    etMobileNumber=binding.etMobileNumber
-    cityEt=binding.etCity
-    pincodeEt=binding.etPincode
-    addProfile=binding.imageVector
-    etMobileNumber.text=mobileNumber
+    mobileNumber = intent.getStringExtra("mobile_number").toString()
+    apiInterface = APIManager.apiInterface
+    profileImageView = binding.imageViewEllipseOne
+    profileAddIcon = binding.imageVector
+    fullNameEt = binding.etFullName
+    termsAndConditionsEt = binding.checkboxTermsAndConditions
+    emailET = binding.etEmailId
+    etMobileNumber = binding.etMobileNumber
+    cityEt = binding.etCity
+    pincodeEt = binding.etPincode
+    addProfile = binding.imageVector
+    etMobileNumber.text = mobileNumber
 
-    window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
+    window.statusBarColor = ContextCompat.getColor(this, R.color.gray_703)
 
   }
 
   override fun setUpClicks(): Unit {
     binding.btnComplete.setOnClickListener {
-      fullName=fullNameEt.text.toString()
-      email=emailET.text.toString()
-      termsAndConditions=termsAndConditionsEt.isChecked
-     // mobileNumber=etMobileNumber.text.toString()
-      city=cityEt.text.toString()
-      pincode=pincodeEt.text.toString()
+      fullName = fullNameEt.text.toString()
+      email = emailET.text.toString()
+      termsAndConditions = termsAndConditionsEt.isChecked
+      // mobileNumber=etMobileNumber.text.toString()
+      city = cityEt.text.toString()
+      pincode = pincodeEt.text.toString()
 
       //signUpUser(fullName,mobileNumber,city,pincode,profileImage,email,termsAndConditions)
 
-
-      signUp()
-
-      binding.progresBar.visibility=View.VISIBLE
-
+// Validation checks
+      if (fullName.length >= 6) {
+        Toast.makeText(this, "Full name should be less than 6 characters", Toast.LENGTH_SHORT)
+          .show()
+      } else if (!email.endsWith("@gmail.com")) {
+        Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
+      } else if (city.isBlank()) {
+        Toast.makeText(this, "Please enter the city", Toast.LENGTH_SHORT).show()
+      } else if (pincode.length != 6) {
+        Toast.makeText(this, "Please enter a valid pin-code", Toast.LENGTH_SHORT).show()
+      } else if (!termsAndConditions) {
+        Toast.makeText(this, "You must accept the terms and conditions", Toast.LENGTH_SHORT).show()
+      } else if (imageUri == null) {
+        Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
+      } else {
+        // All validations passed
+        signUp()
+        binding.progresBar.visibility = View.VISIBLE
+      }
     }
+
+
+
+
+
 
 
     binding.imageVector.setOnClickListener {
@@ -135,8 +154,8 @@ class SignUoElevenActivity :
       imageUri = data?.data!!
       profileImageView.setImageURI(imageUri)
       addProfile.visibility=View.GONE
-      val selectedFileURI: Uri =imageUri
-      file = getFile(this, imageUri)
+      val selectedFileURI: Uri = imageUri as Uri
+      file = getFile(this, imageUri!!)
       //file = File(selectedFileURI.path.toString())
       Log.d("", "File : " + file.name)
       //uploadedFileName = file.toString()

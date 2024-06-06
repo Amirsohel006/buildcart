@@ -1,12 +1,15 @@
 package com.buildcart.app.modules.home.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.buildcart.app.R
 import com.buildcart.app.databinding.RowHomeBinding
 import com.buildcart.app.modules.home.`data`.model.HomeRowModel
+import com.buildcart.app.modules.signuoone.ui.SignUoOneActivity
 import kotlin.Int
 import kotlin.collections.List
 
@@ -27,7 +30,7 @@ class HomeAdapter(
     holder.binding.homeRowModel = homeRowModel
   }
 
-  override fun getItemCount(): Int = 12
+  override fun getItemCount(): Int = 6
   // TODO uncomment following line after integration with data source
   // return list.size
 
@@ -55,12 +58,11 @@ class HomeAdapter(
     val binding: RowHomeBinding = RowHomeBinding.bind(itemView)
     init {
       binding.btnAddToCart.setOnClickListener {
-        // TODO replace with value from datasource
-        clickListener?.onItemClick(it, adapterPosition, HomeRowModel())
+        val  i=Intent(itemView.context,SignUoOneActivity::class.java)
+        itemView.context.startActivity(i)
       }
       binding.linearColumnrectangle105.setOnClickListener {
-        // TODO replace with value from datasource
-        clickListener?.onItemClick(it, adapterPosition, HomeRowModel())
+        Toast.makeText(itemView.context,"Please Sign-up or Login To Access All the products",Toast.LENGTH_LONG).show()
       }
     }
   }

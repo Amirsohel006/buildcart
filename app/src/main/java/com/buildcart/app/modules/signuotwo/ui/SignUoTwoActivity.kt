@@ -23,6 +23,8 @@ import com.buildcart.app.modules.signuotwo.`data`.viewmodel.SignUoTwoVM
 import com.buildcart.app.service.APIInterface
 import com.buildcart.app.service.APIManager
 import com.google.android.gms.auth.api.phone.SmsRetriever
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,6 +47,7 @@ class SignUoTwoActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activi
 
   private var mobileNumber:String=""
   private var otp:String=""
+  private var referral_code:String=""
 
 
   val getActivityResult: ActivityResultLauncher<Intent> =
@@ -65,6 +68,7 @@ class SignUoTwoActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activi
       mobileNumber=intent.getStringExtra("mobile_number").toString()
       otp=intent.getStringExtra("otp").toString()
 
+      referral_code=intent.getStringExtra("referral_code").toString()
       binding.txtLanguage.text=mobileNumber
       otpEditText1=findViewById(R.id.viewOTP1)
       otpEditText2=findViewById(R.id.viewOTP2)
@@ -109,6 +113,11 @@ class SignUoTwoActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activi
           Toast.makeText(this,"Please Enter Correct OTP", Toast.LENGTH_SHORT).show()
         }
 
+        binding.progressBar.visibility=View.VISIBLE
+      }
+
+      binding.txtResendOTP.setOnClickListener {
+        resend_otp(mobileNumber, referral_code )
         binding.progressBar.visibility=View.VISIBLE
       }
     }
@@ -190,6 +199,49 @@ class SignUoTwoActivity : BaseActivity<ActivitySignUoTwoBinding>(R.layout.activi
       })
     }
 
+
+
+  fun resend_otp(mobileNumber: String?, referralCode: String?) {
+    val call = apiInterface.signUpRequestOTP(mobileNumber, referralCode)
+    call.enqueue(object : Callback<RequestSignUpResponse> {
+      override fun onResponse(call: Call<RequestSignUpResponse>, response: Response<RequestSignUpResponse>) {
+        binding.progressBar.visibility = View.GONE
+        if (response.isSuccessful) {
+          val loginResponse = response.body()
+          if (loginResponse != null) {
+            Toast.makeText(this@SignUoTwoActivity, "OTP Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            otp = loginResponse.otp.toString()
+
+          } else {
+            Toast.makeText(this@SignUoTwoActivity, "OTP Sending failed", Toast.LENGTH_SHORT).show()
+          }
+        } else {
+          // Handle the case when the response is not successful
+          if (response.code() == 400) {
+            val errorBody = response.errorBody()?.string()
+            if (errorBody != null) {
+              try {
+                val jsonObject = JSONObject(errorBody)
+                val errorMsg = jsonObject.optString("error_msg", "Invalid Referral Code ")
+                Toast.makeText(this@SignUoTwoActivity, errorMsg, Toast.LENGTH_SHORT).show()
+              } catch (e: JSONException) {
+                Toast.makeText(this@SignUoTwoActivity, "Error parsing error message", Toast.LENGTH_SHORT).show()
+              }
+            } else {
+              Toast.makeText(this@SignUoTwoActivity, "Unknown error occurred", Toast.LENGTH_SHORT).show()
+            }
+          } else {
+            Toast.makeText(this@SignUoTwoActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
+          }
+        }
+      }
+
+      override fun onFailure(call: Call<RequestSignUpResponse>, t: Throwable) {
+        binding.progressBar.visibility = View.GONE
+        Toast.makeText(this@SignUoTwoActivity, "OTP Sending Failed: ${t.message}", Toast.LENGTH_SHORT).show()
+      }
+    })
+  }
 
   fun navigateToSignUpFormActivity(){
     val destIntent = SignUoElevenActivity.getIntent(this, null)

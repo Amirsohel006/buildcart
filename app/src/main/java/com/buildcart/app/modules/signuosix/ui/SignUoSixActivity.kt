@@ -13,12 +13,15 @@ import com.buildcart.app.appcomponents.base.BaseActivity
 import com.buildcart.app.data.SessionManager
 import com.buildcart.app.data.response.RequestSignUpResponse
 import com.buildcart.app.databinding.ActivitySignUoSixBinding
+import com.buildcart.app.modules.home.ui.HomeActivity
 import com.buildcart.app.modules.signuoone.ui.SignUoOneActivity
 import com.buildcart.app.modules.signuosix.`data`.viewmodel.SignUoSixVM
 import com.buildcart.app.modules.signuotwelve.ui.SignUoTwelveActivity
 import com.buildcart.app.modules.signuotwo.ui.SignUoTwoActivity
 import com.buildcart.app.service.APIInterface
 import com.buildcart.app.service.APIManager
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,45 +64,75 @@ class SignUoSixActivity : BaseActivity<ActivitySignUoSixBinding>(R.layout.activi
       startActivity(destIntent)
     }
     binding.btnLogin.setOnClickListener {
-//      val destIntent = SignUoTwelveActivity.getIntent(this, null)
-//      startActivity(destIntent)
-
       mobileNumber=etMobileNumber.text.toString()
-      if (mobileNumber.isBlank()){
-        Toast.makeText(this@SignUoSixActivity, "Please Enter the Mobile Number", Toast.LENGTH_SHORT).show()}
+      if (mobileNumber.isBlank()  || mobileNumber.length < 10){
+        Toast.makeText(this@SignUoSixActivity, "Please Enter Valid Mobile Number", Toast.LENGTH_SHORT).show()}
       else{
-      makeSignUpRequestOTP(mobileNumber)}
+      makeSignUpRequestOTP(mobileNumber)
+      }
 
       binding.progressBar.visibility= View.VISIBLE
+    }
+
+    binding.txtSkipfornow.setOnClickListener {
+      val destIntent = HomeActivity.getIntent(this, null)
+      startActivity(destIntent)
     }
   }
 
   fun makeSignUpRequestOTP(mobileNumber: String?) {
-    val call=apiInterface.verifyLoginOTP(mobileNumber)
+    val call = apiInterface.verifyLoginOTP(mobileNumber)
     call.enqueue(object : Callback<RequestSignUpResponse> {
       override fun onResponse(call: Call<RequestSignUpResponse>, response: Response<RequestSignUpResponse>) {
+        binding.progressBar.visibility = View.GONE
         if (response.isSuccessful) {
-          binding.progressBar.visibility= View.GONE
           val loginResponse = response.body()
-          if (loginResponse != null) {
-            Toast.makeText(this@SignUoSixActivity, "Otp Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
-            otp=loginResponse.otp.toString()
+          if (loginResponse != null && loginResponse.success == "true") {
+            Toast.makeText(this@SignUoSixActivity, "OTP Sent Successfully: ${loginResponse.otp}", Toast.LENGTH_LONG).show()
+            otp = loginResponse.otp.toString()
             navigateToOTPActivity()
           } else {
-            Toast.makeText(this@SignUoSixActivity, "OTP Sending failed", Toast.LENGTH_SHORT).show()
-            binding.progressBar.visibility= View.GONE
+            val errorMsg = loginResponse?.error_msg ?: "Unknown error"
+            Toast.makeText(this@SignUoSixActivity, errorMsg, Toast.LENGTH_SHORT).show()
           }
         } else {
-          Toast.makeText(this@SignUoSixActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
-          binding.progressBar.visibility= View.GONE
+          // Handle the case when the response is not successful
+          if (response.code() == 400) {
+            Toast.makeText(this@SignUoSixActivity, "User does not exist", Toast.LENGTH_SHORT).show()
+          } else {
+            val errorBody = response.errorBody()?.string()
+            if (errorBody != null) {
+              try {
+                val jsonObject = JSONObject(errorBody)
+                val success = jsonObject.optString("success")
+                val errorMsg = jsonObject.optString("error_msg")
+                val response = jsonObject.optJSONObject("response")
+
+                if (success == "false") {
+                  val mobileNumberErrors = response?.optJSONArray("mobile_number")
+                  val errorMessages = mobileNumberErrors?.join(", ") ?: errorMsg
+
+                  Toast.makeText(this@SignUoSixActivity, errorMessages, Toast.LENGTH_SHORT).show()
+                } else {
+                  Toast.makeText(this@SignUoSixActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
+                }
+              } catch (e: JSONException) {
+                Toast.makeText(this@SignUoSixActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
+              }
+            } else {
+              Toast.makeText(this@SignUoSixActivity, "OTP Sending Failed", Toast.LENGTH_SHORT).show()
+            }
+          }
         }
       }
+
       override fun onFailure(call: Call<RequestSignUpResponse>, t: Throwable) {
+        binding.progressBar.visibility = View.GONE
         Toast.makeText(this@SignUoSixActivity, "OTP Sending Failed: ${t.message}", Toast.LENGTH_SHORT).show()
-        binding.progressBar.visibility= View.GONE
       }
     })
   }
+
 
 
   fun navigateToOTPActivity(){

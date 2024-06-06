@@ -7,7 +7,20 @@
         android:id="@+id/linearSignUoEleven"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        android:orientation="vertical"
+        style="@style/groupStylewhite_A700">
+
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         <FrameLayout android:id="@+id/frameStackellipseone"
             android:layout_gravity="center_horizontal"
             android:layout_height="@dimen/_161pxv"
@@ -170,5 +183,9 @@
             android:paddingTop="@dimen/_16pxv" android:singleLine="true"
             android:text="@string/lbl_complete"
             android:textAllCaps="false" style="@style/btnSolidRounded_3" tools:text="@string/lbl_complete"/>
+
+        </LinearLayout>
+
+        </ScrollView>
     </LinearLayout>
 </layout>
