@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -36,11 +37,11 @@ class AddressAdapter(  var list: List<AddressResponse> ): RecyclerView.Adapter<A
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // ...
 
-              val locality:TextView=itemView.findViewById(R.id.txtLanguage)
-       val flatno:TextView=itemView.findViewById(R.id.txtLanguage1)
-      val city:TextView=itemView.findViewById(R.id.txtLanguage2)
+        val locality:TextView=itemView.findViewById(R.id.txtLanguage)
+        val flatno:TextView=itemView.findViewById(R.id.txtLanguage1)
+        val city:TextView=itemView.findViewById(R.id.txtLanguage2)
         val state:TextView=itemView.findViewById(R.id.txtLanguage3)
-       val pincode:TextView=itemView.findViewById(R.id.txtLanguage4)
+        val pincode:TextView=itemView.findViewById(R.id.txtLanguage4)
 
         val radioButton: RadioButton = itemView.findViewById(R.id.viewEllipseSix)
         val itemContainer: View = itemView.findViewById(R.id.container) // Replace with your container ID
@@ -59,29 +60,24 @@ class AddressAdapter(  var list: List<AddressResponse> ): RecyclerView.Adapter<A
             customerName.text=postModel.fullName
             phoneNumber.text=postModel.mobileNumber
 
+            radioButton.isChecked = postModel.id == selectedAddressId
+
             // Set an OnClickListener on the itemContainer
-            itemContainer.setOnClickListener {
-                // Toggle the RadioButton state when the container is clicked
-               // radioButton.isChecked = !radioButton.isChecked
+            radioButton.setOnClickListener {
+                    selectedAddressId = postModel.id!!
 
-                // Update the selected position
-              //  selectedPosition = if (radioButton.isChecked) position else -1
-
-                selectedAddressId = postModel.id!!
-                // Notify the adapter that data has changed
-                notifyDataSetChanged()
             }
 
-             //Set an OnCheckedChangeListener to prevent radiobutton from being toggled directly
-//            radioButton.setOnCheckedChangeListener { _, isChecked ->
-//                if (isChecked) {
-//                    // Update the selected position
-//                    selectedPosition = position
-//                    // Notify the adapter that data has changed
-//                    notifyDataSetChanged()
+
+            itemContainer.setOnClickListener {
+                selectedAddressId=postModel.id!!
+            }
+//            radioButton.setOnClickListener {
+//                    selectedAddressId = postModel.id!!
 //
-//                }
 //            }
+
+
         }
     }
 
@@ -90,46 +86,5 @@ class AddressAdapter(  var list: List<AddressResponse> ): RecyclerView.Adapter<A
     fun getSelectedPosition(): Int {
         return selectedAddressId
     }
-//    inner class ViewHolder( view: View): RecyclerView.ViewHolder(view){
-////        val name: TextView =itemView.findViewById(R.id.txtSudeep)
-////        val actor: TextView =itemView.findViewById(R.id.txtActor)
-////        val location: TextView =itemView.findViewById(R.id.txtBangalore)
-////        val image: ImageView =itemView.findViewById(R.id.imageRectangleNineteen)
-////        var artistId=-1
-//
-//        val radioButton: RadioButton = itemView.findViewById(R.id.viewEllipseSix)
-//
-//        val locality:TextView=itemView.findViewById(R.id.txtLanguage)
-//        val flatno:TextView=itemView.findViewById(R.id.txtLanguage1)
-//        val city:TextView=itemView.findViewById(R.id.txtLanguage2)
-//        val state:TextView=itemView.findViewById(R.id.txtLanguage3)
-//        val pincode:TextView=itemView.findViewById(R.id.txtLanguage4)
-//
-//
-//        // Define the corner radius in pixels (converted from dp)
-//        val cornerRadiusInPixels = 15 // Change to your dimension resource
-//
-//        // Create a RequestOptions object with the RoundedCorners transformation
-//        val requestOptions = RequestOptions()
-//            .transform(RoundedCorners(cornerRadiusInPixels))
-//        fun bindView(postModel: AddressResponse, position: Int) {
-//
-//            radioButton.isChecked = position == selectedPosition
-//            locality.text=postModel.locality
-//            flatno.text=postModel.flat_no
-//            city.text=postModel.city
-//            state.text=postModel.state
-//            pincode.text=postModel.postal_code
-//
-//            radioButton.setOnCheckedChangeListener { _, isChecked ->
-//                if (isChecked) {
-//                    // Update the selected position
-//                    selectedPosition = position
-//                    // Notify the adapter that data has changed
-//                    notifyDataSetChanged()
-//                }
-//            }
-//
-//        }
-//    }
+
 }

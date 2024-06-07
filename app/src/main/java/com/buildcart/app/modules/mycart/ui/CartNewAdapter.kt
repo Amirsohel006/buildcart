@@ -99,6 +99,7 @@ class CartNewAdapter (private val cartItems: List<CartProductItem>,
 
                 if (imageUrl != null) {
                     val file = APIManager.getImageUrl(imageUrl)
+                    Log.d("All Images Retrieved From Anything ",file)
                     Picasso.get().load(file).into(imageView)
                 } else {
                     // Set a placeholder image if both img1 and img2 are null
