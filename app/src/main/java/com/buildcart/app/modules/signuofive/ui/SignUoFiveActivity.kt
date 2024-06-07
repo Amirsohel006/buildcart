@@ -33,14 +33,20 @@ class SignUoFiveActivity : BaseActivity<ActivitySignUoFiveBinding>(R.layout.acti
 
     binding.signUoFiveVM = viewModel
 
+    val totalamount=intent.getStringExtra("total_amount")
+
     getAllAddresses()
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
   }
 
+
+
   override fun setUpClicks(): Unit {
     binding.btnNext.setOnClickListener {
       val destIntent = SignUoSeventeenActivity.getIntent(this, null)
+      val selectedPosition = (binding.recyclerview.adapter as AddressAdapter).getSelectedPosition()
+      destIntent.putExtra("id",selectedPosition)
       startActivity(destIntent)
     }
     binding.imageArrowleft.setOnClickListener {
@@ -71,9 +77,9 @@ class SignUoFiveActivity : BaseActivity<ActivitySignUoFiveBinding>(R.layout.acti
           recyclerView.apply {
 
             layoutManager= LinearLayoutManager(this@SignUoFiveActivity, LinearLayoutManager.VERTICAL,false)
-            val ListAdapterForProducts =
+            val listAdapterForProducts =
               AddressAdapter(response.body()!!)
-            binding.recyclerview.adapter = ListAdapterForProducts
+            binding.recyclerview.adapter = listAdapterForProducts
           }
         }
       }
@@ -85,6 +91,9 @@ class SignUoFiveActivity : BaseActivity<ActivitySignUoFiveBinding>(R.layout.acti
       }
     })
   }
+
+
+
   companion object {
     const val TAG: String = "SIGN_UO_FIVE_ACTIVITY"
 

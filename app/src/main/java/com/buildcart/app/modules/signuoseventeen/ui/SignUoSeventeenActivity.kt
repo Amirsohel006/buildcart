@@ -20,6 +20,11 @@ class SignUoSeventeenActivity :
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.signUoSeventeenVM = viewModel
+
+
+    val id=intent.getIntExtra("id",-1)
+
+
     window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
   }
 

@@ -8,6 +8,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.PagerAdapter
 import com.buildcart.app.R
 import com.buildcart.app.appcomponents.base.BaseActivity
 import com.buildcart.app.data.ProductDataResponse
@@ -52,31 +55,21 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
   var file:String=""
 
   var productId:String=""
- // private val imageUri: Uri = Uri.parse("android.resource://com.buildcart.app/drawable/img_image5")
 
 
-//  private val imageSliderSliderrectangle105Items: ArrayList<ImageSliderSliderrectangle105Model> =
-//      arrayListOf(ImageSliderSliderrectangle105Model(imageRectangle105 =
-//  imageUri.toString()),ImageSliderSliderrectangle105Model(imageRectangle105 =
-//  imageUri.toString()))
+  private val imageSliderSliderrectangle105Items: MutableList<ImageSliderSliderrectangle105Model> = mutableListOf()
 
-
-  private val imageSliderSliderrectangle105Items: ArrayList<ImageSliderSliderrectangle105Model> by lazy {
-    // Initialize imageUri after assigning a value to the image property
-    imageUri = Uri.parse(image)
-
-    // Initialize the list using the initialized imageUri
-    arrayListOf(
-      ImageSliderSliderrectangle105Model(imageRectangle105 = imageUri.toString()),
-      ImageSliderSliderrectangle105Model(imageRectangle105 = imageUri.toString())
-    )
-  }
 
 
   private val viewModel: ProductVM by viewModels<ProductVM>()
 
 
   private lateinit var sessionManager:SessionManager
+  private lateinit var handler: Handler
+  private lateinit var runnable: Runnable
+  private var currentPage = 0
+
+
 
   override fun onInitialized(): Unit {
 
@@ -88,43 +81,11 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
     image=file
 
-//    Log.e("System Image",image.toString())
-//    binding.indicatorGroup117.updateIndicatorCounts(binding.imageSliderSliderrectangle105.indicatorCount)
-//    val listrectangle105OneAdapter =
-//    Listrectangle105OneAdapter(viewModel.listrectangle105OneList.value?:mutableListOf())
 
-
-
-//    val sliderrectanglefiftysixAdapter =
-//      Sliderrectangle105Adapter(imageSliderSliderrectangle105Items,true)
-//    binding.imageSliderSliderrectangle105.adapter = sliderrectanglefiftysixAdapter
-//    binding.imageSliderSliderrectangle105.onIndicatorProgress = { selectingPosition,
-//                                                                       progress ->
-//      binding.indicatorGroup117.onPageScrolled(selectingPosition, progress)
-//    }
-//    binding.recyclerListrectangle105One.adapter = listrectangle105OneAdapter
-//    listrectangle105OneAdapter.setOnItemClickListener(
-//    object : Listrectangle105OneAdapter.OnItemClickListener {
-//      override fun onItemClick(view:View, position:Int, item : Listrectangle105OneRowModel) {
-//        onClickRecyclerListrectangle105One(view, position, item)
-//      }
-//    }
-//    )
-//
-//    viewModel.listrectangle105OneList.observe(this) {
-//      listrectangle105OneAdapter.updateData(it)
-//    }
 
     val listrectangle105FourAdapter =
     Listrectangle105FourAdapter(viewModel.listrectangle105FourList.value?:mutableListOf())
-//    binding.recyclerListrectangle105Four.adapter = listrectangle105FourAdapter
-//    listrectangle105FourAdapter.setOnItemClickListener(
-//    object : Listrectangle105FourAdapter.OnItemClickListener {
-//      override fun onItemClick(view:View, position:Int, item : Listrectangle105FourRowModel) {
-//        onClickRecyclerListrectangle105Four(view, position, item)
-//      }
-//    }
-//    )
+
 
     viewModel.listrectangle105FourList.observe(this) {
       listrectangle105FourAdapter.updateData(it)
@@ -141,6 +102,17 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
 
     window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
+    handler = Handler(Looper.getMainLooper())
+    runnable = object : Runnable {
+      override fun run() {
+        if (imageSliderSliderrectangle105Items.isNotEmpty()) {
+          currentPage = (currentPage + 1) % imageSliderSliderrectangle105Items.size
+          binding.imageSliderSliderrectangle105.setCurrentItem(currentPage, true)
+          handler.postDelayed(this, 2000) // Slide every 2 seconds
+        }
+      }
+    }
+
   }
 
 
@@ -170,23 +142,11 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
           binding.txtPrice.text=details[0].sellingPrice.toString()
 
-//          val imageUrl = details[0].productGalleries[0].image
-//
-//// Check if the image URL is empty and set a default image if it is
-//          val file = if (imageUrl.isNullOrEmpty()) {
-//            // Replace with your default image resource
-//            R.drawable.default_image
-//          } else {
-//            APIManager.getImageUrl(imageUrl)
-//          }
-//
-//          Glide.with(this@ProductActivity)
-//            .load(file)
-//            .placeholder(R.drawable.default_image) // Replace with your placeholder image resource
-//            .error(R.drawable.default_image) // Replace with your error image resource
-//            .into(binding.imageSliderSliderrectangle105)
 
+          val imageUrls = details[0].productGalleries.map { it.image }
 
+          Log.d("imageURLSOfAll",imageUrls.toString())
+          updateImageSliderItems(imageUrls)
         }
       }
 
@@ -200,6 +160,22 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
     })
   }
 
+
+  private fun updateImageSliderItems(imageUrls: List<String?>) {
+    imageSliderSliderrectangle105Items.clear()
+    imageUrls.forEach { imageUrl ->
+      val fullImageUrl = APIManager.getImageUrl(imageUrl!!)
+
+      imageSliderSliderrectangle105Items.add(ImageSliderSliderrectangle105Model(imageRectangle105 = fullImageUrl))
+    }
+    setupImageSlider()
+  }
+
+  private fun setupImageSlider() {
+    val adapter = ViewPagerAdapter(this,imageSliderSliderrectangle105Items)
+    binding.imageSliderSliderrectangle105.adapter = adapter
+    handler.post(runnable)
+  }
 
 
 
@@ -258,15 +234,7 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
 
   }
 
-//  override fun onPause(): Unit {
-//    binding.imageSliderSliderrectangle105.pauseAutoScroll()
-//    super.onPause()
-//  }
-//
-//  override fun onResume(): Unit {
-//    super.onResume()
-//    binding.imageSliderSliderrectangle105.resumeAutoScroll()
-//  }
+
 
   override fun setUpClicks(): Unit {
 

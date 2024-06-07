@@ -24,6 +24,7 @@ import com.buildcart.app.modules.mycart.data.viewmodel.CartViewModelFactory
 import com.buildcart.app.modules.mycart.`data`.viewmodel.MyCartVM
 import com.buildcart.app.modules.responses.CompltedOrderResponse
 import com.buildcart.app.modules.signuofifteen.ui.ProfileActivity
+import com.buildcart.app.modules.signuofive.ui.SignUoFiveActivity
 import com.buildcart.app.service.APIInterface
 import com.buildcart.app.service.APIManager
 import com.bumptech.glide.Glide
@@ -73,6 +74,7 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
       val i=Intent(requireActivity(),ProfileActivity::class.java)
       startActivity(i)
     }
+
   }
 
 
@@ -96,15 +98,13 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
 
         if((customerResponse!=null)&&(customerResponse.success=="true")){
           val studioModel=customerResponse.response
-          if (studioModel != null) {
-            binding.recyclerView.apply {
-              layoutManager=
-                LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
-              val adapter=CartNewAdapter(studioModel,sessionManager)
-              binding.recyclerView.adapter=adapter
-              binding.txtPriceThree.text=adapter.calculateTotalPrices().toString()
-              binding.txtPriceFour.text=adapter.calculateTotalPrices().toString()
-            }
+          binding.recyclerView.apply {
+            layoutManager=
+              LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL,false)
+            val adapter=CartNewAdapter(studioModel,sessionManager)
+            binding.recyclerView.adapter=adapter
+            binding.txtPriceThree.text=adapter.calculateTotalPrices().toString()
+            binding.txtPriceFour.text=adapter.calculateTotalPrices().toString()
           }
 
         }
@@ -166,6 +166,11 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
       // Open Frame311Activity -MenuDrawer Activity when ImageVector is clicked
       val intent = Intent(activity, Frame311Activity::class.java)
       startActivity(intent)
+    }
+
+    binding.btnProceedToPay.setOnClickListener {
+      val i=Intent(requireActivity(),SignUoFiveActivity::class.java)
+      i.putExtra("total_amount",binding.txtPriceFour.text)
     }
   }
 

@@ -1,4 +1,4 @@
-package com.buildcart.app.modules.homeone.adapter
+package com.buildcart.app.modules
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -19,9 +19,8 @@ import com.buildcart.app.data.ProductResponseItem
 import com.buildcart.app.data.SessionManager
 import com.buildcart.app.data.response.FavrioteResponse
 import com.buildcart.app.databinding.RowHomeOneBinding
-import com.buildcart.app.modules.AddToFavriote
+import com.buildcart.app.modules.homeone.adapter.HomeOneAdapter
 import com.buildcart.app.modules.homeone.data.viewmodel.HomeOneViewModel
-import com.buildcart.app.modules.homeone.ui.ProductDetailsActivity
 import com.buildcart.app.modules.product.ui.ProductActivity
 import com.buildcart.app.service.APIManager
 import com.bumptech.glide.Glide
@@ -29,14 +28,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeOneAdapter(
+class HomeAdapterForProductActivity(
     private val dataList: MutableList<ProductResponseItem>,
     private val viewModel: HomeOneViewModel,
     private val sessionManager: SessionManager,
     private val sharedPreferences: SharedPreferences,
     private val context: Context
-) : RecyclerView.Adapter<HomeOneAdapter.HomeOneViewHolder>() {
-
+) : RecyclerView.Adapter<HomeAdapterForProductActivity.HomeOneViewHolder>() {
     private var itemClickListener: OnItemClickListener? = null
     //private var addToCartButtonText: String = "Add to Cart" // Default value
 
@@ -52,7 +50,7 @@ class HomeOneAdapter(
 
     override fun onBindViewHolder(holder: HomeOneViewHolder, position: Int) {
         holder.bind(dataList[position],position)
-       // holder.binding.btnAddToCart.text = addToCartButtonText
+        // holder.binding.btnAddToCart.text = addToCartButtonText
 
         val buttonText = if (dataList[position].isAddedToCart) {
             "Go to Cart"
@@ -161,7 +159,7 @@ class HomeOneAdapter(
         private fun handleAddToCartClick(position: Int) {
             val currentItem = dataList[position]
             viewModel.setSelectedProduct(currentItem)
-           // viewModel.onAddToCartClick(currentItem, position)
+            // viewModel.onAddToCartClick(currentItem, position)
             // Check if the item is already added to the cart
             if (!currentItem.isAddedToCart) {
                 // If not added, trigger the API call to add the product to the cart

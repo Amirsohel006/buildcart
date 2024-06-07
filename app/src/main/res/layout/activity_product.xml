@@ -49,29 +49,29 @@
             <LinearLayout android:id="@+id/linearColumnrectangle105"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent" android:orientation="vertical">
-                <ImageView
+                <androidx.viewpager.widget.ViewPager
                     android:gravity="end"
                     android:id="@+id/imageSliderSliderrectangle105"
                     android:layout_height="@dimen/_200pxv"
-                    android:layout_marginEnd="@dimen/_21pxh"
-                    android:layout_marginStart="@dimen/_21pxh"
+                    android:layout_marginEnd="@dimen/_2pxh"
+                    android:layout_marginStart="@dimen/_2pxh"
                     android:layout_width="match_parent"
                     app:autoScroll="true"
                     app:isInfinite="true"
                     app:scrollInterval="5000"/>
 
-                <com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator
-                    android:id="@+id/indicatorGroup117"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_14pxh"
-                    android:layout_marginStart="@dimen/_14pxh"
-                    android:layout_marginTop="@dimen/_12pxv"
-                    android:layout_width="wrap_content"
-                    app:drawable_normal="@drawable/indicator_unselected_bg_bluegray_100_radius_8"
-                    app:drawable_selected="@drawable/indicator_selected_bg_gray_804_radius_8"
-                    app:indicator_size="@dimen/_6pxh"
-                    app:indicator_spacing="@dimen/_4pxh"/>
+<!--                <com.asksira.loopingviewpager.indicator.CustomShapePagerIndicator-->
+<!--                    android:id="@+id/indicatorGroup117"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="@dimen/_14pxh"-->
+<!--                    android:layout_marginStart="@dimen/_14pxh"-->
+<!--                    android:layout_marginTop="@dimen/_12pxv"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    app:drawable_normal="@drawable/indicator_unselected_bg_bluegray_100_radius_8"-->
+<!--                    app:drawable_selected="@drawable/indicator_selected_bg_gray_804_radius_8"-->
+<!--                    app:indicator_size="@dimen/_6pxh"-->
+<!--                    app:indicator_spacing="@dimen/_4pxh"/>-->
                 <LinearLayout android:gravity="start"
                     android:id="@+id/linearRowdesigntiles"
                     android:layout_height="wrap_content"
