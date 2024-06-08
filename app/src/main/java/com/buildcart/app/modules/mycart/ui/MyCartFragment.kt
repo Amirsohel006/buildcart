@@ -66,9 +66,9 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
     getMyStudioRequests()
 
 
-    binding.btnProceedToPay.setOnClickListener {
-      buyproducts()
-    }
+//    binding.btnProceedToPay.setOnClickListener {
+//      buyproducts()
+//    }
 
     binding.imageEllipseTwelve.setOnClickListener {
       val i=Intent(requireActivity(),ProfileActivity::class.java)
@@ -170,46 +170,13 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
 
     binding.btnProceedToPay.setOnClickListener {
       val i=Intent(requireActivity(),SignUoFiveActivity::class.java)
-      i.putExtra("total_amount",binding.txtPriceFour.text)
+     // i.putExtra("total_amount",binding.txtPriceFour.text)
+      startActivity(i)
     }
   }
 
 
-  private fun buyproducts(){
 
-    val serviceGenerator= APIManager.apiInterface
-    val accessToken=sessionManager.fetchAuthToken()
-    val authorization="Bearer $accessToken"
-    val id="6"
-    val mode="cod"
-    val code=""
-
-    val request = BuyAllProductsRequest(
-      shipping_address_id = id,
-      mode_of_payment = mode
-    )
-    val call=serviceGenerator.buyallproducts(authorization,request)
-
-    call.enqueue(object : retrofit2.Callback<CompltedOrderResponse>{
-      @SuppressLint("SetTextI18n")
-      override fun onResponse(
-        call: Call<CompltedOrderResponse>,
-        response: Response<CompltedOrderResponse>
-      ) {
-        val customerResponse=response.body()
-
-        if(customerResponse!=null){
-          Toast.makeText(requireActivity(),"Product Buy Successful",Toast.LENGTH_SHORT).show()
-        }
-
-
-      }
-      override fun onFailure(call: Call<CompltedOrderResponse>, t: Throwable) {
-        t.printStackTrace()
-        Log.e("error", t.message.toString())
-      }
-    })
-  }
   companion object {
     const val TAG: String = "MY_CART_FRAGMENT"
 

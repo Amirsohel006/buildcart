@@ -195,10 +195,7 @@
                 android:layout_marginStart="@dimen/_14pxh"
                 android:layout_marginTop="@dimen/_12pxv"
                 android:layout_width="@dimen/_88pxh"
-                android:scaleType="fitXY"
-                cornerRadius="@{@dimen/_10pxh}"
-                imageRes="@{@drawable/img_mapsiclemap}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_mapsiclemap"/>
+                android:scaleType="fitXY" />
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearColumnlocation"
                 android:layout_height="wrap_content"
@@ -224,8 +221,8 @@
                         android:layout_marginStart="@dimen/_15pxh"
                         android:layout_weight="0.93"
                         android:layout_width="0dp"
-                        android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtLanguage}"
-                        style="@style/txtPoppinsregular14_1" tools:text="@string/msg_sgs_pg_2nd_st"/>
+                        android:text=""
+                        style="@style/txtPoppinsregular14_1" />
                 </LinearLayout>
                 <LinearLayout android:gravity="start"
                     android:id="@+id/linearRowvector"
@@ -247,8 +244,8 @@
                         android:layout_marginStart="@dimen/_11pxh"
                         android:layout_width="match_parent"
                         android:singleLine="true"
-                        android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtAshishB}"
-                        style="@style/txtPoppinsregular14_1" tools:text="@string/lbl_ashish_b"/>
+                        android:text=""
+                        style="@style/txtPoppinsregular14_1" />
                 </LinearLayout>
                 <LinearLayout android:gravity="start"
                     android:id="@+id/linearRowcall"
@@ -270,8 +267,8 @@
                         android:layout_marginStart="@dimen/_10pxh"
                         android:layout_width="match_parent"
                         android:singleLine="true"
-                        android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtMobileNo}"
-                        style="@style/txtPoppinsregular14_1" tools:text="@string/lbl_9487349483"/>
+                        android:text=""
+                        style="@style/txtPoppinsregular14_1" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -285,114 +282,15 @@
             android:singleLine="true"
             android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtProducts}"
             style="@style/txtPoppinssemibold14_3" tools:text="@string/lbl_products2"/>
-        <LinearLayout android:gravity="start"
-            android:id="@+id/linearRowuntitled1080"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_14pxh"
-            android:layout_marginStart="@dimen/_15pxh"
-            android:layout_marginTop="@dimen/_2pxv"
-            android:layout_width="match_parent"
-            android:orientation="horizontal" style="@style/groupStylewhite_3">
-            <FrameLayout android:id="@+id/frameStackuntitled1080"
-                android:layout_height="@dimen/_111pxv"
-                android:layout_marginBottom="@dimen/_13pxv"
-                android:layout_marginStart="@dimen/_8pxh"
-                android:layout_marginTop="@dimen/_8pxv"
-                android:layout_width="@dimen/_90pxh" style="@style/groupStylewhite_4">
-                <ImageView android:id="@+id/imageUntitled1080"
-                    android:layout_gravity="center"
-                    android:layout_height="@dimen/_106pxh"
-                    android:layout_marginEnd="@dimen/_5pxh"
-                    android:layout_marginStart="@dimen/_5pxh"
-                    android:layout_marginTop="@dimen/_4pxv"
-                    android:layout_width="@dimen/_80pxh"
-                    android:scaleType="fitXY"
-                    imageRes="@{@drawable/img_untitled1080}"
-                    tools:ignore="ContentDescription" tools:src="@drawable/img_untitled1080"/>
-            </FrameLayout>
-            <LinearLayout android:gravity="start"
-                android:id="@+id/linearColumnorderid23475"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_10pxv"
-                android:layout_marginEnd="@dimen/_85pxh"
-                android:layout_marginStart="@dimen/_20pxh"
-                android:layout_marginTop="@dimen/_4pxv"
-                android:layout_weight="0.58" android:layout_width="0dp" android:orientation="vertical">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtOrderID23475"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:singleLine="true"
-                    android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtOrderID23475}"
-                    style="@style/txtPoppinsmedium14" tools:text="@string/msg_order_id_23475"/>
-                <FrameLayout android:id="@+id/frameStackdesigntiles"
-                    android:layout_height="@dimen/_36pxv"
-                    android:layout_marginEnd="@dimen/_10pxh"
-                    android:layout_marginTop="@dimen/_2pxv" android:layout_width="@dimen/_85pxh">
-                    <TextView android:ellipsize="end"
-                        android:gravity="top|start"
-                        android:id="@+id/txtDesignTiles"
-                        android:layout_gravity="top|center"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_10pxv"
-                        android:layout_marginEnd="@dimen/_1pxh"
-                        android:layout_marginStart="@dimen/_1pxh"
-                        android:layout_width="match_parent"
-                        android:singleLine="true"
-                        android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtDesignTiles}"
-                        style="@style/txtPoppinsmedium14_1" tools:text="@string/lbl_design_tiles"/>
-                    <TextView android:ellipsize="end"
-                        android:gravity="top|start"
-                        android:id="@+id/txtCreamColour"
-                        android:layout_gravity="bottom|center"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10pxv"
-                        android:layout_width="match_parent"
-                        android:singleLine="true"
-                        android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtCreamColour}"
-                        style="@style/txtPoppinsregular12_1" tools:text="@string/lbl_cream_colour"/>
-                </FrameLayout>
-                <LinearLayout android:gravity="start"
-                    android:id="@+id/linearRowlanguageOne"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_10pxh"
-                    android:layout_marginStart="@dimen/_1pxh"
-                    android:layout_marginTop="@dimen/_4pxv"
-                    android:layout_width="match_parent" android:orientation="horizontal">
-                    <TextView android:ellipsize="end"
-                        android:id="@+id/txtLanguageOne"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_1pxv"
-                        android:layout_width="wrap_content"
-                        android:singleLine="true"
-                        android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtLanguageOne}"
-                        style="@style/txtPoppinsregular14_1" tools:text="@string/lbl_qty2"/>
-                    <TextView android:ellipsize="end"
-                        android:id="@+id/txtGroup434"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_4pxv"
-                        android:layout_marginStart="@dimen/_3pxh"
-                        android:layout_width="match_parent"
-                        android:paddingBottom="@dimen/_1pxv"
-                        android:paddingEnd="@dimen/_24pxh"
-                        android:paddingStart="@dimen/_8pxh"
-                        android:paddingTop="@dimen/_1pxv"
-                        android:singleLine="true"
-                        android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtGroup434}"
-                        style="@style/txtRoundedOutline" tools:text="@string/lbl_100"/>
-                </LinearLayout>
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtPrice"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_10pxh"
-                    android:layout_marginStart="@dimen/_1pxh"
-                    android:layout_marginTop="@dimen/_10pxv"
-                    android:layout_width="wrap_content"
-                    android:singleLine="true"
-                    android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtPrice}"
-                    style="@style/txtPoppinssemibold14_2" tools:text="@string/lbl_17000"/>
-            </LinearLayout>
-        </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
         <TextView android:ellipsize="end"
             android:id="@+id/txtPriceDetails"
             android:layout_gravity="start"
@@ -416,8 +314,8 @@
                 android:layout_marginBottom="@dimen/_1pxv"
                 android:layout_weight="0.67" android:layout_width="0dp"
                 android:singleLine="true"
-                android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtPrice1Item}"
-                style="@style/txtPoppinsregular12_2" tools:text="@string/msg_price_1_item"/>
+                android:text="Price"
+                style="@style/txtPoppinsregular12_2" />
             <TextView android:ellipsize="end"
                 android:id="@+id/txtPriceOne"
                 android:layout_height="wrap_content"
@@ -425,8 +323,9 @@
                 android:layout_marginTop="@dimen/_1pxv"
                 android:layout_weight="0.33" android:layout_width="0dp"
                 android:singleLine="true"
-                android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtPriceOne}"
-                style="@style/txtPoppinsregular12_2" tools:text="@string/lbl_170002"/>
+                android:text="00"
+                style="@style/txtPoppinsregular12_2"
+                tools:text="00"/>
         </LinearLayout>
         <LinearLayout android:id="@+id/linearRowdeliverycharge"
             android:layout_height="wrap_content"
@@ -480,8 +379,9 @@
                 android:layout_marginStart="@dimen/_183pxh"
                 android:layout_weight="0.33" android:layout_width="0dp"
                 android:singleLine="true"
-                android:text="@{signUoSeventeenVM.signUoSeventeenModel.txtPriceThree}"
-                style="@style/txtPoppinsmedium14_2" tools:text="@string/lbl_17630"/>
+                android:text="00"
+                style="@style/txtPoppinsmedium14_2"
+                tools:text="00"/>
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"

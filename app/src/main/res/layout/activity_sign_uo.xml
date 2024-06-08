@@ -170,17 +170,46 @@
                 android:text="@{signUoVM.signUoModel.txtPayment}"
                 style="@style/txtPoppinssemibold10" tools:text="@string/lbl_payment"/>
         </FrameLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:gravity="center_horizontal"
-            android:id="@+id/recyclerSignUo"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_20pxh"
-            android:layout_marginStart="@dimen/_20pxh"
-            android:layout_marginTop="@dimen/_45pxv"
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            itemSpace="@{@dimen/_16pxh}" tools:itemCount="1" tools:listitem="@layout/row_sign_uo"/>
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout android:id="@+id/linearRowcodcashond1"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20pxh"
+                android:layout_marginStart="@dimen/_20pxh"
+                android:layout_marginTop="@dimen/_16pxv"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                style="@style/groupStylecornerRadius_3">
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtCC_Evenue"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_11pxv"
+                    android:layout_marginStart="@dimen/_12pxh"
+                    android:layout_marginTop="@dimen/_14pxv"
+                    android:layout_width="wrap_content"
+                    android:singleLine="true"
+                    android:text="CC Evenew"
+                    style="@style/txtPoppinssemibold16"
+                    tools:text="CC Evenew"/>
+                <RadioButton
+                    android:layout_gravity="center"
+                    android:layout_marginStart="190dp"
+                    android:id="@+id/radioButton1"
+                    android:layout_height="@dimen/_28pxh"
+                    android:layout_marginBottom="@dimen/_15pxv"
+                    android:layout_marginEnd="@dimen/_24pxh"
+                    android:layout_marginTop="@dimen/_17pxv"
+                    android:layout_width="@dimen/_28pxh"/>
+            </LinearLayout>
+
+
+
+
         <LinearLayout android:id="@+id/linearRowcodcashond"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_20pxh"
@@ -196,8 +225,9 @@
                 android:layout_marginTop="@dimen/_14pxv"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="@{signUoVM.signUoModel.txtCODCashonD}"
-                style="@style/txtPoppinssemibold16" tools:text="@string/msg_cod_cash_on_d"/>
+                android:text="cod"
+                style="@style/txtPoppinssemibold16"
+                tools:text="@string/msg_cod_cash_on_d"/>
             <RadioButton
                 android:layout_marginStart="75dp"
                 android:id="@+id/viewEllipseTwentyEightThree"
@@ -207,6 +237,15 @@
                 android:layout_marginTop="@dimen/_17pxv"
                 android:layout_width="@dimen/_28pxh"/>
         </LinearLayout>
+
+        </RadioGroup>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"
             android:id="@+id/btnPay17630"
