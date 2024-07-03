@@ -168,10 +168,22 @@ class MyCartFragment : BaseFragment<FragmentMyCartBinding>(R.layout.fragment_my_
       startActivity(intent)
     }
 
+//    binding.btnProceedToPay.setOnClickListener {
+//      val i=Intent(requireActivity(),SignUoFiveActivity::class.java)
+//     // i.putExtra("total_amount",binding.txtPriceFour.text)
+//      startActivity(i)
+//    }
+
+
     binding.btnProceedToPay.setOnClickListener {
-      val i=Intent(requireActivity(),SignUoFiveActivity::class.java)
-     // i.putExtra("total_amount",binding.txtPriceFour.text)
-      startActivity(i)
+      val totalPrice = binding.txtPriceFour.text.toString().toDoubleOrNull()
+      if (totalPrice == null || totalPrice == 0.0) {
+        Toast.makeText(requireActivity(), "Please add items inside the cart", Toast.LENGTH_SHORT).show()
+      } else {
+        val i = Intent(requireActivity(), SignUoFiveActivity::class.java)
+        // i.putExtra("total_amount", binding.txtPriceFour.text)
+        startActivity(i)
+      }
     }
   }
 

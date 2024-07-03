@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,16 +45,20 @@ class SignUoFiveActivity : BaseActivity<ActivitySignUoFiveBinding>(R.layout.acti
 
   override fun setUpClicks(): Unit {
     binding.btnNext.setOnClickListener {
-      val destIntent = SignUoSeventeenActivity.getIntent(this, null)
       val selectedPosition = (binding.recyclerview.adapter as AddressAdapter).getSelectedAddress()
-      destIntent.putExtra("id",selectedPosition!!.id)
-      destIntent.putExtra("CUSTOMER_NAME", selectedPosition!!.fullName)
-      destIntent.putExtra("PINCODE", selectedPosition.pincode)
-      destIntent.putExtra("STATE", selectedPosition.state)
-      destIntent.putExtra("CITY", selectedPosition.city)
-      destIntent.putExtra("AREA", selectedPosition.area)
-      destIntent.putExtra("Mobile",selectedPosition.mobileNumber)
-      startActivity(destIntent)
+      if (selectedPosition == null) {
+        Toast.makeText(this, "Please select an address", Toast.LENGTH_SHORT).show()
+      } else {
+        val destIntent = SignUoSeventeenActivity.getIntent(this, null)
+        destIntent.putExtra("id", selectedPosition.id)
+        destIntent.putExtra("CUSTOMER_NAME", selectedPosition.fullName)
+        destIntent.putExtra("PINCODE", selectedPosition.pincode)
+        destIntent.putExtra("STATE", selectedPosition.state)
+        destIntent.putExtra("CITY", selectedPosition.city)
+        destIntent.putExtra("AREA", selectedPosition.area)
+        destIntent.putExtra("Mobile", selectedPosition.mobileNumber)
+        startActivity(destIntent)
+      }
     }
     binding.imageArrowleft.setOnClickListener {
       finish()

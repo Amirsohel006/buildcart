@@ -42,8 +42,6 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
   private val viewModelHome: HomeOneViewModel by viewModels { HomeOneViewModelFactory(productsRepository,categoriesRepository) }
   private lateinit var txtViewAll:TextView
   private lateinit var sessionManager: SessionManager
-
-
   private lateinit var apiInterface: APIInterface
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,6 +67,7 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
       val i=Intent(requireActivity(),ProfileActivity::class.java)
       startActivity(i)
     }
+
 
   }
 
@@ -117,9 +116,7 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
             }
 
           })
-
         }
-
       }
     }
 
@@ -131,7 +128,8 @@ class HomeOneFragment : BaseFragment<FragmentHomeOneBinding>(R.layout.fragment_h
         val buttonText = pair.second
       homeOneAdapter.setAddToCartButtonText(position, buttonText)
         homeOneAdapter.notifyItemChanged(position)
-      Log.d("HomeOneFragment", "Button text changed for position $position: $buttonText")}
+      Log.d("HomeOneFragment", "Button text changed for position $position: $buttonText")
+      }
 
 
     }

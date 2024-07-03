@@ -19,10 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".modules.aboutus.AboutUsActivity"
              android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
+
         <activity
             android:name=".modules.SplashScreenUpdated"
             android:exported="true">
@@ -32,97 +34,133 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".modules.splash.SplashScreen1Activity"
             android:exported="false" />
+
         <activity
             android:name=".modules.splash.SplashScreen2Activity"
             android:exported="false" />
+
         <activity
             android:name=".modules.splash.SplashScreen3Activity"
             android:exported="false" />
+
         <activity
             android:name=".modules.screenten.ui.ScreenTenActivity"
             android:exported="false" />
+
         <activity
             android:name=".modules.signuoeight.ui.SignUoEightActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuoeleven.ui.SignUoElevenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuofive.ui.SignUoFiveActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.frame308.ui.Frame308Activity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.orderstwo.ui.OrdersTwoActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.screenthirteen.ui.ScreenThirteenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuoone.ui.SignUoOneActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuotwo.ui.SignUoTwoActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.ordersseven.ui.OrdersSevenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.fav.ui.FavActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.frametwentyseven.ui.FrameTwentysevenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuoten.ui.SignUoTenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuosixteen.ui.SignUoSixteenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.tile.ui.TileActivity"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".modules.ordersfive.ui.OrdersFiveActivity"
             android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".modules.ordersthree.ui.OrdersThreeActivity"
-            android:screenOrientation="portrait" />
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+            android:exported="false" />
+
         <activity
             android:name=".modules.orderssix.ui.OrdersSixActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.screentwelve.ui.ScreenTwelveActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.screenfourteen.ui.ScreenFourteenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.screenseven.ui.ScreenSevenActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
+
+
         <activity
             android:name=".modules.splash.SplashActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:exported="false" />
+
         <activity
             android:name=".modules.products.ui.ProductsActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false" />
+
         <activity
             android:name=".modules.signuosix.ui.SignUoSixActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false" />
+
         <activity
             android:name=".modules.ordersten.ui.OrdersTenActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false"/>
+
         <activity
             android:name=".modules.signuofourteen.ui.SignUoFourteenActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false" />
+
+
         <activity
             android:name=".modules.homeonecontainer.ui.HomeOneContainerActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.frame309.ui.Frame309Activity"
             android:screenOrientation="portrait" />
@@ -135,91 +173,124 @@
         <activity
             android:name=".modules.product.ui.ProductActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.frame307.ui.Frame307Activity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.ordersnine.ui.OrdersNineActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false" />
+
         <activity
             android:name=".modules.frame310.ui.Frame310Activity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.frame311.ui.Frame311Activity"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar"  />
+
         <activity
             android:name=".modules.signuonineteen.ui.SignUoNineteenActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
         <activity
             android:name=".modules.signuotwelve.ui.SignUoTwelveActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar"  />
+
         <activity
             android:name=".modules.signuofifteen.ui.ProfileActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
         <activity
             android:name=".modules.signuofifteen.ui.AccountUpdate"
-            android:configChanges="uiMode"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar"  />
+
         <activity
             android:name=".modules.signuotwenty.ui.SignUoTwentyActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuothree.ui.SignUoThreeActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuothirteen.ui.SignUoThirteenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.home.ui.HomeActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuoeighteen.ui.SignUoEighteenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuotwentyone.ui.SignUoTwentyoneActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuonine.ui.SignUoNineActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuofour.ui.SignUoFourActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuotwentytwo.ui.SignUoTwentytwoActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.frame312.ui.Frame312Activity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuo.ui.SignUoActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.screeneleven.ui.ScreenElevenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.screeneight.ui.ScreenEightActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.signuoseventeen.ui.SignUoSeventeenActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".modules.frame314.ui.Frame314Activity"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar"  />
+
         <activity
             android:name=".modules.ordersfour.ui.OrdersFourActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar"  />
+
         <activity
             android:name=".modules.frametwentyeight.ui.FrameTwentyeightActivity"
-            android:screenOrientation="portrait" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
         <activity
             android:name=".modules.homeone.ui.AllProductsActivity"
-            android:configChanges="uiMode"
-            android:screenOrientation="portrait"/>
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+
         <activity
             android:name=".modules.homeone.ui.ProductDetailsActivity"
-            android:configChanges="uiMode"
-            android:theme="@style/AppTheme" />
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

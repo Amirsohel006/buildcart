@@ -50,11 +50,9 @@ class SignUoActivity : BaseActivity<ActivitySignUoBinding>(R.layout.activity_sig
     binding.btnPay17630.setOnClickListener {
       //  val selectedRadioButton: RadioButton = findViewById(selectedRadioButtonId)
         val selectedText = "cod"
-
        // Toast.makeText(this, "Selected Payment Method: $selectedText", Toast.LENGTH_SHORT).show()
         buyproducts(id.toString(), selectedText) // Replace "address_id_here" with the actual address ID
         binding.progressBar.visibility=View.VISIBLE
-
 
     }
 
