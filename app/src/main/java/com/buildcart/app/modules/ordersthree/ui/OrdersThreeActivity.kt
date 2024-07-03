@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
@@ -34,9 +35,8 @@ class OrdersThreeActivity : BaseActivity<ActivityOrdersThreeBinding>(R.layout.ac
 
       private lateinit var sessionManager: SessionManager
 
-private lateinit var placeForAddredd:String
-
-private lateinit var checkBoxValue:String
+      private var placeForAddredd: String = ""
+      private var checkBoxValue: String = "False"
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
@@ -72,23 +72,59 @@ private lateinit var checkBoxValue:String
 
 
     binding.btnAdd.setOnClickListener {
-      val name=binding.txtRahul.text.toString()
-      val mobilenumber=binding.txtMobileNo.text.toString()
-      val state=binding.etGroupNinetyOne11.text.toString()
-      val city=binding.etGroupNinetyOne1.text.toString()
-      val pincode=binding.etGroupNinetyOne112.text.toString()
-      val flat=binding.etGroupNinetyTwo.text.toString()   //landmark
-      val house_no=binding.etGroupNinetyOne.text.toString()
-      val place=placeForAddredd
-      val housename=binding.etGroupNinetyOne1121.text.toString()
-      val area=binding.etGroupNinetyOne112111.text.toString()
+      val name = binding.txtRahul.text.toString()
+      val mobileNumber = binding.txtMobileNo.text.toString()
+      val state = binding.etGroupNinetyOne11.text.toString()
+      val city = binding.etGroupNinetyOne1.text.toString()
+      val pincode = binding.etGroupNinetyOne112.text.toString()
+      val flat = binding.etGroupNinetyTwo.text.toString()   //landmark
+      val houseNo = binding.etGroupNinetyOne.text.toString()
+      val place = placeForAddredd
+      val houseName = binding.etGroupNinetyOne1121.text.toString()
+      val area = binding.etGroupNinetyOne112111.text.toString()
+      val setAsDefault = checkBoxValue
+      val street = binding.etGroupNinetyOne11211.text.toString()
 
-      val setAsDefault=checkBoxValue
-
-      val street=binding.etGroupNinetyOne11211.text.toString()
-      postAddress(name,mobilenumber,city,state,pincode,area,house_no,street,housename,place,flat,setAsDefault)
-
+      when {
+        name.isEmpty() -> {
+          Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT).show()
+        }
+        mobileNumber.isEmpty() -> {
+          Toast.makeText(this, "Please enter mobile number", Toast.LENGTH_SHORT).show()
+        }
+        state.isEmpty() -> {
+          Toast.makeText(this, "Please enter state", Toast.LENGTH_SHORT).show()
+        }
+        city.isEmpty() -> {
+          Toast.makeText(this, "Please enter city", Toast.LENGTH_SHORT).show()
+        }
+        pincode.isEmpty() -> {
+          Toast.makeText(this, "Please enter pincode", Toast.LENGTH_SHORT).show()
+        }
+        flat.isEmpty() -> {
+          Toast.makeText(this, "Please enter landmark", Toast.LENGTH_SHORT).show()
+        }
+        houseNo.isEmpty() -> {
+          Toast.makeText(this, "Please enter house number", Toast.LENGTH_SHORT).show()
+        }
+        houseName.isEmpty() -> {
+          Toast.makeText(this, "Please enter house name", Toast.LENGTH_SHORT).show()
+        }
+        area.isEmpty() -> {
+          Toast.makeText(this, "Please enter area", Toast.LENGTH_SHORT).show()
+        }
+        street.isEmpty() -> {
+          Toast.makeText(this, "Please enter street", Toast.LENGTH_SHORT).show()
+        }
+        place.isEmpty() -> {
+          Toast.makeText(this, "Please select address type", Toast.LENGTH_SHORT).show()
+        }
+        else -> {
+          postAddress(name, mobileNumber, city, state, pincode, area, houseNo, street, houseName, place, flat, setAsDefault)
+        }
+      }
     }
+
     binding.ordersThreeVM = viewModel
     window.statusBarColor= ContextCompat.getColor(this,R.color.gray_703)
   }
@@ -162,15 +198,15 @@ private lateinit var checkBoxValue:String
               val img=dialogBinding.findViewById<ImageView>(R.id.imageComponentlott)
               val img1=dialogBinding.findViewById<ImageView>(R.id.imageHttpslottief)
 
-              // val btnGOCart=dialogBinding.findViewById<AppCompatButton>(R.id.btnCart)
+               val btnGOCart=dialogBinding.findViewById<AppCompatButton>(R.id.btnCart)
 
               Glide.with(this@OrdersThreeActivity).load(R.drawable.done).into(img)
               Glide.with(this@OrdersThreeActivity).load(R.drawable.celebration).into(img1)
-//                  btnGOCart.setOnClickListener{
-//                    // This code will run after 3 seconds
-//                    moveToCartFragment()
-//
-//                  }
+                  btnGOCart.setOnClickListener{
+                    // This code will run after 3 seconds
+                    movetoSignUpFiveActivity()
+
+                  }
 
               val btnGoHome=dialogBinding.findViewById<AppCompatButton>(R.id.btnCart)
               myDialoge.setCancelable(true)
@@ -186,6 +222,13 @@ private lateinit var checkBoxValue:String
           }
         })
       }
+
+      fun movetoSignUpFiveActivity(){
+        val i=Intent(this,SignUoFiveActivity::class.java)
+        startActivity(i)
+        finish()
+      }
+
 
 
       companion object {

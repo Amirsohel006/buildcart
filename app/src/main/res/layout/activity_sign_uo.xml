@@ -9,10 +9,12 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical" style="@style/groupStylewhite_A700">
-        <androidx.appcompat.widget.Toolbar android:gravity="start"
+        <androidx.appcompat.widget.Toolbar
+            android:gravity="start"
             android:id="@+id/toolbarToolbar"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent" app:contentInsetStart="0dp">
+            android:layout_width="match_parent"
+            app:contentInsetStart="0dp">
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearRowarrowleft"
                 android:layout_height="wrap_content"
@@ -177,35 +179,35 @@
             android:layout_height="wrap_content">
 
 
-            <LinearLayout android:id="@+id/linearRowcodcashond1"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_20pxh"
-                android:layout_marginStart="@dimen/_20pxh"
-                android:layout_marginTop="@dimen/_16pxv"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                style="@style/groupStylecornerRadius_3">
-                <TextView android:ellipsize="end"
-                    android:id="@+id/txtCC_Evenue"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_11pxv"
-                    android:layout_marginStart="@dimen/_12pxh"
-                    android:layout_marginTop="@dimen/_14pxv"
-                    android:layout_width="wrap_content"
-                    android:singleLine="true"
-                    android:text="CC Evenew"
-                    style="@style/txtPoppinssemibold16"
-                    tools:text="CC Evenew"/>
-                <RadioButton
-                    android:layout_gravity="center"
-                    android:layout_marginStart="190dp"
-                    android:id="@+id/radioButton1"
-                    android:layout_height="@dimen/_28pxh"
-                    android:layout_marginBottom="@dimen/_15pxv"
-                    android:layout_marginEnd="@dimen/_24pxh"
-                    android:layout_marginTop="@dimen/_17pxv"
-                    android:layout_width="@dimen/_28pxh"/>
-            </LinearLayout>
+<!--            <LinearLayout android:id="@+id/linearRowcodcashond1"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="@dimen/_20pxh"-->
+<!--                android:layout_marginStart="@dimen/_20pxh"-->
+<!--                android:layout_marginTop="@dimen/_16pxv"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:orientation="horizontal"-->
+<!--                style="@style/groupStylecornerRadius_3">-->
+<!--                <TextView android:ellipsize="end"-->
+<!--                    android:id="@+id/txtCC_Evenue"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="@dimen/_11pxv"-->
+<!--                    android:layout_marginStart="@dimen/_12pxh"-->
+<!--                    android:layout_marginTop="@dimen/_14pxv"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:text="CC Evenew"-->
+<!--                    style="@style/txtPoppinssemibold16"-->
+<!--                    tools:text="CC Evenew"/>-->
+<!--                <RadioButton-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginStart="190dp"-->
+<!--                    android:id="@+id/radioButton1"-->
+<!--                    android:layout_height="@dimen/_28pxh"-->
+<!--                    android:layout_marginBottom="@dimen/_15pxv"-->
+<!--                    android:layout_marginEnd="@dimen/_24pxh"-->
+<!--                    android:layout_marginTop="@dimen/_17pxv"-->
+<!--                    android:layout_width="@dimen/_28pxh"/>-->
+<!--            </LinearLayout>-->
 
 
 
@@ -243,6 +245,7 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
+            android:visibility="gone"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

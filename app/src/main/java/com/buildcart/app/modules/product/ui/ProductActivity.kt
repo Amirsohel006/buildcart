@@ -16,6 +16,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.PagerAdapter
@@ -26,6 +27,7 @@ import com.buildcart.app.data.SessionManager
 import com.buildcart.app.databinding.ActivityProductBinding
 import com.buildcart.app.modules.homeone.data.model.ProductDetailsDataResponse
 import com.buildcart.app.modules.homeone.data.model.ProductdescriptionResponse
+import com.buildcart.app.modules.homeonecontainer.ui.HomeOneContainerActivity
 import com.buildcart.app.modules.mycart.data.model.CartProduct
 import com.buildcart.app.modules.mycart.ui.CartNewAdapter
 import com.buildcart.app.modules.orders.data.model.OrderStatusRequest
@@ -206,15 +208,15 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
             val img = dialogBinding.findViewById<ImageView>(R.id.imageComponentlott)
             val img1 = dialogBinding.findViewById<ImageView>(R.id.imageHttpslottief)
 
-            // val btnGOCart=dialogBinding.findViewById<AppCompatButton>(R.id.btnCart)
+            val btnGOCart=dialogBinding.findViewById<AppCompatButton>(R.id.btnCart)
 
             Glide.with(this@ProductActivity).load(R.drawable.done).into(img)
             Glide.with(this@ProductActivity).load(R.drawable.celebration).into(img1)
-//                  btnGOCart.setOnClickListener{
-//                    // This code will run after 3 seconds
-//                    moveToCartFragment()
-//
-//                  }
+                  btnGOCart.setOnClickListener{
+                    // This code will run after 3 seconds
+                    movetoContainer()
+
+                  }
             myDialoge.setCancelable(true)
             myDialoge.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             myDialoge.show()
@@ -232,6 +234,13 @@ class ProductActivity : BaseActivity<ActivityProductBinding>(R.layout.activity_p
       }
     })
 
+  }
+
+
+  fun movetoContainer(){
+    val i=Intent(this,HomeOneContainerActivity::class.java)
+    startActivity(i)
+    finish()
   }
 
 

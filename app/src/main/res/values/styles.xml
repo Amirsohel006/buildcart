@@ -991,7 +991,8 @@
 
 
     <style name="groupStylegray_9051">
-        <item name="android:background">@drawable/rectangle_bg_gray_905</item>  </style>
+        <item name="android:background">@drawable/rectangle_bg_gray_905</item>
+    </style>
 
     <style name="btnSolid_3">
         <item name="android:textSize">@dimen/_22pxh</item>

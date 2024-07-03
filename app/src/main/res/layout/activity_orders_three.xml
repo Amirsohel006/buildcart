@@ -74,13 +74,15 @@
                     style="@style/txtPoppinsmedium16" tools:text="@string/lbl_contact_info"/>
                 <LinearLayout android:gravity="start"
                     android:id="@+id/linearColumnname"
+
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_15pxh"
                     android:layout_marginBottom="4dp"
                     android:layout_marginStart="@dimen/_15pxh"
                     android:layout_marginTop="@dimen/_16pxv"
                     android:layout_width="match_parent"
-                    android:orientation="vertical" style="@style/groupStylewhite_7">
+                    android:orientation="vertical"
+                    style="@style/groupStylewhite_7">
                     <TextView android:ellipsize="end"
                         android:id="@+id/txtName"
                         android:layout_height="wrap_content"
